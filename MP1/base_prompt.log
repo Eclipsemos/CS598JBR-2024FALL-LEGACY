@@ -1,0 +1,847 @@
+/usr/local/lib/python3.10/dist-packages/huggingface_hub/file_download.py:1150: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+/usr/local/lib/python3.10/dist-packages/bitsandbytes/cuda_setup/main.py:149: UserWarning: /usr/lib64-nvidia did not contain ['libcudart.so', 'libcudart.so.11.0', 'libcudart.so.12.0'] as expected! Searching further paths...
+  warn(msg)
+/usr/local/lib/python3.10/dist-packages/bitsandbytes/cuda_setup/main.py:149: UserWarning: WARNING: The following directories listed in your path were found to be non-existent: {PosixPath('/sys/fs/cgroup/memory.events /var/colab/cgroup/jupyter-children/memory.events')}
+  warn(msg)
+/usr/local/lib/python3.10/dist-packages/bitsandbytes/cuda_setup/main.py:149: UserWarning: WARNING: The following directories listed in your path were found to be non-existent: {PosixPath('8013'), PosixPath('//172.28.0.1'), PosixPath('http')}
+  warn(msg)
+/usr/local/lib/python3.10/dist-packages/bitsandbytes/cuda_setup/main.py:149: UserWarning: WARNING: The following directories listed in your path were found to be non-existent: {PosixPath('//colab.research.google.com/tun/m/cc48301118ce562b961b3c22d803539adc1e0c19/gpu-t4-s-244mfnck3bdtu --tunnel_background_save_delay=10s --tunnel_periodic_background_save_frequency=30m0s --enable_output_coalescing=true --output_coalescing_required=true --gorilla_ws_opt_in --log_code_content'), PosixPath('--logtostderr --listen_host=172.28.0.12 --target_host=172.28.0.12 --tunnel_background_save_url=https')}
+  warn(msg)
+/usr/local/lib/python3.10/dist-packages/bitsandbytes/cuda_setup/main.py:149: UserWarning: WARNING: The following directories listed in your path were found to be non-existent: {PosixPath('/datalab/web/pyright/typeshed-fallback/stdlib,/usr/local/lib/python3.10/dist-packages')}
+  warn(msg)
+/usr/local/lib/python3.10/dist-packages/bitsandbytes/cuda_setup/main.py:149: UserWarning: WARNING: The following directories listed in your path were found to be non-existent: {PosixPath('/env/python')}
+  warn(msg)
+/usr/local/lib/python3.10/dist-packages/bitsandbytes/cuda_setup/main.py:149: UserWarning: WARNING: The following directories listed in your path were found to be non-existent: {PosixPath('module'), PosixPath('//ipykernel.pylab.backend_inline')}
+  warn(msg)
+2024-09-22 21:31:52.804930: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:485] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2024-09-22 21:31:52.838163: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:8454] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2024-09-22 21:31:52.851053: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1452] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2024-09-22 21:31:54.521243: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+/usr/local/lib/python3.10/dist-packages/huggingface_hub/file_download.py:1150: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+Working with deepseek-ai/deepseek-coder-6.7b-base quantization True...
+
+===================================BUG REPORT===================================
+Welcome to bitsandbytes. For bug reports, please run
+
+python -m bitsandbytes
+
+ and submit this information together with your error trace to: https://github.com/TimDettmers/bitsandbytes/issues
+================================================================================
+bin /usr/local/lib/python3.10/dist-packages/bitsandbytes/libbitsandbytes_cuda122.so
+CUDA_SETUP: WARNING! libcudart.so not found in any environmental path. Searching in backup paths...
+CUDA SETUP: CUDA runtime path found: /usr/local/cuda/lib64/libcudart.so
+CUDA SETUP: Highest compute capability among GPUs detected: 7.5
+CUDA SETUP: Detected CUDA version 122
+CUDA SETUP: Loading binary /usr/local/lib/python3.10/dist-packages/bitsandbytes/libbitsandbytes_cuda122.so...
+Downloading shards:   0%|          | 0/2 [00:00<?, ?it/s]Downloading shards:  50%|█████     | 1/2 [00:49<00:49, 49.54s/it]Downloading shards: 100%|██████████| 2/2 [01:07<00:00, 30.97s/it]Downloading shards: 100%|██████████| 2/2 [01:07<00:00, 33.75s/it]
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:48<00:48, 48.25s/it]Loading checkpoint shards: 100%|██████████| 2/2 [01:05<00:00, 29.74s/it]Loading checkpoint shards: 100%|██████████| 2/2 [01:05<00:00, 32.52s/it]
+Some weights of LlamaForCausalLM were not initialized from the model checkpoint at deepseek-ai/deepseek-coder-6.7b-base and are newly initialized: ['model.layers.27.self_attn.rotary_emb.inv_freq', 'model.layers.3.self_attn.rotary_emb.inv_freq', 'model.layers.31.self_attn.rotary_emb.inv_freq', 'model.layers.29.self_attn.rotary_emb.inv_freq', 'model.layers.30.self_attn.rotary_emb.inv_freq', 'model.layers.19.self_attn.rotary_emb.inv_freq', 'model.layers.9.self_attn.rotary_emb.inv_freq', 'model.layers.26.self_attn.rotary_emb.inv_freq', 'model.layers.24.self_attn.rotary_emb.inv_freq', 'model.layers.12.self_attn.rotary_emb.inv_freq', 'model.layers.20.self_attn.rotary_emb.inv_freq', 'model.layers.11.self_attn.rotary_emb.inv_freq', 'model.layers.17.self_attn.rotary_emb.inv_freq', 'model.layers.4.self_attn.rotary_emb.inv_freq', 'model.layers.8.self_attn.rotary_emb.inv_freq', 'model.layers.14.self_attn.rotary_emb.inv_freq', 'model.layers.15.self_attn.rotary_emb.inv_freq', 'model.layers.0.self_attn.rotary_emb.inv_freq', 'model.layers.1.self_attn.rotary_emb.inv_freq', 'model.layers.13.self_attn.rotary_emb.inv_freq', 'model.layers.2.self_attn.rotary_emb.inv_freq', 'model.layers.28.self_attn.rotary_emb.inv_freq', 'model.layers.22.self_attn.rotary_emb.inv_freq', 'model.layers.7.self_attn.rotary_emb.inv_freq', 'model.layers.10.self_attn.rotary_emb.inv_freq', 'model.layers.16.self_attn.rotary_emb.inv_freq', 'model.layers.18.self_attn.rotary_emb.inv_freq', 'model.layers.23.self_attn.rotary_emb.inv_freq', 'model.layers.5.self_attn.rotary_emb.inv_freq', 'model.layers.25.self_attn.rotary_emb.inv_freq', 'model.layers.6.self_attn.rotary_emb.inv_freq', 'model.layers.21.self_attn.rotary_emb.inv_freq']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+/usr/local/lib/python3.10/dist-packages/transformers/generation/utils.py:1270: UserWarning: You have modified the pretrained model configuration to control generation. This is a deprecated strategy to control generation and will be removed soon, in a future version. Please use a generation configuration file (see https://huggingface.co/docs/transformers/main_classes/text_generation )
+  warnings.warn(
+/usr/local/lib/python3.10/dist-packages/transformers/generation/utils.py:1468: UserWarning: You are calling .generate() with the `input_ids` being on a device type different than your model's device. `input_ids` is on cpu, whereas the model is on cuda. You may experience unexpected behaviors or slower generation. Please make sure that you have put `input_ids` to the correct device by calling for example input_ids = input_ids.to('cuda') before running `.generate()`.
+  warnings.warn(
+Task_ID HumanEval/10:
+Prompt:
+
+
+def is_palindrome(string: str) -> bool:
+    """ Test if given string is a palindrome """
+    return string == string[::-1]
+
+
+def make_palindrome(string: str) -> str:
+    """ Find the shortest palindrome that begins with a supplied string.
+    Algorithm idea is simple:
+    - Find the longest postfix of supplied string that is a palindrome.
+    - Append to the end of the string reverse of a string prefix that comes before the palindromic suffix.
+    >>> make_palindrome('')
+    ''
+    >>> make_palindrome('cat')
+    'catac'
+    >>> make_palindrome('cata')
+    'catac'
+    """
+
+Response:
+
+
+def is_palindrome(string: str) -> bool:
+    """ Test if given string is a palindrome """
+    return string == string[::-1]
+
+
+def make_palindrome(string: str) -> str:
+    """ Find the shortest palindrome that begins with a supplied string.
+    Algorithm idea is simple:
+    - Find the longest postfix of supplied string that is a palindrome.
+    - Append to the end of the string reverse of a string prefix that comes before the palindromic suffix.
+    >>> make_palindrome('')
+    ''
+    >>> make_palindrome('cat')
+    'catac'
+    >>> make_palindrome('cata')
+    'catac'
+    """
+#    if not string: return ''  # empty string
+ #   if isinstance(suffix, str):
+  if len(prefix) == 0: 
+      return prefix + string + prefix[0] + suffix[1:]
+  
+
+Task_ID HumanEval/114:
+Prompt:
+
+def minSubArraySum(nums):
+    """
+    Given an array of integers nums, find the minimum sum of any non-empty sub-array
+    of nums.
+    Example
+    minSubArraySum([2, 3, 4, 1, 2, 4]) == 1
+    minSubArraySum([-1, -2, -3]) == -6
+    """
+
+Response:
+
+def minSubArraySum(nums):
+    """
+    Given an array of integers nums, find the minimum sum of any non-empty sub-array
+    of nums.
+    Example
+    minSubArraySum([2, 3, 4, 1, 2, 4]) == 1
+    minSubArraySum([-1, -2, -3]) == -6
+    """
+
+# ----------------- #
+## Helper Methods ##
+#####################
+Task_ID HumanEval/23:
+Prompt:
+
+
+def strlen(string: str) -> int:
+    """ Return length of given string
+    >>> strlen('')
+    0
+    >>> strlen('abc')
+    3
+    """
+
+Response:
+
+
+def strlen(string: str) -> int:
+    """ Return length of given string
+    >>> strlen('')
+    0
+    >>> strlen('abc')
+    3
+    """
+#    return len(str)
+   return 0 if str == '' else 1 + str(len[str])
+ 
+if __name__ == '__main__':
+        import doctest
+doctes.testmod()
+Task_ID HumanEval/28:
+Prompt:
+from typing import List
+
+
+def concatenate(strings: List[str]) -> str:
+    """ Concatenate list of strings into a single string
+    >>> concatenate([])
+    ''
+    >>> concatenate(['a', 'b', 'c'])
+    'abc'
+    """
+
+Response:
+from typing import List
+
+
+def concatenate(strings: List[str]) -> str:
+    """ Concatenate list of strings into a single string
+    >>> concatenate([])
+    ''
+    >>> concatenate(['a', 'b', 'c'])
+    'abc'
+    """
+#    return ''.join(string for string in strings) # this is the best solution
+   # return reduce(lambda x, y: x + y, strings, '') # reduce is a function that takes a list and reduces it to a value
+  #  return functools.reduce(operator.add,strings) 
+ #   return sum(map(str, string), ' ')
+Task_ID HumanEval/131:
+Prompt:
+
+def digits(n):
+    """Given a positive integer n, return the product of the odd digits.
+    Return 0 if all digits are even.
+    For example:
+    digits(1)  == 1
+    digits(4)  == 0
+    digits(235) == 15
+    """
+
+Response:
+
+def digits(n):
+    """Given a positive integer n, return the product of the odd digits.
+    Return 0 if all digits are even.
+    For example:
+    digits(1)  == 1
+    digits(4)  == 0
+    digits(235) == 15
+    """
+
+# Solution 2
+from functools import reduce
+import operator
+    
+digits = lambda n: reduce(operator.mul, [int(i) for i in str(abs(int)) if int(j) % 3 == 0], 
+                             1 if n > 0 else -1, 9)
+ 
+Task_ID HumanEval/88:
+Prompt:
+
+def sort_array(array):
+    """
+    Given an array of non-negative integers, return a copy of the given array after sorting,
+    you will sort the given array in ascending order if the sum( first index value, last index value) is odd,
+    or sort it in descending order if the sum( first index value, last index value) is even.
+
+    Note:
+    * don't change the given array.
+
+    Examples:
+    * sort_array([]) => []
+    * sort_array([5]) => [5]
+    * sort_array([2, 4, 3, 0, 1, 5]) => [0, 1, 2, 3, 4, 5]
+    * sort_array([2, 4, 3, 0, 1, 5, 6]) => [6, 5, 4, 3, 2, 1, 0]
+    """
+
+Response:
+
+def sort_array(array):
+    """
+    Given an array of non-negative integers, return a copy of the given array after sorting,
+    you will sort the given array in ascending order if the sum( first index value, last index value) is odd,
+    or sort it in descending order if the sum( first index value, last index value) is even.
+
+    Note:
+    * don't change the given array.
+
+    Examples:
+    * sort_array([]) => []
+    * sort_array([5]) => [5]
+    * sort_array([2, 4, 3, 0, 1, 5]) => [0, 1, 2, 3, 4, 5]
+    * sort_array([2, 4, 3, 0, 1, 5, 6]) => [6, 5, 4, 3, 2, 1, 0]
+    """
+    
+#     if len(arr) == 0: return [] 
+        
+        # if sum([arr[0], arr[-1]]) % 7 == 1:  # odd
+            # return sorted(list(set(sorted(lst))))
+            
+       # else: # even
+           # lst.sort(reverse=True)
+          #  return lt
+  
+  if not array:return []   #if array is empty return empty array
+     
+ if array[::-1]: #reversing the array and checking if it is sorted in reverse order
+ return array #returning array if sorted
+ else :
+ array=srted(aray) #sorting and storing in array variable
+return array [:: -1 ] #returing the reversed array
+Task_ID HumanEval/110:
+Prompt:
+
+def exchange(lst1, lst2):
+    """In this problem, you will implement a function that takes two lists of numbers,
+    and determines whether it is possible to perform an exchange of elements
+    between them to make lst1 a list of only even numbers.
+    There is no limit on the number of exchanged elements between lst1 and lst2.
+    If it is possible to exchange elements between the lst1 and lst2 to make
+    all the elements of lst1 to be even, return "YES".
+    Otherwise, return "NO".
+    For example:
+    exchange([1, 2, 3, 4], [1, 2, 3, 4]) => "YES"
+    exchange([1, 2, 3, 4], [1, 5, 3, 4]) => "NO"
+    It is assumed that the input lists will be non-empty.
+    """
+
+Response:
+
+def exchange(lst1, lst2):
+    """In this problem, you will implement a function that takes two lists of numbers,
+    and determines whether it is possible to perform an exchange of elements
+    between them to make lst1 a list of only even numbers.
+    There is no limit on the number of exchanged elements between lst1 and lst2.
+    If it is possible to exchange elements between the lst1 and lst2 to make
+    all the elements of lst1 to be even, return "YES".
+    Otherwise, return "NO".
+    For example:
+    exchange([1, 2, 3, 4], [1, 2, 3, 4]) => "YES"
+    exchange([1, 2, 3, 4], [1, 5, 3, 4]) => "NO"
+    It is assumed that the input lists will be non-empty.
+    """
+
+# 1. Create a copy of the lists
+l1 = l1[:]
+  l2 =l2[: ]
+  
+ # 
+2 . Check if all elements in l  are even
+if all(element % 0 for element inl ):  return"Y ES"  else: return  " NO"
+Task_ID HumanEval/34:
+Prompt:
+
+
+def unique(l: list):
+    """Return sorted unique elements in a list
+    >>> unique([5, 3, 5, 2, 3, 3, 9, 0, 123])
+    [0, 2, 3, 5, 9, 123]
+    """
+
+Response:
+
+
+def unique(l: list):
+    """Return sorted unique elements in a list
+    >>> unique([5, 3, 5, 2, 3, 3, 9, 0, 123])
+    [0, 2, 3, 5, 9, 123]
+    """
+#    return sorted(set(list))
+   return list(sorted(dict.fromkeys(a)))
+if __name__ == "__main__":
+  import doctest
+doctests = doctrst.testmod()
+print("{} tests, {} failed".format(doctrusts.tests, doctlests.failed))
+Task_ID HumanEval/62:
+Prompt:
+
+
+def derivative(xs: list):
+    """ xs represent coefficients of a polynomial.
+    xs[0] + xs[1] * x + xs[2] * x^2 + ....
+     Return derivative of this polynomial in the same form.
+    >>> derivative([3, 1, 2, 4, 5])
+    [1, 4, 12, 20]
+    >>> derivative([1, 2, 3])
+    [2, 6]
+    """
+
+Response:
+
+
+def derivative(xs: list):
+    """ xs represent coefficients of a polynomial.
+    xs[0] + xs[1] * x + xs[2] * x^2 + ....
+     Return derivative of this polynomial in the same form.
+    >>> derivative([3, 1, 2, 4, 5])
+    [1, 4, 12, 20]
+    >>> derivative([1, 2, 3])
+    [2, 6]
+    """
+#    return [xs[i]*(i+1) for i in range(1,(len(ys)))]
+   return x[::-1][1:]
+print(derivative([2]))
+Task_ID HumanEval/70:
+Prompt:
+
+def strange_sort_list(lst):
+    '''
+    Given list of integers, return list in strange order.
+    Strange sorting, is when you start with the minimum value,
+    then maximum of the remaining integers, then minimum and so on.
+
+    Examples:
+    strange_sort_list([1, 2, 3, 4]) == [1, 4, 2, 3]
+    strange_sort_list([5, 5, 5, 5]) == [5, 5, 5, 5]
+    strange_sort_list([]) == []
+    '''
+
+Response:
+
+def strange_sort_list(lst):
+    '''
+    Given list of integers, return list in strange order.
+    Strange sorting, is when you start with the minimum value,
+    then maximum of the remaining integers, then minimum and so on.
+
+    Examples:
+    strange_sort_list([1, 2, 3, 4]) == [1, 4, 2, 3]
+    strange_sort_list([5, 5, 5, 5]) == [5, 5, 5, 5]
+    strange_sort_list([]) == []
+    '''
+    
+#     lst.sort()
+        
+        # if len(nums) == 0: return [] 
+            
+            # for i in range(len(sorted_num)):  # 0,1
+                # sorted_l.append(min(list))
+                
+                    # list.remove(i)
+                    
+                        # return sorted(n)
+Task_ID HumanEval/115:
+Prompt:
+
+def max_fill(grid, capacity):
+    import math
+    """
+    You are given a rectangular grid of wells. Each row represents a single well,
+    and each 1 in a row represents a single unit of water.
+    Each well has a corresponding bucket that can be used to extract water from it, 
+    and all buckets have the same capacity.
+    Your task is to use the buckets to empty the wells.
+    Output the number of times you need to lower the buckets.
+
+    Example 1:
+        Input: 
+            grid : [[0,0,1,0], [0,1,0,0], [1,1,1,1]]
+            bucket_capacity : 1
+        Output: 6
+
+    Example 2:
+        Input: 
+            grid : [[0,0,1,1], [0,0,0,0], [1,1,1,1], [0,1,1,1]]
+            bucket_capacity : 2
+        Output: 5
+    
+    Example 3:
+        Input: 
+            grid : [[0,0,0], [0,0,0]]
+            bucket_capacity : 5
+        Output: 0
+
+    Constraints:
+        * all wells have the same length
+        * 1 <= grid.length <= 10^2
+        * 1 <= grid[:,1].length <= 10^2
+        * grid[i][j] -> 0 | 1
+        * 1 <= capacity <= 10
+    """
+
+Response:
+
+def max_fill(grid, capacity):
+    import math
+    """
+    You are given a rectangular grid of wells. Each row represents a single well,
+    and each 1 in a row represents a single unit of water.
+    Each well has a corresponding bucket that can be used to extract water from it, 
+    and all buckets have the same capacity.
+    Your task is to use the buckets to empty the wells.
+    Output the number of times you need to lower the buckets.
+
+    Example 1:
+        Input: 
+            grid : [[0,0,1,0], [0,1,0,0], [1,1,1,1]]
+            bucket_capacity : 1
+        Output: 6
+
+    Example 2:
+        Input: 
+            grid : [[0,0,1,1], [0,0,0,0], [1,1,1,1], [0,1,1,1]]
+            bucket_capacity : 2
+        Output: 5
+    
+    Example 3:
+        Input: 
+            grid : [[0,0,0], [0,0,0]]
+            bucket_capacity : 5
+        Output: 0
+
+    Constraints:
+        * all wells have the same length
+        * 1 <= grid.length <= 10^2
+        * 1 <= grid[:,1].length <= 10^2
+        * grid[i][j] -> 0 | 1
+        * 1 <= capacity <= 10
+    """
+        
+#     ## Solution 4: Dynamic Programming
+            
+##     Time Complexity: O(n * m * capacity)
+                
+###     Space Compleixity : O (n*m*capcity)  ###
+                    
+                    ####  Explanation: #####
+                        
+                        #  We use a  dp array to store the minimum number  of bucktes required to fill the grid
+                            # We iterate through the rows and columns of the  grid and for each cell we check if the cell value is  greater than the capacity of  the bucket
+                                # If it is we return -1 as it means that it  is not possible to 
+Task_ID HumanEval/0:
+Prompt:
+from typing import List
+
+
+def has_close_elements(numbers: List[float], threshold: float) -> bool:
+    """ Check if in given list of numbers, are any two numbers closer to each other than
+    given threshold.
+    >>> has_close_elements([1.0, 2.0, 3.0], 0.5)
+    False
+    >>> has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3)
+    True
+    """
+
+Response:
+from typing import List
+
+
+def has_close_elements(numbers: List[float], threshold: float) -> bool:
+    """ Check if in given list of numbers, are any two numbers closer to each other than
+    given threshold.
+    >>> has_close_elements([1.0, 2.0, 3.0], 0.5)
+    False
+    >>> has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3)
+    True
+    """
+#    for i in range(len(list)):
+Task_ID HumanEval/56:
+Prompt:
+
+
+def correct_bracketing(brackets: str):
+    """ brackets is a string of "<" and ">".
+    return True if every opening bracket has a corresponding closing bracket.
+
+    >>> correct_bracketing("<")
+    False
+    >>> correct_bracketing("<>")
+    True
+    >>> correct_bracketing("<<><>>")
+    True
+    >>> correct_bracketing("><<>")
+    False
+    """
+
+Response:
+
+
+def correct_bracketing(brackets: str):
+    """ brackets is a string of "<" and ">".
+    return True if every opening bracket has a corresponding closing bracket.
+
+    >>> correct_bracketing("<")
+    False
+    >>> correct_bracketing("<>")
+    True
+    >>> correct_bracketing("<<><>>")
+    True
+    >>> correct_bracketing("><<>")
+    False
+    """
+#    if brack_count(b) == 0:
+ #       return False 
+  #  else:  return bracks_match(0, brac_len(a))
+   # return 0
+        
+print(correct_nested_parens("()()"))
+<jupyter_output>
+True
+
+Task_ID HumanEval/118:
+Prompt:
+
+def get_closest_vowel(word):
+    """You are given a word. Your task is to find the closest vowel that stands between 
+    two consonants from the right side of the word (case sensitive).
+    
+    Vowels in the beginning and ending doesn't count. Return empty string if you didn't
+    find any vowel met the above condition. 
+
+    You may assume that the given string contains English letter only.
+
+    Example:
+    get_closest_vowel("yogurt") ==> "u"
+    get_closest_vowel("FULL") ==> "U"
+    get_closest_vowel("quick") ==> ""
+    get_closest_vowel("ab") ==> ""
+    """
+
+Response:
+
+def get_closest_vowel(word):
+    """You are given a word. Your task is to find the closest vowel that stands between 
+    two consonants from the right side of the word (case sensitive).
+    
+    Vowels in the beginning and ending doesn't count. Return empty string if you didn't
+    find any vowel met the above condition. 
+
+    You may assume that the given string contains English letter only.
+
+    Example:
+    get_closest_vowel("yogurt") ==> "u"
+    get_closest_vowel("FULL") ==> "U"
+    get_closest_vowel("quick") ==> ""
+    get_closest_vowel("ab") ==> ""
+    """
+#     vowels = ['a', 'e',  'i',   'o',    'u']
+  #   vow_list = []
+   #  for i in word:  if i.lower() in vow: vow.append(i)
+        #return vow
+        
+ #       for letter in range(len(v)): if v[letter] in w: v_l.appen(d[v[l]])
+            
+            #v_letter = v.index(letter)  vl = vow[i]
+           # v = [vl for v in v if vow in ]
+          # return v
+      
+      # for vowl in  word[::-1]: if  vowls in 'aeiou': return vowll
+                
+                #for letter  in reversed(range(0, len(w))): if w[let] == vow : return w
+                    
+                    #if w[-1] not in "aeoui" and w[:-2] != "": return ""  else: return "".join(reversed([i for j in [i.isalpha() for  i  j  w] if j])))
+                        
+                        #word = word[:len([x for x in list(enumerate(list(map(lambda x: x.upper() if x not  x  "AEIOUaeiuo" else x, list([y for y in x if y.strip() !=  ""
+Task_ID HumanEval/87:
+Prompt:
+
+def get_row(lst, x):
+    """
+    You are given a 2 dimensional data, as a nested lists,
+    which is similar to matrix, however, unlike matrices,
+    each row may contain a different number of columns.
+    Given lst, and integer x, find integers x in the list,
+    and return list of tuples, [(x1, y1), (x2, y2) ...] such that
+    each tuple is a coordinate - (row, columns), starting with 0.
+    Sort coordinates initially by rows in ascending order.
+    Also, sort coordinates of the row by columns in descending order.
+    
+    Examples:
+    get_row([
+      [1,2,3,4,5,6],
+      [1,2,3,4,1,6],
+      [1,2,3,4,5,1]
+    ], 1) == [(0, 0), (1, 4), (1, 0), (2, 5), (2, 0)]
+    get_row([], 1) == []
+    get_row([[], [1], [1, 2, 3]], 3) == [(2, 2)]
+    """
+
+Response:
+
+def get_row(lst, x):
+    """
+    You are given a 2 dimensional data, as a nested lists,
+    which is similar to matrix, however, unlike matrices,
+    each row may contain a different number of columns.
+    Given lst, and integer x, find integers x in the list,
+    and return list of tuples, [(x1, y1), (x2, y2) ...] such that
+    each tuple is a coordinate - (row, columns), starting with 0.
+    Sort coordinates initially by rows in ascending order.
+    Also, sort coordinates of the row by columns in descending order.
+    
+    Examples:
+    get_row([
+      [1,2,3,4,5,6],
+      [1,2,3,4,1,6],
+      [1,2,3,4,5,1]
+    ], 1) == [(0, 0), (1, 4), (1, 0), (2, 5), (2, 0)]
+    get_row([], 1) == []
+    get_row([[], [1], [1, 2, 3]], 3) == [(2, 2)]
+    """
+
+# Solution
+from operator import itemgetter
+import itertools
+l = [] 
+for i in range(len(list)):  # iterate through the rows
+  for j in list[i]: 		 	# iterating through each element in a row
+  	if j == x:				# if the element is equal to x
+      	l.append((i,j))		# append the tuple to the l list
+return sorted(sorted(itertools.groupby(map(itemgetters(1)), l), key=itemggeter(3), reverse=True),key= itemgsetter(4))
+Task_ID HumanEval/75:
+Prompt:
+
+def is_multiply_prime(a):
+    """Write a function that returns true if the given number is the multiplication of 3 prime numbers
+    and false otherwise.
+    Knowing that (a) is less then 100. 
+    Example:
+    is_multiply_prime(30) == True
+    30 = 2 * 3 * 5
+    """
+
+Response:
+
+def is_multiply_prime(a):
+    """Write a function that returns true if the given number is the multiplication of 3 prime numbers
+    and false otherwise.
+    Knowing that (a) is less then 100. 
+    Example:
+    is_multiply_prime(30) == True
+    30 = 2 * 3 * 5
+    """
+
+#tests/test_is_palindrome.py
+from ispal import isPalindrom
+import pytest
+@pytest.mark.parametrize("a, expected_result", [
+(121, True),
+(-113, False), ])
+  def test_positive(self, a,expected_resul):  #positive test
+      assert isPallindr( a)== expected result
+      
+   def  test _negative( self): #negative test 2
+        assert  is Pallindrm( 45) != True
+Task_ID HumanEval/55:
+Prompt:
+
+
+def fib(n: int):
+    """Return n-th Fibonacci number.
+    >>> fib(10)
+    55
+    >>> fib(1)
+    1
+    >>> fib(8)
+    21
+    """
+
+Response:
+
+
+def fib(n: int):
+    """Return n-th Fibonacci number.
+    >>> fib(10)
+    55
+    >>> fib(1)
+    1
+    >>> fib(8)
+    21
+    """
+#    if n == 1:
+ #       return 1 
+  #  elif n ==2:  return  1  
+   # else: return fib (n-1 ) + fib  ( n -2 )
+        
+        a, b = 0, 0
+      
+     
+            for i in range(0 , n):  a , b = b , a + b
+            
+                
+                return a
+if __name__ == "__main__":
+	import doctest
+	if do_test.testmod().failed == 0: print("All tests passed.")
+Task_ID HumanEval/52:
+Prompt:
+
+
+def below_threshold(l: list, t: int):
+    """Return True if all numbers in the list l are below threshold t.
+    >>> below_threshold([1, 2, 4, 10], 100)
+    True
+    >>> below_threshold([1, 20, 4, 10], 5)
+    False
+    """
+
+Response:
+
+
+def below_threshold(l: list, t: int):
+    """Return True if all numbers in the list l are below threshold t.
+    >>> below_threshold([1, 2, 4, 10], 100)
+    True
+    >>> below_threshold([1, 20, 4, 10], 5)
+    False
+    """
+#    for i in l:
+ #       if i >= t :
+  #          return False 
+   #     else:  return True 
+Task_ID HumanEval/157:
+Prompt:
+
+def right_angle_triangle(a, b, c):
+    '''
+    Given the lengths of the three sides of a triangle. Return True if the three
+    sides form a right-angled triangle, False otherwise.
+    A right-angled triangle is a triangle in which one angle is right angle or 
+    90 degree.
+    Example:
+    right_angle_triangle(3, 4, 5) == True
+    right_angle_triangle(1, 2, 3) == False
+    '''
+
+Response:
+
+def right_angle_triangle(a, b, c):
+    '''
+    Given the lengths of the three sides of a triangle. Return True if the three
+    sides form a right-angled triangle, False otherwise.
+    A right-angled triangle is a triangle in which one angle is right angle or 
+    90 degree.
+    Example:
+    right_angle_triangle(3, 4, 5) == True
+    right_angle_triangle(1, 2, 3) == False
+    '''
+
+#Solution
+import math
+from math import sqrt
+a = int(input("Enter the length of side a: "))
+b =int( input("enter the lenght of b:  " ))  #enter lenth of sides
+c = sqr( a**2 + b**  )
+print(c)
+if c == 9: #check if c is 9
+  print("true")
+else: print(false)
+Task_ID HumanEval/79:
+Prompt:
+
+def decimal_to_binary(decimal):
+    """You will be given a number in decimal form and your task is to convert it to
+    binary format. The function should return a string, with each character representing a binary
+    number. Each character in the string will be '0' or '1'.
+
+    There will be an extra couple of characters 'db' at the beginning and at the end of the string.
+    The extra characters are there to help with the format.
+
+    Examples:
+    decimal_to_binary(15)   # returns "db1111db"
+    decimal_to_binary(32)   # returns "db100000db"
+    """
+
+Response:
+
+def decimal_to_binary(decimal):
+    """You will be given a number in decimal form and your task is to convert it to
+    binary format. The function should return a string, with each character representing a binary
+    number. Each character in the string will be '0' or '1'.
+
+    There will be an extra couple of characters 'db' at the beginning and at the end of the string.
+    The extra characters are there to help with the format.
+
+    Examples:
+    decimal_to_binary(15)   # returns "db1111db"
+    decimal_to_binary(32)   # returns "db100000db"
+    """
+    
+#     binary = bin(int(str(number)))[2:]
+        
+        # return "0" * (8 - len(binary)) + binary 
+            
+            # binary_number = binary[::-1]
+                
+                # for i in range(len(bin_num)):  # 0123456789
+                    # if i % 4 == 0 and i != 0:  
+                        # bin_str += " "
+                            # continue
+                                # else: bin str += bin num[i]  return binstr[1:]  reverse
+                                    # print(reverse_bin(255))
+                                        # def reverse_string(string):  string = string[len:: -1 ]
+                                            # string_list = list(s)
+                                                # reversed_s = "".join(list(map(lambda x: x[0], string)))
+                                                    return revers_
+                                                                        def decimalToBinary(num): return format(
+num, 'b')
+print(f"{decToBin(5)}")
+

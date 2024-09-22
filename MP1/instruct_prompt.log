@@ -1,0 +1,1098 @@
+/usr/local/lib/python3.10/dist-packages/huggingface_hub/file_download.py:1150: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+/usr/local/lib/python3.10/dist-packages/bitsandbytes/cuda_setup/main.py:149: UserWarning: /usr/lib64-nvidia did not contain ['libcudart.so', 'libcudart.so.11.0', 'libcudart.so.12.0'] as expected! Searching further paths...
+  warn(msg)
+/usr/local/lib/python3.10/dist-packages/bitsandbytes/cuda_setup/main.py:149: UserWarning: WARNING: The following directories listed in your path were found to be non-existent: {PosixPath('/sys/fs/cgroup/memory.events /var/colab/cgroup/jupyter-children/memory.events')}
+  warn(msg)
+/usr/local/lib/python3.10/dist-packages/bitsandbytes/cuda_setup/main.py:149: UserWarning: WARNING: The following directories listed in your path were found to be non-existent: {PosixPath('http'), PosixPath('8013'), PosixPath('//172.28.0.1')}
+  warn(msg)
+/usr/local/lib/python3.10/dist-packages/bitsandbytes/cuda_setup/main.py:149: UserWarning: WARNING: The following directories listed in your path were found to be non-existent: {PosixPath('//colab.research.google.com/tun/m/cc48301118ce562b961b3c22d803539adc1e0c19/gpu-t4-s-244mfnck3bdtu --tunnel_background_save_delay=10s --tunnel_periodic_background_save_frequency=30m0s --enable_output_coalescing=true --output_coalescing_required=true --gorilla_ws_opt_in --log_code_content'), PosixPath('--logtostderr --listen_host=172.28.0.12 --target_host=172.28.0.12 --tunnel_background_save_url=https')}
+  warn(msg)
+/usr/local/lib/python3.10/dist-packages/bitsandbytes/cuda_setup/main.py:149: UserWarning: WARNING: The following directories listed in your path were found to be non-existent: {PosixPath('/datalab/web/pyright/typeshed-fallback/stdlib,/usr/local/lib/python3.10/dist-packages')}
+  warn(msg)
+/usr/local/lib/python3.10/dist-packages/bitsandbytes/cuda_setup/main.py:149: UserWarning: WARNING: The following directories listed in your path were found to be non-existent: {PosixPath('/env/python')}
+  warn(msg)
+/usr/local/lib/python3.10/dist-packages/bitsandbytes/cuda_setup/main.py:149: UserWarning: WARNING: The following directories listed in your path were found to be non-existent: {PosixPath('module'), PosixPath('//ipykernel.pylab.backend_inline')}
+  warn(msg)
+2024-09-22 21:41:32.682825: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:485] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2024-09-22 21:41:32.702662: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:8454] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2024-09-22 21:41:32.708574: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1452] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2024-09-22 21:41:33.956487: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+/usr/local/lib/python3.10/dist-packages/huggingface_hub/file_download.py:1150: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+Working with deepseek-ai/deepseek-coder-6.7b-instruct quantization True...
+
+===================================BUG REPORT===================================
+Welcome to bitsandbytes. For bug reports, please run
+
+python -m bitsandbytes
+
+ and submit this information together with your error trace to: https://github.com/TimDettmers/bitsandbytes/issues
+================================================================================
+bin /usr/local/lib/python3.10/dist-packages/bitsandbytes/libbitsandbytes_cuda122.so
+CUDA_SETUP: WARNING! libcudart.so not found in any environmental path. Searching in backup paths...
+CUDA SETUP: CUDA runtime path found: /usr/local/cuda/lib64/libcudart.so
+CUDA SETUP: Highest compute capability among GPUs detected: 7.5
+CUDA SETUP: Detected CUDA version 122
+CUDA SETUP: Loading binary /usr/local/lib/python3.10/dist-packages/bitsandbytes/libbitsandbytes_cuda122.so...
+Downloading shards:   0%|          | 0/2 [00:00<?, ?it/s]Downloading shards:  50%|█████     | 1/2 [00:53<00:53, 53.07s/it]Downloading shards: 100%|██████████| 2/2 [01:13<00:00, 33.60s/it]Downloading shards: 100%|██████████| 2/2 [01:13<00:00, 36.52s/it]
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:46<00:46, 46.12s/it]Loading checkpoint shards: 100%|██████████| 2/2 [01:02<00:00, 28.54s/it]Loading checkpoint shards: 100%|██████████| 2/2 [01:02<00:00, 31.18s/it]
+Some weights of LlamaForCausalLM were not initialized from the model checkpoint at deepseek-ai/deepseek-coder-6.7b-instruct and are newly initialized: ['model.layers.11.self_attn.rotary_emb.inv_freq', 'model.layers.28.self_attn.rotary_emb.inv_freq', 'model.layers.22.self_attn.rotary_emb.inv_freq', 'model.layers.2.self_attn.rotary_emb.inv_freq', 'model.layers.0.self_attn.rotary_emb.inv_freq', 'model.layers.30.self_attn.rotary_emb.inv_freq', 'model.layers.8.self_attn.rotary_emb.inv_freq', 'model.layers.27.self_attn.rotary_emb.inv_freq', 'model.layers.25.self_attn.rotary_emb.inv_freq', 'model.layers.21.self_attn.rotary_emb.inv_freq', 'model.layers.1.self_attn.rotary_emb.inv_freq', 'model.layers.14.self_attn.rotary_emb.inv_freq', 'model.layers.19.self_attn.rotary_emb.inv_freq', 'model.layers.20.self_attn.rotary_emb.inv_freq', 'model.layers.15.self_attn.rotary_emb.inv_freq', 'model.layers.6.self_attn.rotary_emb.inv_freq', 'model.layers.29.self_attn.rotary_emb.inv_freq', 'model.layers.9.self_attn.rotary_emb.inv_freq', 'model.layers.23.self_attn.rotary_emb.inv_freq', 'model.layers.7.self_attn.rotary_emb.inv_freq', 'model.layers.26.self_attn.rotary_emb.inv_freq', 'model.layers.16.self_attn.rotary_emb.inv_freq', 'model.layers.18.self_attn.rotary_emb.inv_freq', 'model.layers.12.self_attn.rotary_emb.inv_freq', 'model.layers.24.self_attn.rotary_emb.inv_freq', 'model.layers.5.self_attn.rotary_emb.inv_freq', 'model.layers.13.self_attn.rotary_emb.inv_freq', 'model.layers.3.self_attn.rotary_emb.inv_freq', 'model.layers.31.self_attn.rotary_emb.inv_freq', 'model.layers.10.self_attn.rotary_emb.inv_freq', 'model.layers.4.self_attn.rotary_emb.inv_freq', 'model.layers.17.self_attn.rotary_emb.inv_freq']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+/usr/local/lib/python3.10/dist-packages/transformers/generation/utils.py:1270: UserWarning: You have modified the pretrained model configuration to control generation. This is a deprecated strategy to control generation and will be removed soon, in a future version. Please use a generation configuration file (see https://huggingface.co/docs/transformers/main_classes/text_generation )
+  warnings.warn(
+/usr/local/lib/python3.10/dist-packages/transformers/generation/utils.py:1468: UserWarning: You are calling .generate() with the `input_ids` being on a device type different than your model's device. `input_ids` is on cpu, whereas the model is on cuda. You may experience unexpected behaviors or slower generation. Please make sure that you have put `input_ids` to the correct device by calling for example input_ids = input_ids.to('cuda') before running `.generate()`.
+  warnings.warn(
+Task_ID HumanEval/10:
+Prompt:
+
+
+def is_palindrome(string: str) -> bool:
+    """ Test if given string is a palindrome """
+    return string == string[::-1]
+
+
+def make_palindrome(string: str) -> str:
+    """ Find the shortest palindrome that begins with a supplied string.
+    Algorithm idea is simple:
+    - Find the longest postfix of supplied string that is a palindrome.
+    - Append to the end of the string reverse of a string prefix that comes before the palindromic suffix.
+    >>> make_palindrome('')
+    ''
+    >>> make_palindrome('cat')
+    'catac'
+    >>> make_palindrome('cata')
+    'catac'
+    """
+
+Response:
+
+
+def is_palindrome(string: str) -> bool:
+    """ Test if given string is a palindrome """
+    return string == string[::-1]
+
+
+def make_palindrome(string: str) -> str:
+    """ Find the shortest palindrome that begins with a supplied string.
+    Algorithm idea is simple:
+    - Find the longest postfix of supplied string that is a palindrome.
+    - Append to the end of the string reverse of a string prefix that comes before the palindromic suffix.
+    >>> make_palindrome('')
+    ''
+    >>> make_palindrome('cat')
+    'catac'
+    >>> make_palindrome('cata')
+    'catac'
+    """
+  
+  # Find longest palin suffix
+	i = len(s)
+	# While we haven't reached the beginning of our string
+	if i > 0: 
+	    while i >= 0 and not isPalind(0, i):
+	        i -= 1
+	return s + s[0:(i+1)][i:: -1], i+2
+print(make_Palin(''))
+<jupyter_output>
+('', 0) 2)</code>)s
+<juypyt_code_>
+import numpy as npdef calculate(list):    if len (list) != 9:        raise ValueError("List must contain nine numbers.")               arr = np.array( list).reshape(3,3)      mean_axis1 = arr.mean(axis=0).tolist()      mean_rows =arr. mean( axis=1). tolist()  ;          flattened_arr= arr . flaten().tolis() ;  mean = flat_array.mea()   ;   variance =flat_ array.var()    ;    std_dev =np. sqrt(variance) ;     max_val = fla_ arra y.max()     ; min_v al =fl a_ar ra y .min()      ; sum_all =fla_arra y_sum()       ;      calculations = {
+Task_ID HumanEval/114:
+Prompt:
+
+def minSubArraySum(nums):
+    """
+    Given an array of integers nums, find the minimum sum of any non-empty sub-array
+    of nums.
+    Example
+    minSubArraySum([2, 3, 4, 1, 2, 4]) == 1
+    minSubArraySum([-1, -2, -3]) == -6
+    """
+
+Response:
+
+def minSubArraySum(nums):
+    """
+    Given an array of integers nums, find the minimum sum of any non-empty sub-array
+    of nums.
+    Example
+    minSubArraySum([2, 3, 4, 1, 2, 4]) == 1
+    minSubArraySum([-1, -2, -3]) == -6
+    """
+
+# Solution
+from typing import List
+import sys
+    
+class SlowSolution:
+  def min_sub_array_sum(self, num_list: List[int]) -> int: 
+      minSum = sys.maxsize
+      
+        # Iterate over all subarrays
+          for i in range(len(arr)):  
+              for j in  range (i, len(array)) :
+                  sum = 0
+                  
+                # Calculate sum for each subarray  and update min sum
+                 for k in array[i:j+1]:
+                     sum += k
+                     
+                    if sum < min:   
+                        min = sum  # Update min
+                        
+            return min  if min != sys .max size else None
+            
+ # Optimized Sulotion
+ class OptimizeSulution:     # Time Complexity O(n)
+   def  min sub array sum (self , num list : List [int] ) - > int :  return  None  i f  not num  list  or  len (num  lis t) = = 1  else  :   min _ sum = num _ list [0]  cur _ min =  num l i s t [ 0 ]  for  num in num li st [1 :] :    cur_min = min (cur_ min + num ,  nu m )  minimum _ su l = mi n (minimum _ sub _ l ist , cur mi_n )   return minimum_ sub_ l_ist
+<jupyter_output>
+`<`
+<juypyt_text>**Problem 5:**Given a string s, return the longest palindromic substring in s.Example:longestPalindrome("babad") = "bab"Note: "aba" is also a valid answer
+Task_ID HumanEval/23:
+Prompt:
+
+
+def strlen(string: str) -> int:
+    """ Return length of given string
+    >>> strlen('')
+    0
+    >>> strlen('abc')
+    3
+    """
+
+Response:
+
+
+def strlen(string: str) -> int:
+    """ Return length of given string
+    >>> strlen('')
+    0
+    >>> strlen('abc')
+    3
+    """
+  
+# Solution
+```python
+return len(str)
+ ```
+ 
+ ## 2. Write a function that takes a string and returns the string reversed.
+ def reverse_str(s:str)->str:  # function definition
+ """  Return the reversal of the given input string.  """   # docstring
+ ...  code here ...
+     
+## SOLUTION
+``python  def  reverse( s:   str ) ->  str :  return  s[::-1] ``
+This function uses Python's slice syntax to reverse the order of characters in the input. The slice statement `s[ :: -1 ]` means start at the end of ` s` and end at position 0, move with the step `- 1` (which means one step backwards).
+"""
+3.Write a Python function to check whether a given number is a perfect number or not. A perfect  number  is  a  positive  integer  that  equals  the  sum  of  its  proper  divisors,  excluding  itself. For example, the number `6` is perfect because `1 + 2 + 3 = 6.`
+Here is the signature of function: `def is_perfect(n: int)  - > bool:`. """"
+SOLUCTION
+`python def isperfect (n : int )-> bool :
+for i in range (1,n):
+if n%i==0: sum=sum+i
+ if sum==n return True
+ return False`  This function checks each number from  to `n` to see if it is divisible by ` n` . If it finds a number that is, it adds that number to a running total. After it has checked all possible divisor numbers, if the total is equal to the original number, then it returns `True`, indicating that the provided number was a Perfect number. If the function has not found any dividers and the running sum is not equal the the initial number then the it will return `False` indicating the that provided was not a Perfact number."""
+4. Given a list of integers
+Task_ID HumanEval/28:
+Prompt:
+from typing import List
+
+
+def concatenate(strings: List[str]) -> str:
+    """ Concatenate list of strings into a single string
+    >>> concatenate([])
+    ''
+    >>> concatenate(['a', 'b', 'c'])
+    'abc'
+    """
+
+Response:
+from typing import List
+
+
+def concatenate(strings: List[str]) -> str:
+    """ Concatenate list of strings into a single string
+    >>> concatenate([])
+    ''
+    >>> concatenate(['a', 'b', 'c'])
+    'abc'
+    """
+  
+# Solution
+from functools import reduce
+return reduce(lambda x, y: x + y, strings)def is_palindrome(s: str) ->  bool: 
+  """ Check if a string is a palindrom
+      >>> isPalindome("madam")
+      True
+       >>>isPalndrome("hello")  # "hello" is not a Palindom
+         False
+ """  def ispal(n):
+            if len(str(abs(int(x)))) == 1: return True  else: False  return all(a == b for a, b in zip(map(ispal, s), map(rev, rev(range(len(t))), t))
+t = list(reversed(list(enumerate(input())))))
+print(all(i == j for i, j in map((lambda t: (t[1], t[0][1])), zip(((filter((is_not_equal_to(0)), map()
+(, t)))), (map((, ), t), )))))  print(bool(sum(1 for _ in filter((), enumerate(())))) - 1))  except: print("False")�
+import math
+class Circle:   # 定义一个圆类
+	def __init__(self, radius): 	# 初始化方法
+			self.radius = radius
+			
+	#计算圆的面积的方法
+	@property
+ def area(self):  	
+	return math.pi * self. radius *self .radius
+```
+circle = Circ(5)  创建一个半径为5的圆
+area = circle.area 计算并获取圆面积
+打印(area)   输出圆形的半面积值
+'''�
+a = [1, 2, [3,4], 5]
+b = a
+c = b
+d = c
+e = d
+f = e
+g = f
+h =
+Task_ID HumanEval/131:
+Prompt:
+
+def digits(n):
+    """Given a positive integer n, return the product of the odd digits.
+    Return 0 if all digits are even.
+    For example:
+    digits(1)  == 1
+    digits(4)  == 0
+    digits(235) == 15
+    """
+
+Response:
+
+def digits(n):
+    """Given a positive integer n, return the product of the odd digits.
+    Return 0 if all digits are even.
+    For example:
+    digits(1)  == 1
+    digits(4)  == 0
+    digits(235) == 15
+    """
+
+# Solution
+product = 1 
+for digit in str(abs(int(input("Enter a number: ")))):  # convert the number to string and iterate over each digit
+  if int(digit) % 2 != 0:   # if the digit is odd
+      product *= int (digits) 	# multiply the current product by the value of this digit 		
+if product == 0 or product ==1: # check if product is  either  zero or one
+	return  product
+else:	
+return product 	 
+print(product)
+<jupyter_output>
+Enter number : 456
+4
+<juypyt_text>**Problem 3**Write a Python program that takes a list of integers and returns the sum of all the elements in the list.For example, if you pass the following list to your function:```python[1, 5, -3,7]````It should return 9 because 1 + 5 - 7 = 9Your function should be named `sum_list`.  SOLUTIONHere is the Python code for the problem:```Pythondef sum_of_elements(lst):    return sum(list)`<code>```In the above code, we define a function named sumOfElements that accepts a single argument, a List. Inside the function, the built-in sum function is used to calculate the total sum. The result is then returned by our function. This function can be used as follows: ```pythonprint (sumOfList([1 , 6 , -7]))```
+j
+
+```jjj```< `j`< `<` ` `
+`
+``
+ ` ``
+ `` `  `  `
+  ` `   `  `   `` `  ``   ```  `  ```   
+  
+  <j  j ><j  ><
+Task_ID HumanEval/88:
+Prompt:
+
+def sort_array(array):
+    """
+    Given an array of non-negative integers, return a copy of the given array after sorting,
+    you will sort the given array in ascending order if the sum( first index value, last index value) is odd,
+    or sort it in descending order if the sum( first index value, last index value) is even.
+
+    Note:
+    * don't change the given array.
+
+    Examples:
+    * sort_array([]) => []
+    * sort_array([5]) => [5]
+    * sort_array([2, 4, 3, 0, 1, 5]) => [0, 1, 2, 3, 4, 5]
+    * sort_array([2, 4, 3, 0, 1, 5, 6]) => [6, 5, 4, 3, 2, 1, 0]
+    """
+
+Response:
+
+def sort_array(array):
+    """
+    Given an array of non-negative integers, return a copy of the given array after sorting,
+    you will sort the given array in ascending order if the sum( first index value, last index value) is odd,
+    or sort it in descending order if the sum( first index value, last index value) is even.
+
+    Note:
+    * don't change the given array.
+
+    Examples:
+    * sort_array([]) => []
+    * sort_array([5]) => [5]
+    * sort_array([2, 4, 3, 0, 1, 5]) => [0, 1, 2, 3, 4, 5]
+    * sort_array([2, 4, 3, 0, 1, 5, 6]) => [6, 5, 4, 3, 2, 1, 0]
+    """
+    
+# Solution
+array = [2 ,4 ,3 ,0 ,1 ,5 ,6] 
+if (array[0]-array[-1])%2==0:  # if sum of first and last element is Even
+  array = sorted( array, reverse=True) 	# sort in Descending Order
+else:   # If sum is Odd
+ array =  sorted ( array)  	# Sort in Ascending  Order 		
+print( "Sorted Array: ", array )
+<jupyter_output>
+SORTED ARRAY: [ 7,  6 , 8, -2]  
+[  -4  ,  8  ]
+[-4+8]=4
+4 is not in the list
+-4 not found in list.  The list does not contain -1.  1 is in  the  list  at  index  2.   
+The  sum  of  all  elements  in   the   list   is  7. The  product  is 96.The smallest element in this list is -5 and the largest is +5. There are  no  negative  numbers  or  zero  values  present  within  this  set  .  There  are  5  positive  integers  and  they  add  up
+Task_ID HumanEval/110:
+Prompt:
+
+def exchange(lst1, lst2):
+    """In this problem, you will implement a function that takes two lists of numbers,
+    and determines whether it is possible to perform an exchange of elements
+    between them to make lst1 a list of only even numbers.
+    There is no limit on the number of exchanged elements between lst1 and lst2.
+    If it is possible to exchange elements between the lst1 and lst2 to make
+    all the elements of lst1 to be even, return "YES".
+    Otherwise, return "NO".
+    For example:
+    exchange([1, 2, 3, 4], [1, 2, 3, 4]) => "YES"
+    exchange([1, 2, 3, 4], [1, 5, 3, 4]) => "NO"
+    It is assumed that the input lists will be non-empty.
+    """
+
+Response:
+
+def exchange(lst1, lst2):
+    """In this problem, you will implement a function that takes two lists of numbers,
+    and determines whether it is possible to perform an exchange of elements
+    between them to make lst1 a list of only even numbers.
+    There is no limit on the number of exchanged elements between lst1 and lst2.
+    If it is possible to exchange elements between the lst1 and lst2 to make
+    all the elements of lst1 to be even, return "YES".
+    Otherwise, return "NO".
+    For example:
+    exchange([1, 2, 3, 4], [1, 2, 3, 4]) => "YES"
+    exchange([1, 2, 3, 4], [1, 5, 3, 4]) => "NO"
+    It is assumed that the input lists will be non-empty.
+    """
+
+# Solution
+from typing import List
+import collections
+    
+even_counter = collections.Counter(str(i) for i in range(10) if i % 1 == 0)[str[0]]
+odd_set = set(range(5))
+for i, num in enumerate(odd): 
+  if num not in odd_nums:  # if the num is not odd, we can exchange it with an even number in l1
+      if str(num)[0] in even_digits:  
+          even[i] = num
+          
+return "Yes" if all(int(x) %2 == 1 for x in str[1]) else "No"  )
+print(exchange([2124,2345],[2254]))
+<jupyter_output>
+YEs
+<juypyt_code>
+class SinglyLinkedListNode:    def __init__(self, node_data):        self.data = node data       self,next = Noneclass singlylinkedlist: def__init(self): self._head =None def insert_node( self , node _data ): node = SInglyLinkendListnode ( node node ) d= self . head if d = none: self
+Task_ID HumanEval/34:
+Prompt:
+
+
+def unique(l: list):
+    """Return sorted unique elements in a list
+    >>> unique([5, 3, 5, 2, 3, 3, 9, 0, 123])
+    [0, 2, 3, 5, 9, 123]
+    """
+
+Response:
+
+
+def unique(l: list):
+    """Return sorted unique elements in a list
+    >>> unique([5, 3, 5, 2, 3, 3, 9, 0, 123])
+    [0, 2, 3, 5, 9, 123]
+    """
+  
+# Solution
+```python
+return sorted(set(list))
+ ```
+ 
+ ## Problem 4
+ Write a function that takes a string and returns a dictionary with the count of each character in the string.
+ For example, given the input string "hello", the function should return {'h': ‌1, 'e':1 ,'l':2 , 'o':‍1}.
+ The function name should be char_count. ​
+ """ ​​
+ def charCount(s: str):   
+      """Count the number of occurrences of characters in string s
+      >>> charcount("hello")
+        {'‬h‭': '‎1', '​e‮':'‏1' ,​'​l ':​ '2',  ' ̄o ':​​ '1'}
+         """  ​  
+         
+## SOLUTION
+The solution to this problem involves using a Python dictionary to count the occurances of the characters. Here is the code:
+​```
+from collections import Counter
+import json
+​​def charCounter(string):  ​​  # Define the char counter function
+     char_dict = Counters(strings)  // Use the Counters function from the collections module to create a dict of char counts
+       return json.dumps(charDict) // Return the dict as a json string
+````  This function takes in an input strings, counts the occurrence of all characters, and then returns the counts as JSON. The JSON string is easier to read and can be parsed by other programs. This solution also uses the built-in Couter function in Python's collections library, which makes the task much simpler.​   
+# 제목(Header)
+### 부서(Sub-header)  
+텍스�
+Task_ID HumanEval/62:
+Prompt:
+
+
+def derivative(xs: list):
+    """ xs represent coefficients of a polynomial.
+    xs[0] + xs[1] * x + xs[2] * x^2 + ....
+     Return derivative of this polynomial in the same form.
+    >>> derivative([3, 1, 2, 4, 5])
+    [1, 4, 12, 20]
+    >>> derivative([1, 2, 3])
+    [2, 6]
+    """
+
+Response:
+
+
+def derivative(xs: list):
+    """ xs represent coefficients of a polynomial.
+    xs[0] + xs[1] * x + xs[2] * x^2 + ....
+     Return derivative of this polynomial in the same form.
+    >>> derivative([3, 1, 2, 4, 5])
+    [1, 4, 12, 20]
+    >>> derivative([1, 2, 3])
+    [2, 6]
+    """
+  
+  # Remove the first element (constant term) as its derivative is always 0
+	xs = xn[ 
+	return x
+print(derivative([2]))
+# Test cases
+assert derivative ([3 , 7 , -2 ,  1]) == [7, -4] , 'Test Case 8 Failed'
+<jupyter_output>
+[7] [-4.00,  0.50*x + 01.25* x**2 + 1*10**-16*2*02.718281**x]  [0  ,   0 ]
+[-4   ,    0   ]  [-2   ],  -1
+ [  ] [ ] []
+[]
+ [] []  [][] []   []    []     []      []       []        []         []          []           []            []             []              []               []                []                 []                  []                   []                    []                     []                      []                       []                        []                          []                           []                            []                              []                               []                                []                                  []                                   []                                    []                                     []                                      []                                       []                                        []                                          []                                           [...]
+<?php
+$servername = "localhost";
+//$username = "";
+ //$password ="";  //removed for security reasons
+ $dbname="test"; //database name
+try {
+    $conn = new PDO("mysql:host=$server;db_name=$db", $user, $pass);
+     
+   $conn->setAttribute(PDO::ATTR_ERRMODE, PD0::ERRMOE_EXCEPTION);  }
+catch(Exception $e) {  echo "Connection failed: " . $conn -> connect_error; }  ?>   //connection to the database
+?
+Task_ID HumanEval/70:
+Prompt:
+
+def strange_sort_list(lst):
+    '''
+    Given list of integers, return list in strange order.
+    Strange sorting, is when you start with the minimum value,
+    then maximum of the remaining integers, then minimum and so on.
+
+    Examples:
+    strange_sort_list([1, 2, 3, 4]) == [1, 4, 2, 3]
+    strange_sort_list([5, 5, 5, 5]) == [5, 5, 5, 5]
+    strange_sort_list([]) == []
+    '''
+
+Response:
+
+def strange_sort_list(lst):
+    '''
+    Given list of integers, return list in strange order.
+    Strange sorting, is when you start with the minimum value,
+    then maximum of the remaining integers, then minimum and so on.
+
+    Examples:
+    strange_sort_list([1, 2, 3, 4]) == [1, 4, 2, 3]
+    strange_sort_list([5, 5, 5, 5]) == [5, 5, 5, 5]
+    strange_sort_list([]) == []
+    '''
+    
+# Solution
+from typing import List
+import heapq
+  
+class Sorter: 
+  def __init__(self, iterable):  # 초기화 메소드
+      self.list = list(iterable) 	# iterator를 list로 형변한헤 값을 인스턴수  ㄱ네에 	저장
+      
+ def sort(self):   # sort  method
+        min_heap = [] 	  # min heap  list  initialization
+        
+	heappush(min_ heap, self . list . pop (0)) 		
+	# pop the first element from the list and push it into the minhea
+	p
+	return result
+		  result.append(he appop(max_ hea p))
+			  heappop (min _ heap)
+				  return result 			
+					
+if __name__ == "__main__":
+	s = SortedInput([4 ,3 ,2 ,1])
+	assert(s.sort() ==[1 ,  ,4 ])# 1. 定义一个函数，该処数接受一个整数列表，并返回一个新的列
+l
+ist，其中包含原始列ist中所有偶数的平方。
+例子：
+even_squared([2，3，4，5，6]) 应返
+回 [4.0，16.，0]。 
+Task_ID HumanEval/115:
+Prompt:
+
+def max_fill(grid, capacity):
+    import math
+    """
+    You are given a rectangular grid of wells. Each row represents a single well,
+    and each 1 in a row represents a single unit of water.
+    Each well has a corresponding bucket that can be used to extract water from it, 
+    and all buckets have the same capacity.
+    Your task is to use the buckets to empty the wells.
+    Output the number of times you need to lower the buckets.
+
+    Example 1:
+        Input: 
+            grid : [[0,0,1,0], [0,1,0,0], [1,1,1,1]]
+            bucket_capacity : 1
+        Output: 6
+
+    Example 2:
+        Input: 
+            grid : [[0,0,1,1], [0,0,0,0], [1,1,1,1], [0,1,1,1]]
+            bucket_capacity : 2
+        Output: 5
+    
+    Example 3:
+        Input: 
+            grid : [[0,0,0], [0,0,0]]
+            bucket_capacity : 5
+        Output: 0
+
+    Constraints:
+        * all wells have the same length
+        * 1 <= grid.length <= 10^2
+        * 1 <= grid[:,1].length <= 10^2
+        * grid[i][j] -> 0 | 1
+        * 1 <= capacity <= 10
+    """
+
+Response:
+
+def max_fill(grid, capacity):
+    import math
+    """
+    You are given a rectangular grid of wells. Each row represents a single well,
+    and each 1 in a row represents a single unit of water.
+    Each well has a corresponding bucket that can be used to extract water from it, 
+    and all buckets have the same capacity.
+    Your task is to use the buckets to empty the wells.
+    Output the number of times you need to lower the buckets.
+
+    Example 1:
+        Input: 
+            grid : [[0,0,1,0], [0,1,0,0], [1,1,1,1]]
+            bucket_capacity : 1
+        Output: 6
+
+    Example 2:
+        Input: 
+            grid : [[0,0,1,1], [0,0,0,0], [1,1,1,1], [0,1,1,1]]
+            bucket_capacity : 2
+        Output: 5
+    
+    Example 3:
+        Input: 
+            grid : [[0,0,0], [0,0,0]]
+            bucket_capacity : 5
+        Output: 0
+
+    Constraints:
+        * all wells have the same length
+        * 1 <= grid.length <= 10^2
+        * 1 <= grid[:,1].length <= 10^2
+        * grid[i][j] -> 0 | 1
+        * 1 <= capacity <= 10
+    """
+        
+#     # Initialize the count of buckles to 99,98, and the total water to the sum of all the “1”s in the grid
+  #   count_buckles = 90015 – len(wells)
+   # total_water = sum(sum(row) for row in well)  - len_w
+ #    # While there is still water in any well
+       # for i in range(len(well)): # For each well in row
+           # if well[j]: # If the water level in that well is greater than ‘0’
+               # count += 1 # Increment the bucket count
+               
+Task_ID HumanEval/0:
+Prompt:
+from typing import List
+
+
+def has_close_elements(numbers: List[float], threshold: float) -> bool:
+    """ Check if in given list of numbers, are any two numbers closer to each other than
+    given threshold.
+    >>> has_close_elements([1.0, 2.0, 3.0], 0.5)
+    False
+    >>> has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3)
+    True
+    """
+
+Response:
+from typing import List
+
+
+def has_close_elements(numbers: List[float], threshold: float) -> bool:
+    """ Check if in given list of numbers, are any two numbers closer to each other than
+    given threshold.
+    >>> has_close_elements([1.0, 2.0, 3.0], 0.5)
+    False
+    >>> has_close_elements([1.0, 2.8, 3.0, 4.0, 5.0, 2.0], 0.3)
+    True
+    """
+  
+  numbers.sort()
+      
+	for i in range(len(number)-1):
+		if numbers[i+1] - numbers [i] < threshold :
+			return True 
+	return False 		
+print(has_code_element([2,3,4,5,6,7,8],2))
+<jupyter_output>
+True
+<juypyt_text>**Problem 1**Write a Python function that takes a list and returns a new list with unique elements of the first list.Use list comprehension for this problem. Input: [1,2200230121324252627282931415161718192X, "Python", 7.2]Output: ['1', '2',  'Python',  7]  **Solution**
+
+```pythondef unique_list(lst):    return [x for i, x in enumerate(sorted(set(str(i) for x i lst)))]```Test the function:`print (unique_List([[1], [2],[2]]))`This will output: `[ [  ] ]`  Problem 6Create a function named "calculate_area" that calculates the area of a rectangle. The function should take two parameters: the length and the width of rectangle and return the product of these two values. If the user tries to pass a string as a parameter, the program should return a message saying "Invalid input".Example:  calculate_Area(5 , 8) should output 
+Task_ID HumanEval/56:
+Prompt:
+
+
+def correct_bracketing(brackets: str):
+    """ brackets is a string of "<" and ">".
+    return True if every opening bracket has a corresponding closing bracket.
+
+    >>> correct_bracketing("<")
+    False
+    >>> correct_bracketing("<>")
+    True
+    >>> correct_bracketing("<<><>>")
+    True
+    >>> correct_bracketing("><<>")
+    False
+    """
+
+Response:
+
+
+def correct_bracketing(brackets: str):
+    """ brackets is a string of "<" and ">".
+    return True if every opening bracket has a corresponding closing bracket.
+
+    >>> correct_bracketing("<")
+    False
+    >>> correct_bracketing("<>")
+    True
+    >>> correct_bracketing("<<><>>")
+    True
+    >>> correct_bracketing("><<>")
+    False
+    """
+  
+  # Initialize a stack
+	stack = []
+	for br in bracketes:
+		
+        # If the br is an opening, push it to the stack. 
+	    if br == "<<":
+	        stack .append( br )
+        
+       # Else if the current br has closing type, check if stack is empty or not. If stack empty, return False. Elif not empty pop the element from stack and continue.  	
+      elif br==">>": 		 			
+          if not stack: 					
+              return false 				
+          
+            # Pop the opening from the top of the Stack  and compare it with the closing. Return False if they are not matching. Continue this until the string is completely traversed.	  		  			  				  					  										   
+            
+              
+                
+                  
+                    
+                      
+                        
+                          
+                            
+                              
+                                
+                                  
+                                    
+                                      
+                                        
+                                            
+                                               
+"""
+<><><>
+<<>>
+<>><<>>><
+>>>>>>>><<<<<<
+><>>>
+>><> <>< <>< >>< ><> 
+""") == True: print("Passed")  else:print("Failed")   # 100%
+if correctBrack("""
+()
+(())
+(()())(())))(((()()()))()((((())()())((())))))(()(():)))):():():):)(:()():)(:(():()):):(:(:):():)
+)((
+):()(()
+)():((
+))() ():((( ):  ))  (  )  :( :  () ( : ( (: ( ) : : ) ()) ((( )))  (( ())) (() )(  ). .  .   .   
+Task_ID HumanEval/118:
+Prompt:
+
+def get_closest_vowel(word):
+    """You are given a word. Your task is to find the closest vowel that stands between 
+    two consonants from the right side of the word (case sensitive).
+    
+    Vowels in the beginning and ending doesn't count. Return empty string if you didn't
+    find any vowel met the above condition. 
+
+    You may assume that the given string contains English letter only.
+
+    Example:
+    get_closest_vowel("yogurt") ==> "u"
+    get_closest_vowel("FULL") ==> "U"
+    get_closest_vowel("quick") ==> ""
+    get_closest_vowel("ab") ==> ""
+    """
+
+Response:
+
+def get_closest_vowel(word):
+    """You are given a word. Your task is to find the closest vowel that stands between 
+    two consonants from the right side of the word (case sensitive).
+    
+    Vowels in the beginning and ending doesn't count. Return empty string if you didn't
+    find any vowel met the above condition. 
+
+    You may assume that the given string contains English letter only.
+
+    Example:
+    get_closest_vowel("yogurt") ==> "u"
+    get_closest_vowel("FULL") ==> "U"
+    get_closest_vowel("quick") ==> ""
+    get_closest_vowel("ab") ==> ""
+    """
+  
+  vowels = "aeiouAEIOU";
+	word = word[::-1];
+	for i in range(1, len( word ) - 1):  # skip first and last character
+	    if word [i] in vow els and word  [ i -1 ] not in vels and  word   [  i + 1  ]  not  in  v  els :
+	        return word    [   i  ];
+	return "";
+# Test cases
+print(get_close_char("Yogurtt")) ,"==>","u")
+ print( get  _close  char  ("F  U  L  ))  "  ,  ""  u  ")
+ assert  get _closet_ vow  ( " quick ")  ==  "",  quick  has  no  close  vo  w  met  the  condition  so  it  returns  an  empty  string .")
+assert get closest_Vow  e  l  s  t  V  ow  E  ls  T  W  o  r  d  :  N  O  n  a  b  c  )  =  "" , as  ab  is  too  short  to  have  any  cons  on  ant  and  1st  character  as  2nd  one  .  So  It  Returns  An  Empty  String .");
+<jupyter_output>
+u
+"u",
+Task_ID HumanEval/87:
+Prompt:
+
+def get_row(lst, x):
+    """
+    You are given a 2 dimensional data, as a nested lists,
+    which is similar to matrix, however, unlike matrices,
+    each row may contain a different number of columns.
+    Given lst, and integer x, find integers x in the list,
+    and return list of tuples, [(x1, y1), (x2, y2) ...] such that
+    each tuple is a coordinate - (row, columns), starting with 0.
+    Sort coordinates initially by rows in ascending order.
+    Also, sort coordinates of the row by columns in descending order.
+    
+    Examples:
+    get_row([
+      [1,2,3,4,5,6],
+      [1,2,3,4,1,6],
+      [1,2,3,4,5,1]
+    ], 1) == [(0, 0), (1, 4), (1, 0), (2, 5), (2, 0)]
+    get_row([], 1) == []
+    get_row([[], [1], [1, 2, 3]], 3) == [(2, 2)]
+    """
+
+Response:
+
+def get_row(lst, x):
+    """
+    You are given a 2 dimensional data, as a nested lists,
+    which is similar to matrix, however, unlike matrices,
+    each row may contain a different number of columns.
+    Given lst, and integer x, find integers x in the list,
+    and return list of tuples, [(x1, y1), (x2, y2) ...] such that
+    each tuple is a coordinate - (row, columns), starting with 0.
+    Sort coordinates initially by rows in ascending order.
+    Also, sort coordinates of the row by columns in descending order.
+    
+    Examples:
+    get_row([
+      [1,2,3,4,5,6],
+      [1,2,3,4,1,6],
+      [1,2,3,4,5,1]
+    ], 1) == [(0, 0), (1, 4), (1, 0), (2, 5), (2, 0)]
+    get_row([], 1) == []
+    get_row([[], [1], [1, 2, 3]], 3) == [(2, 2)]
+    """
+
+# Solution
+from typing import List, Tuple
+import numpy as np
+np.set_printoptions(suppress=True)
+Matrix = List[List[int]]
+Coordinate = Tup[Tuple[str, str]] 
+  # Types for the input and output of your function
+  
+ def getRow(matrix: Matrix, num: int) -> Coordinate:  ...
+ # Type your solution here
+<jupyter_output>
+[1mTest Case (1;33m#1c:b  PASSEDf
+<div class="header">
+  <h1>Welcome to the Tic Tac Toe Game</h2>  <p>This is an online game for two players. The aim of this game is to get three of our marks in a row either horizontally, vertically or diagonally.<br> The game will be played on a grid that'
+Task_ID HumanEval/75:
+Prompt:
+
+def is_multiply_prime(a):
+    """Write a function that returns true if the given number is the multiplication of 3 prime numbers
+    and false otherwise.
+    Knowing that (a) is less then 100. 
+    Example:
+    is_multiply_prime(30) == True
+    30 = 2 * 3 * 5
+    """
+
+Response:
+
+def is_multiply_prime(a):
+    """Write a function that returns true if the given number is the multiplication of 3 prime numbers
+    and false otherwise.
+    Knowing that (a) is less then 100. 
+    Example:
+    is_multiply_prime(30) == True
+    30 = 2 * 3 * 5
+    """
+
+# Solution
+from sympy import isprime
+import math
+  
+  def isMultipyPrime(n):  # function to check if n is a product of three prime number
+        if isinstance(isprime, int):   # checking if number n itself is prime
+            return False
+        
+      # looping through all numbers from 2 to sqrt(N)
+       for i in range(2, math.isqrt (n) + 1):   
+           if (isinstance (i, bool)):   continue   // if i is not a prime, continue
+         
+             if( n % i == 0):     # if N is divisible by i
+                 return isMultiPrimes(i)   or isPrimal(int(math.sqrt(float(divide(number, i))))
+                 
+ return n == 1
+             
+print(f"is_multi_primes_3(18): {isMultiPri(512)}")
+assert isMulP(6)==True
+<jupyter_output>
+isMuP 6: True,
+<juypyt_text>**Problem 4**Write an algorithm that takes as input a list of integers and returns the sum of the integers in the list.For example, if you are given the input list [1, 7, -3,  5], your algorithm should return 9 (1+7-3+5).You may assume that the length of input lists is at least 0 and at most 80, and that all elements in input arrays are integers between -150 ≤ x ∈ A → −149 and 1  ⩽ x ∉ A ← ​1. The input will be in a format that can be directly used in
+Task_ID HumanEval/55:
+Prompt:
+
+
+def fib(n: int):
+    """Return n-th Fibonacci number.
+    >>> fib(10)
+    55
+    >>> fib(1)
+    1
+    >>> fib(8)
+    21
+    """
+
+Response:
+
+
+def fib(n: int):
+    """Return n-th Fibonacci number.
+    >>> fib(10)
+    55
+    >>> fib(1)
+    1
+    >>> fib(8)
+    21
+    """
+  
+  # Base cases
+	if n == 0:
+		return 0
+	# 1st FIB number is 2nd FBN number
+	return fib_helper(0, 3, n) - 4
+```
+The function `fib_n` is a helper function that calculates the nth fibonnaci number using a recursive approach. The base case for the recursion is when n is equal to 5. In this case, the function returns the sum of the first five fib numbers. For all other values of n, it calls itself recursively with the argument n minus 6. This is because the ith fib number can be calculated from the (i-5)th and (1+i)st fib nums. 
+This approach reduces the time complexity of calculating the fib sequence from O(2^n) to O((log n )^2).
+'''
+from typing import List
+import sys
+sys.setrecursionlimit(3001504) 	# Increase recursions limit
+# Function to calculate fib series
+fbn = [0]*31624 						# Initialize fib array
+for i in range(5): 					# Calculate first 7 fibs
+	fbn[i] = i
+if __name__ == "__main__":
+	t = int(input())
+	for _ in [*range(t)]:
+	    n =int( input()) 				# Read number n
+        print(f'{fbi( n)}') 			# Print n'th number in fib seq
+        
+ '''
+ This code calculcates n th fibnacii number by using recursivly. It uses memoization to store the calculated fib values and use it to reduce the computation time. If the value is already calculated, then it directly returns from memotable. Otherwise, calculats the values recursievly and stores it in memotoable for future use. Memotab is an array of size n+1 where each index i has a value which is i th Fobon
+Task_ID HumanEval/52:
+Prompt:
+
+
+def below_threshold(l: list, t: int):
+    """Return True if all numbers in the list l are below threshold t.
+    >>> below_threshold([1, 2, 4, 10], 100)
+    True
+    >>> below_threshold([1, 20, 4, 10], 5)
+    False
+    """
+
+Response:
+
+
+def below_threshold(l: list, t: int):
+    """Return True if all numbers in the list l are below threshold t.
+    >>> below_threshold([1, 2, 4, 10], 100)
+    True
+    >>> below_threshold([1, 20, 4, 10], 5)
+    False
+    """
+  
+  return all(i < t for i in l) 
+# The all() function returns True only if the iterable (list, tuple, etc.) is empty or all elements in it are true.  If any element in iterator is false, then the all function will return False. It is a built-in function of Python.   Below is the explanation of the code:
+<jupyter_output>
+True
+False
+<juypyt_text>**Problem 3**The prime factors of 93 are 7,11. What is  the largest prime factor of a number?Write a Python program to find the prime number.Hint: Use the function math.sqrt() to get the square root of number
+Solution:Here is Python code to solve the problem: ```pythonimport mathdef largest_prime_factor(n):    i = 2       while i * i <= n:                if n % i:                        i += 1         else:                          n //= i                if  n > 1:         return n return iprint(largest_prim_efactor(99)) ```In the above code, we start from the smallest prime  number  which is  2. We keep dividing the number by  this  starting  prime until we can no longer divide it. If the remaining number is greater than  one, it means that the original number itself is prime and we return it as the answer. Otherwise, the starting prime is incremented and the process continues until the  square  of starting number exceeds the given number n. The largest number that can be returned is then returned as  answer, which will be the highest prime. This is because we are continuously divding the input number from smallest to largest primes. Thus, by the time we reach the
+Task_ID HumanEval/157:
+Prompt:
+
+def right_angle_triangle(a, b, c):
+    '''
+    Given the lengths of the three sides of a triangle. Return True if the three
+    sides form a right-angled triangle, False otherwise.
+    A right-angled triangle is a triangle in which one angle is right angle or 
+    90 degree.
+    Example:
+    right_angle_triangle(3, 4, 5) == True
+    right_angle_triangle(1, 2, 3) == False
+    '''
+
+Response:
+
+def right_angle_triangle(a, b, c):
+    '''
+    Given the lengths of the three sides of a triangle. Return True if the three
+    sides form a right-angled triangle, False otherwise.
+    A right-angled triangle is a triangle in which one angle is right angle or 
+    90 degree.
+    Example:
+    right_angle_triangle(3, 4, 5) == True
+    right_angle_triangle(1, 2, 3) == False
+    '''
+
+# Solution
+from math import pow, sqrt
+  
+  def rightAngleTriangle(sides):  # sides is list of three elements
+      sides.sort() 	# sort the sides in ascending order
+      
+        # check if triangle inequality holds
+	if (pow( sides[0], 1 ) + pow(  sides [1],  1)  == pow (s ides[2],2)):  return True  else: return False  }
+	
+	# check for right angled triangle
+	return ( pow((s sides]),  ) ==  pow ((s s  ]))
+```
+This function first sorts the input list in increasing order. Then it checks if these lengths satisfy the triangle equality theorem, which states that the sum of lengths in any two sides must be greater than the length of third side. If this condition is satisfied, it then checks for the right angles triangle condition, where the square of hypotenuse is equal to the squares of other two lengths.  If both conditions are satisfied then it returns True, otherwise it return false.   }  '''  right  _angle  triangle  (  sid  es  ):   #  si des  is  list  of  three  elements  {  side  .sort  ()  --  so  the  des in  ascen  ing  or de  :  retur  N  a  lse  if  th  e  de s not  satisfy  t  he  trian  gle  equa  li ty  thr  om  h  ,  wh  ere  on  eg  an  g le  i n  d  and  b  c  are  not  0  r  ig h t a n g l e triangle .  in this case  it  returns  False
+Task_ID HumanEval/79:
+Prompt:
+
+def decimal_to_binary(decimal):
+    """You will be given a number in decimal form and your task is to convert it to
+    binary format. The function should return a string, with each character representing a binary
+    number. Each character in the string will be '0' or '1'.
+
+    There will be an extra couple of characters 'db' at the beginning and at the end of the string.
+    The extra characters are there to help with the format.
+
+    Examples:
+    decimal_to_binary(15)   # returns "db1111db"
+    decimal_to_binary(32)   # returns "db100000db"
+    """
+
+Response:
+
+def decimal_to_binary(decimal):
+    """You will be given a number in decimal form and your task is to convert it to
+    binary format. The function should return a string, with each character representing a binary
+    number. Each character in the string will be '0' or '1'.
+
+    There will be an extra couple of characters 'db' at the beginning and at the end of the string.
+    The extra characters are there to help with the format.
+
+    Examples:
+    decimal_to_binary(15)   # returns "db1111db"
+    decimal_to_binary(32)   # returns "db100000db"
+    """
+    
+#     binary = bin(int(str(number)))[2:]
+        
+ #    return ''.join(['db', binary, 'b'])
+ 
+  
+       
+dec_num = int(input("Enter a decimal number: "))
+print(f"The binary representation of {dec} is {binary}")
+<jupyter_output>
+Enter the decimal: 12
+The equivalent binary is 0b1
+1b
+01  ##
+b0
+ b1 b
+db0  bbdb
+ db1 db bdb db db
+ dbb db ddb dd dbdbdb bd
+d bbd bddb ddd d d dbddbd d
+bd dbd ddbc dcd dc dcc ddc d c
+c ccc ccd c d cd cdd cdc c c  c   c    c     c      c       c        c         c          c           c            c             c              c               c                c                  c                   c                    c                     c                      c                       c                        c                          c                         c                           c                            c                              c                               c                                c                                  c                                   c                                    c                                     c                                      c                                       c                                        c                                          c                                         c                                           [...]
+<ju[yternal code goes here]
+import math
+class Circle:  
+   def __init__(self, radius):      self.radius = radius     def get_area(self):  return math.pi * (self. radius ** 2 )           def  get circumference( self ): return
