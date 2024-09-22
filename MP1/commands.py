@@ -7,7 +7,7 @@ NetIDs = ["xinyuny3", "xuanboj2", "yihuang9"]
 NetIDs_str = " ".join(NetIDs)
 
 # TODO: Clone your GitHub repository
-! git clone [https://Eclipsemos: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@github.com/Eclipsemos/CS598JBR-Team-9.git]
+! git clone https://Eclipsemos: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@github.com/Eclipsemos/CS598JBR-Team-9.git
 %cd [CS598JBR-Team-9]
 
 # Set up requirements for dataset generation
