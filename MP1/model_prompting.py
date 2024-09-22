@@ -20,8 +20,8 @@ def prompt_model(dataset, model_name = "deepseek-ai/deepseek-coder-6.7b-base", q
   
     if quantization:
         # TODO: load the model with quantization
-        config = BitsAndBytesConfig.from_pretrained(model_name)
-        model = AutoModelForCausalLM.from_pretrained(model_name, config=config)
+        bnb_config = BitsAndBytesConfig(load_in_8bit=True)
+        model = AutoModelForCausalLM.from_pretrained(model_name, quantization_config=bnb_config)
 
         
     else:
