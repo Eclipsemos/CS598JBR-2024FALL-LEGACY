@@ -33,6 +33,8 @@ def select_random_problems(netIDs, num_problems=20):
     print(f"Selected {num_problems} problems saved to {selected_problems_output}")
 
 if __name__ == "__main__":
-    args = sys.argv[1:]
+    NetIDs = ["xinyuny3", "xuanboj2", "yihuang9"]
+    NetIDs_str = " ".join(NetIDs)
+    args = NetIDs_str
     select_random_problems(args)
 
