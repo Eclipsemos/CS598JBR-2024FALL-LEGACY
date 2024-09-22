@@ -16,23 +16,26 @@ def prompt_model(dataset, model_name = "deepseek-ai/deepseek-coder-6.7b-base", q
     print(f"Working with {model_name} quantization {quantization}...")
     
     # TODO: download the model
-    
-  
     if quantization:
         # TODO: load the model with quantization
-        config = BitsAndBytesConfig.from_pretrained(model_name)
-        model = AutoModelForCausalLM.from_pretrained(model_name, config=config)
+        bnb_config = BitsAndBytesConfig(load_in_8bit=True)
+        model = AutoModelForCausalLM.from_pretrained(model_name, quantization_config=bnb_config)
 
         
     else:
         # TODO: load the model without quantization
         model = AutoModelForCausalLM.from_pretrained(model_name)
-        
+
 
     results = []
     for case in dataset:
         prompt = case['prompt']
         # TODO: prompt the model and get the response
+        tokenizer = AutoTokenizer.from_pretrained(model_name)
+        inputs = tokenizer(prompt, return_tensors="pt", max_length=512, truncation=True)
+        outputs = model.generate(**inputs, max_length=512, num_return_sequences=1, num_beams=1, no_repeat_ngram_size=2, early_stopping=True)
+        response = tokenizer.decode(outputs[0], skip_special_tokens=True)
+
         
         print(f"Task_ID {case['task_id']}:\nPrompt:\n{prompt}\nResponse:\n{response}")
         results.append(dict(task_id=case["task_id"], completion=response))
