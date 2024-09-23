@@ -34,6 +34,8 @@ instruct_with_quantization = "instruct_prompt_" + seed + ".jsonl"
 ! evaluate_functional_correctness {base_with_quantization} |& tee base_evaluate.log
 ! evaluate_functional_correctness {instruct_with_quantization} |& tee instruct_evaluate.log
 
+
+# Back to CS598 parent directory
 %cd ..
 
 # git push all nessacery files (e.g., *jsonl, *log) to your GitHub repository
