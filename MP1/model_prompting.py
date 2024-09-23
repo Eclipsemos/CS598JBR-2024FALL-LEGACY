@@ -12,14 +12,49 @@ def save_file(content, file_path):
     with open(file_path, 'w') as file:
         file.write(content)
 
+# def prompt_model(problem):
+#   tokenizer = AutoTokenizer.from_pretrained("deepseek-ai/deepseek-coder-6.7b-instruct", trust_remote_code=True)
+#   # model = AutoModelForCausalLM.from_pretrained("deepseek-ai/deepseek-coder-6.7b-base", trust_remote_code=True, torch_dtype=torch.bfloat16).cuda()
+#   model = AutoModelForCausalLM.from_pretrained(
+#           pretrained_model_name_or_path='deepseek-ai/deepseek-coder-6.7b-instruct',
+#           device_map='auto',
+#           torch_dtype=torch.bfloat16,
+#           # temperature = 0,
+#           # do_sample=False,
+#           quantization_config=BitsAndBytesConfig(
+#               load_in_4bit=True,
+#               bnb_4bit_compute_dtype=torch.bfloat16,
+#               bnb_4bit_use_double_quant=True,
+#               bnb_4bit_quant_type='nf4'
+#           ),
+#       )
+
+
 def prompt_model(dataset, model_name = "deepseek-ai/deepseek-coder-6.7b-base", quantization = True):
     print(f"Working with {model_name} quantization {quantization}...")
     
     # TODO: download the model
     if quantization:
         # TODO: load the model with quantization
-        bnb_config = BitsAndBytesConfig(load_in_8bit=True)
-        model = AutoModelForCausalLM.from_pretrained(model_name, quantization_config=bnb_config)
+        # bnb_config = BitsAndBytesConfig(load_in_8bit=True)
+        # model = AutoModelForCausalLM.from_pretrained(model_name, quantization_config=bnb_config)
+        
+        
+        tokenizer = AutoTokenizer.from_pretrained("deepseek-ai/deepseek-coder-6.7b-instruct", trust_remote_code=True)
+        # model = AutoModelForCausalLM.from_pretrained("deepseek-ai/deepseek-coder-6.7b-base", trust_remote_code=True, torch_dtype=torch.bfloat16).cuda()
+        model = AutoModelForCausalLM.from_pretrained(
+                pretrained_model_name_or_path='deepseek-ai/deepseek-coder-6.7b-instruct',
+                device_map='auto',
+                torch_dtype=torch.bfloat16,
+                # temperature = 0,
+                # do_sample=False,
+                quantization_config=BitsAndBytesConfig(
+                    load_in_4bit=True,
+                    bnb_4bit_compute_dtype=torch.bfloat16,
+                    bnb_4bit_use_double_quant=True,
+                    bnb_4bit_quant_type='nf4'
+                ),
+            )
 
         
     else:
@@ -32,8 +67,9 @@ def prompt_model(dataset, model_name = "deepseek-ai/deepseek-coder-6.7b-base", q
         prompt = case['prompt']
         # TODO: prompt the model and get the response
         tokenizer = AutoTokenizer.from_pretrained(model_name)
-        inputs = tokenizer(prompt, return_tensors="pt", max_length=512, truncation=True)
-        outputs = model.generate(**inputs, max_length=512, num_return_sequences=1, num_beams=1, no_repeat_ngram_size=2, early_stopping=True)
+
+        inputs = tokenizer(prompt, return_tensors="pt", max_length=1024, truncation=True)
+        outputs = model.generate(**inputs, max_length=1024, num_return_sequences=1, num_beams=1, no_repeat_ngram_size=2, early_stopping=True)
         response = tokenizer.decode(outputs[0], skip_special_tokens=True)
 
         
