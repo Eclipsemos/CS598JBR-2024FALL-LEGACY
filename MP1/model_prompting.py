@@ -43,7 +43,7 @@ def prompt_model(dataset, model_name = "deepseek-ai/deepseek-coder-6.7b-base", q
         tokenizer = AutoTokenizer.from_pretrained("deepseek-ai/deepseek-coder-6.7b-instruct", trust_remote_code=True)
         # model = AutoModelForCausalLM.from_pretrained("deepseek-ai/deepseek-coder-6.7b-base", trust_remote_code=True, torch_dtype=torch.bfloat16).cuda()
         model = AutoModelForCausalLM.from_pretrained(
-                pretrained_model_name_or_path='deepseek-ai/deepseek-coder-6.7b-instruct',
+                pretrained_model_name_or_path= model_name,
                 device_map='auto',
                 torch_dtype=torch.bfloat16,
                 # temperature = 0,
