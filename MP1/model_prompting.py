@@ -40,7 +40,7 @@ def prompt_model(dataset, model_name = "deepseek-ai/deepseek-coder-6.7b-base", q
         # TODO: load the model with quantization
         # bnb_config = BitsAndBytesConfig(load_in_8bit=True)
         # model = AutoModelForCausalLM.from_pretrained(model_name, quantization_config=bnb_config)
-        tokenizer = AutoTokenizer.from_pretrained("deepseek-ai/deepseek-coder-6.7b-instruct", trust_remote_code=True)
+        tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code=True)
         # model = AutoModelForCausalLM.from_pretrained("deepseek-ai/deepseek-coder-6.7b-base", trust_remote_code=True, torch_dtype=torch.bfloat16).cuda()
         model = AutoModelForCausalLM.from_pretrained(
                 pretrained_model_name_or_path= model_name,
