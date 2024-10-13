@@ -15,14 +15,25 @@ def prompt_model(dataset, model_name = "deepseek-ai/deepseek-coder-6.7b-base", q
     print(f"Working with {model_name} quantization {quantization}...")
     
     # TODO: download the model
-    
-  
     if quantization:
         # TODO: load the model with quantization
-        
+        tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code=True)
+        model = AutoModelForCausalLM.from_pretrained(
+                pretrained_model_name_or_path= model_name,
+                device_map='auto',
+                torch_dtype=torch.bfloat16,
+                # temperature = 0,
+                # do_sample=False,
+                quantization_config=BitsAndBytesConfig(
+                    load_in_4bit=True,
+                    bnb_4bit_compute_dtype=torch.bfloat16,
+                    bnb_4bit_use_double_quant=True,
+                    bnb_4bit_quant_type='nf4'
+                ),
+            )
     else:
         # TODO: load the model without quantization
-        
+        model = AutoModelForCausalLM.from_pretrained(model_name)
 
     results = []
     for case in dataset:
@@ -31,11 +42,20 @@ def prompt_model(dataset, model_name = "deepseek-ai/deepseek-coder-6.7b-base", q
         #       the prompt including prompt, canonical_solution, test, etc.
         
         # TODO: prompt the model and get the response
+        prompt = case['prompt']
+        inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
+        outputs = model.generate(**inputs,
+                                max_length=1024,
+                                temperature = 0,
+                                do_sample=False,)
+        response = tokenizer.decode(outputs[0], skip_special_tokens=True)
 
         # TODO: process the response and save it to results
 
-        print(f"Task_ID {case['task_id']}:\nPrompt:\n{prompt}\nResponse:\n{response}\nResponse:\n{processed_response}")
-        results.append(dict(task_id=case["task_id"], completion=processed_response))
+        print(f"Task_ID {case['task_id']}:\nPrompt:\n{prompt}\nResponse:\n{response}")
+        results.append(dict(task_id=case["task_id"], completion=response))
+        # Van
+        # Craft
     return results
 
 def read_jsonl(file_path):

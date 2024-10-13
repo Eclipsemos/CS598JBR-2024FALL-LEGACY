@@ -13,7 +13,7 @@ input_dataset = "selected_humaneval_171768020378419351865442221048553552766.json
 ! bash -x MP2/setup_models.sh
 
 # TODO: add your seed generated in MP1
-seed = "<your_seed>"
+seed = "171768020378419351865442221048553552766"
 task_1_json = "task_1_" + seed + ".jsonl"
 task_2_json = "task_2_" + seed + ".jsonl"
 task_3_json = "task_3_" + seed + ".jsonl"
