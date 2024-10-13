@@ -61,8 +61,8 @@ def prompt_model(dataset, model_name = "deepseek-ai/deepseek-coder-6.7b-base", q
                                     temperature = 0,
                                     do_sample=False,)
         response = tokenizer.decode(outputs[0], skip_special_tokens=True)
-        print(f"Task_ID {case['task_id']}:\nPrompt:\n{prompt}\nResponse:\n{response}\nResponse:\n{processed_response}")
-        results.append(dict(task_id=case["task_id"], completion=processed_response))
+        print(f"Task_ID {case['task_id']}:\nPrompt:\n{prompt}\nResponse:\n{response}")
+        results.append(dict(task_id=case["task_id"], completion=response))
     return results
 
 def read_jsonl(file_path):
