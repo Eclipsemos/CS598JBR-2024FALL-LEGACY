@@ -49,7 +49,7 @@ def reformat_jsonl(input_file, output_file):
             data = json.loads(line)
 
             # Extract the program and inputs
-            program = data["canonical_solution"]
+            program = data["prompt"] + data["canonical_solution"]
             test_code = data["test"]
             inputs, expected_output = extract_inputs_and_expected(test_code)
 
