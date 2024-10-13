@@ -3,11 +3,11 @@
 ###################################################################
 
 # TODO: Clone your GitHub repository
-! git clone [Your GitHub Link]
-%cd [Your GitHub Repo]
+! git clone https://Eclipsemos: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@github.com/Eclipsemos/CS598JBR-Team-9.git
+%cd CS598JBR-Team-9
 
 # TODO: Replace the file path of selected_humaneval_[seed].jsonl generated in MP1
-input_dataset = ""# selected_humaneval_[seed].jsonl
+input_dataset = "selected_humaneval_171768020378419351865442221048553552766.jsonl"# selected_humaneval_[seed].jsonl
 
 # Set up requirements for model prompting
 ! bash -x MP2/setup_models.sh
