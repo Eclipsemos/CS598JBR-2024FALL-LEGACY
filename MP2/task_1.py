@@ -55,7 +55,12 @@ def prompt_model(dataset, model_name = "deepseek-ai/deepseek-coder-6.7b-base", q
         # TODO: prompt the model and get the response
 
         # TODO: process the response and save it to results
-
+        inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
+        outputs = model.generate(**inputs,
+                                    max_length=1024,
+                                    temperature = 0,
+                                    do_sample=False,)
+        response = tokenizer.decode(outputs[0], skip_special_tokens=True)
         print(f"Task_ID {case['task_id']}:\nPrompt:\n{prompt}\nResponse:\n{response}\nResponse:\n{processed_response}")
         results.append(dict(task_id=case["task_id"], completion=processed_response))
     return results
