@@ -25,21 +25,19 @@
     task_1_crafted_prompt_json = "task_1_" + seed + "_crafted_prompt.jsonl"
     ! python3 task1_script.py {input_dataset} {task_1_crafted_prompt_json}
     
-    #task_2_vanilla_json = "task_2_" + seed + "_vanilla.jsonl"
-    #task_2_crafted_json = "task_2_" + seed + "_crafted.jsonl"
-  
+    task_2_vanilla_json = "task_2_" + seed + "_vanilla.jsonl"
+    task_2_crafted_json = "task_2_" + seed + "_crafted.jsonl"
+    task_2_prompt_json = "task_2_" + seed + "_prompt.jsonl"
+    ! python3 task2_script.py {input_dataset}{task_2_prompt_json}
+
+
     # Prompt the models, you can create your `MP2/task_1.py, MP2/task_2.py, MP2/task_3.py` by modifying `MP2/task_[ID].py`
     # The {input_dataset} is the JSON file consisting of 20 unique programs for your group that you generated in MP1 (selected_humaneval_[seed].jsonl)
-    ! python3 task_1.py {task_1_vanilla_prompt_json} "deepseek-ai/deepseek-coder-6.7b-instruct" {task_1_vanilla_json} "True" |& tee task_1_vanilla.log
-    ! python3 task_1.py {task_1_crafted_prompt_json} "deepseek-ai/deepseek-coder-6.7b-instruct" {task_1_crafted_json} "False" |& tee task_1_crafted.log
+    #! python3 task_1.py {task_1_vanilla_prompt_json} "deepseek-ai/deepseek-coder-6.7b-instruct" {task_1_vanilla_json} "True" |& tee task_1_vanilla.log
+    #! python3 task_1.py {task_1_crafted_prompt_json} "deepseek-ai/deepseek-coder-6.7b-instruct" {task_1_crafted_json} "False" |& tee task_1_crafted.log
+
     #! python3 task_2.py {input_dataset} "deepseek-ai/deepseek-coder-6.7b-instruct" {task_2_vanilla_json} "True" |& tee task_2_vanilla.log
     #! python3 task_2.py {input_dataset} "deepseek-ai/deepseek-coder-6.7b-instruct" {task_2_crafted_json} "False" |& tee task_2_crafted.log
-
-    # Old commands
-    #! python3 task_1.py {task_1_json} "deepseek-ai/deepseek-coder-6.7b-instruct" {task_1_json} "True" |& tee task_1_prompt.log
-    #! python3 MP2/task_2.py {input_dataset} "deepseek-ai/deepseek-coder-6.7b-instruct" {task_2_json} "True" |& tee task_2_prompt.log
-    #! python3 MP2/task_3.py {input_dataset} "deepseek-ai/deepseek-coder-6.7b-instruct" {task_3_json} "True" |& tee task_3_prompt.log
-    #! evaluate_functional_correctness {task_3_json} |& tee task_3_evaluate.log
 
     #%cd ..
 
