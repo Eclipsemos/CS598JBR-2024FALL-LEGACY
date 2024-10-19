@@ -37,7 +37,7 @@ def prompt_model(dataset, model_name = "deepseek-ai/deepseek-coder-6.7b-instruct
         # TODO: create prompt for the model
         # Tip : Use can use any data from the dataset to create 
         #       the prompt including prompt, canonical_solution, test, etc.
-        f vanilla == True:
+        if vanilla == True:
             prompt = entry['vanilla_prompt']
         else:
             prompt = entry['crafted_prompt']
