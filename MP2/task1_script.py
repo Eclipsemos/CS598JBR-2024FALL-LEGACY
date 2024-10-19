@@ -2,19 +2,32 @@ import json
 import re
 import sys
 
+# def extract_inputs_and_expected(test_code):
+#     """Extract the input and expected output from the first assert statement in the test function."""
+#     lines = test_code.split("\n")
+#     for line in lines:
+#         line = line.strip()
+#         if line.startswith("assert candidate("):
+#             # Use regex to extract the input and expected value
+#             match = re.match(r"assert candidate\((.*)\) == (.*)", line)
+#             if match:
+#                 input_str = match.group(1)
+#                 expected_output = match.group(2)
+#                 return input_str, expected_output
+#     return None, True
+
 def extract_inputs_and_expected(test_code):
-    """Extract the input and expected output from the first assert statement in the test function."""
+    """Extract the input and expected output from the test code."""
     lines = test_code.split("\n")
     for line in lines:
         line = line.strip()
         if line.startswith("assert candidate("):
-            # Use regex to extract the input and expected value
-            match = re.match(r"assert candidate\((.*)\) == (.*)", line)
+            match = re.match(r"assert\s+candidate\((.*)\)\s*==\s*(.*)", line)
             if match:
                 input_str = match.group(1)
                 expected_output = match.group(2)
                 return input_str, expected_output
-    return None, True
+    return "", True
 
 def van_generate_prompt(inputs, problem, solution):
     """Generate a new prompt based on inputs and program."""
