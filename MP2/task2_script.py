@@ -41,10 +41,12 @@ def reformat_jsonl(input_file, output_file):
             van_prompt = van_generate_prompt( data["prompt"], data["canonical_solution"])
             crafted_prompt = craft_generate_prompt(data["prompt"], data["canonical_solution"])
             # Create the new formatted JSON object
+            program = data["prompt"] + "\n" + data["canonical_solution"]
             new_data = {
                 "task_id": data["task_id"],
                 "vanilla_prompt": van_prompt,
                 "crafted_prompt": crafted_prompt,
+                "program":  program
             }
             # print(data["task_id"] + " " + expected_output)
             # Write the new JSONL object to the output file
