@@ -28,7 +28,7 @@
     task_2_vanilla_json = "task_2_" + seed + "_vanilla.jsonl"
     task_2_crafted_json = "task_2_" + seed + "_crafted.jsonl"
     task_2_prompt_json = "task_2_" + seed + "_prompt.jsonl"
-    ! python3 task2_script.py {input_dataset}{task_2_prompt_json}
+    ! python3 task2_script.py {input_dataset} {task_2_prompt_json}
 
 
     # Prompt the models, you can create your `MP2/task_1.py, MP2/task_2.py, MP2/task_3.py` by modifying `MP2/task_[ID].py`
