@@ -33,15 +33,13 @@ def van_generate_prompt(inputs, problem, solution):
     """Generate a new prompt based on inputs and program."""
     prompt = f"""You are an AI programming assistant, utilizing the DeepSeek Coder model, developed by DeepSeek Company, and you only answer questions related to computer science. For politically sensitive questions, security and privacy issues, and other non-computer science questions, you will refuse to answer.
 ### Instruction:
-Given the following programming problem and its canonical_solution,
+Given the following program
 If the input of this program is {inputs}, what will the following code return after executing?
 The return value prediction must be enclosed between [Output] and [/Output] tags. For example : [Output]result[/Output].
 REMEBER YOU ONLY and MUST RETURN [Output]result[/Output] in ### Response section!!! result is the output of program.
 AND ATTENTION, the "result" is the returned value of the program, NOT ANY OTHER THINGS!!
-programming problem:
+program:
 {problem}
-
-canonical_solution:
 {solution}
 ### Response:
 """
@@ -50,7 +48,7 @@ canonical_solution:
 def craft_generate_prompt(inputs, problem, solution):
     prompt = f"""You are tasked with solving a programming problem by predicting the output of a given canonical solution based on specified inputs.
 
-- Carefully read the programming problem and the canonical solution.
+- Carefully read the program
 - Simulate the code execution with the given inputs.
 - **Only** provide the final output of the program, enclosed within `[Output]` and `[/Output]` tags.
 - Do not include any additional text or reasoning in your response.
@@ -58,16 +56,14 @@ def craft_generate_prompt(inputs, problem, solution):
 For example:
 - If the output is `42`, you should respond with: `[Output]42[/Output]`
 
-Now, here is the programming problem:
-
-programming problem:
+Now, here is the program:
 {problem}
+{solution}
 
 programming input:
 {inputs}
 
-canonical_solution:
-{solution}
+
 
 Response:
 """
