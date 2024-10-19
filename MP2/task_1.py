@@ -58,8 +58,12 @@ def prompt_model(dataset, model_name = "deepseek-ai/deepseek-coder-6.7b-instruct
             predicted_output = matches[-1].strip()  # Get the last occurrence and strip any extra spaces
         else:
             predicted_output = "MISSMATCHMISSMATCH"  # If no match found
-        expected_output = entry['expected'].strip()
+        expected_output = entry['expected']
+        if isinstance(expected_output, str):  # Check if it's a string
+            expected_output = expected_output.strip()
+
         verdict = predicted_output == expected_output
+
     
         print(f"Task_ID {entry['task_id']}:\nprompt:\n{prompt}\nresponse:\n{response}\nis_correct:\n{verdict}")
         results.append({
