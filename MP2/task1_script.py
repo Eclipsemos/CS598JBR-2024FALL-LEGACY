@@ -35,27 +35,17 @@ canonical_solution:
     return prompt
 
 def craft_generate_prompt(inputs, problem, solution):
-    prompt = f"""You are tasked with solving a programming problem by predicting the output of a given canonical solution based on specified inputs. Follow these steps to ensure the accuracy and clarity of your answer:
-1. Understand the Problem: Carefully read the programming problem and what the code is intended to solve.
-2. Analyze the Code: Break down the provided canonical solution into several necessary logical parts to understand each component’s role in achieving the solution.
-3. Simulate the Code Execution: Reason the code with the given inputs, carefully tracing the values and operations to understand how the output is derived.
-4. Document Each Step: Clearly describe your thoughts  and the reasoning behind each code execution step, including any intermediate results that lead to the final output.
-5. Present the Final Output: Combining all insights to determine the final result after thoroughly reasoning through and simulating the code.
-Each step of your reasoning SHOULD BE well-documented, providing a clear explanation of your thought process and any intermediate results.
-The final output of the program, after executing with the given inputs, should be presented and enclosed within [Output] and [/Output] tags. For example:
-- Step 1: [Describe the initial state and setup based on the problem requirements].
-- Step 2: [Explain the logic of the first part of the code and how it manipulates the input].
-- ...
-- Final Step: [Summarize and present the computed result as the answer, enclosed in the tags].
-Example:
-- Step 1: [The problem requires sorting a list of integers in descending order. The input list is [3, 1, 4, 1, 5].]
-- Step 2: [The canonical solution uses a sorting function. It will rearrange the integers in descending order based on their values.]
-- ...
-- Final Step: [Output]5, 4, 3, 1, 1[/Output]
+    prompt = f"""You are tasked with solving a programming problem by predicting the output of a given canonical solution based on specified inputs.
 
-Now, let's do it.
-Here is the programming problem:
+- Carefully read the programming problem and the canonical solution.
+- Simulate the code execution with the given inputs.
+- **Only** provide the final output of the program, enclosed within `[Output]` and `[/Output]` tags.
+- Do not include any additional text or reasoning in your response.
 
+For example:
+- If the output is `42`, you should respond with: `[Output]42[/Output]`
+
+Now, here is the programming problem:
 
 programming problem:
 {problem}
@@ -65,7 +55,8 @@ programming input:
 
 canonical_solution:
 {solution}
-### Response:
+
+Response:
 """
     return prompt
 
