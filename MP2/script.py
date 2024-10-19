@@ -22,7 +22,8 @@ def generate_prompt(inputs, problem, solution):
 ### Instruction:
 Given the following programming problem and its canonical_solution,
 If the input of this program is {inputs}, what will the following code return after executing?
-The return value prediction must be enclosed between [Output] and [/Output] tags. For example : [Output]prediction[/Output].
+The return value prediction must be enclosed between [Output] and [/Output] tags. For example : [Output]result[/Output].
+Remeber you ONLY return [Output]result[/Output] where result is the your prediciton result.
 programming problem:
 {problem}
 
