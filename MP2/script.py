@@ -1,19 +1,6 @@
-# {"task_id": "HumanEval/10", "prompt": "\n\ndef is_palindrome(string: str) -> bool:\n    \"\"\" Test if given string is a palindrome \"\"\"\n    return string == string[::-1]\n\n\ndef make_palindrome(string: str) -> str:\n    \"\"\" Find the shortest palindrome that begins with a supplied string.\n    Algorithm idea is simple:\n    - Find the longest postfix of supplied string that is a palindrome.\n    - Append to the end of the string reverse of a string prefix that comes before the palindromic suffix.\n    >>> make_palindrome('')\n    ''\n    >>> make_palindrome('cat')\n    'catac'\n    >>> make_palindrome('cata')\n    'catac'\n    \"\"\"\n", "canonical_solution": "    if not string:\n        return ''\n\n    beginning_of_suffix = 0\n\n    while not is_palindrome(string[beginning_of_suffix:]):\n        beginning_of_suffix += 1\n\n    return string + string[:beginning_of_suffix][::-1]\n", "test": "\n\nMETADATA = {\n    'author': 'jt',\n    'dataset': 'test'\n}\n\n\ndef check(candidate):\n    assert candidate('') == ''\n    assert candidate('x') == 'x'\n    assert candidate('xyz') == 'xyzyx'\n    assert candidate('xyx') == 'xyx'\n    assert candidate('jerry') == 'jerryrrej'\n", "entry_point": "make_palindrome"}
-# read jsonl fetch "can_sol" and first assertion in the "test"
-# generate prompt message
-# format as purple content
-# write into a new jsonl 
-# {"task_id": ,"prompt": , "expect": , "is_correct": } 
-# expected is output of the can_sol functions' return
-
-# prompt model
-
-# compare acc rate
-
-
-
 import json
 import re
+import sys
 
 def extract_inputs_and_expected(test_code):
     """Extract the input and expected output from the first assert statement in the test function."""
@@ -29,15 +16,18 @@ def extract_inputs_and_expected(test_code):
                 return input_str, expected_output
     return None, None
 
-def generate_prompt(inputs, program):
+def generate_prompt(inputs, problem, solution):
     """Generate a new prompt based on inputs and program."""
     prompt = f"""You are an AI programming assistant, utilizing the DeepSeek Coder model, developed by DeepSeek Company, and you only answer questions related to computer science. For politically sensitive questions, security and privacy issues, and other non-computer science questions, you will refuse to answer.
 ### Instruction:
-If the string is {inputs}, what will the following code return?
+Given the following programming problem and its canonical_solution,
+If the input of this program is {inputs}, what will the following code return after executing?
 The return value prediction must be enclosed between [Output] and [/Output] tags. For example : [Output]prediction[/Output].
+programming problem:
+{problem}
 
-{program}
-
+canonical_solution:
+{solution}
 ### Response:
 """
     return prompt
@@ -48,29 +38,32 @@ def reformat_jsonl(input_file, output_file):
             # Load the JSON object from the original JSONL line
             data = json.loads(line)
 
-            # Extract the program and inputs
-            program = data["prompt"] + data["canonical_solution"]
+            # Extract the inputs, expected ouput
             test_code = data["test"]
             inputs, expected_output = extract_inputs_and_expected(test_code)
 
-            # Generate the prompt
-            prompt = generate_prompt(inputs, program)
+            if inputs and expected_output:
+                # Generate the prompt
+                prompt = generate_prompt(inputs, data["prompt"], data["canonical_solution"])
 
-            # Create the new formatted JSON object
-            new_data = {
-                "task_id": data["task_id"],
-                "prompt": prompt,
-                "expect": f"[Output]{expected_output}[/Output]",
-                "is_correct": None
-            }
+                # Create the new formatted JSON object
+                new_data = {
+                    "task_id": data["task_id"],
+                    "prompt": prompt,
+                    "expected": expected_output,
+                }
+                # print(data["task_id"] + " " + expected_output)
+                # Write the new JSONL object to the output file
+                json.dump(new_data, f_out)
+                f_out.write("\n")
 
-            # Write the new JSONL object to the output file
-            json.dump(new_data, f_out)
-            f_out.write("\n")
+if __name__ == "__main__":
+    if len(sys.argv) != 3:
+        print("Usage: python script.py <input_dataset> <output_dataset>")
+        sys.exit(1)
 
-# Specify the input and output file paths
-input_file = "selected_humaneval_171768020378419351865442221048553552766.jsonl"
-output_file = "task_1_171768020378419351865442221048553552766_vanilla.jsonl"
+    input_file = sys.argv[1]
+    output_file = sys.argv[2]
 
-# Run the script to reformat the JSONL file
-reformat_jsonl(input_file, output_file)
+    # Run the script to reformat the JSONL file
+    reformat_jsonl(input_file, output_file)
