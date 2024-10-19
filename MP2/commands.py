@@ -18,8 +18,9 @@
     seed = "171768020378419351865442221048553552766"
     task_1_vanilla_json = "task_1_" + seed + "_vanilla.jsonl"
     task_1_vanilla_prompt_json = "task_1_" + seed + "_vanilla_prompt.jsonl"
+    
     # Generate vanilla prompt
-    ! python3 script.py input_dataset task_1_vanilla_prompt_json
+    ! python3 script.py {input_dataset} {task_1_vanilla_prompt_json}
     #task_1_crafted_json = "task_1_" + seed + "_crafted.jsonl"
     #task_2_vanilla_json = "task_2_" + seed + "_vanilla.jsonl"
     #task_2_crafted_json = "task_2_" + seed + "_crafted.jsonl"
