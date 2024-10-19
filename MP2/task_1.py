@@ -32,40 +32,42 @@ def prompt_model(dataset, model_name = "deepseek-ai/deepseek-coder-6.7b-instruct
                 bnb_4bit_quant_type='nf4'
             ),
         )
-    if vanilla == True:
-        results = []
-        for entry in dataset:
-            # TODO: create prompt for the model
-            # Tip : Use can use any data from the dataset to create 
-            #       the prompt including prompt, canonical_solution, test, etc.
-            prompt = entry['prompt']
+    results = []
+    for entry in dataset:
+        # TODO: create prompt for the model
+        # Tip : Use can use any data from the dataset to create 
+        #       the prompt including prompt, canonical_solution, test, etc.
+        if vanilla == True:
+            prompt = entry['vanilla_prompt']
+        else:
+            prompt = entry['crafted_prompt']
         
-            # TODO: prompt the model and get the response
-            inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
-            outputs = model.generate(**inputs,
-                                    max_length=1024,
-                                    temperature = 0,
-                                    do_sample=False,)
-            response = tokenizer.decode(outputs[0], skip_special_tokens=True)
+        # TODO: prompt the model and get the response
+        inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
+        outputs = model.generate(**inputs,
+                                max_length=1024,
+                                temperature = 0,
+                                do_sample=False,)
+        response = tokenizer.decode(outputs[0], skip_special_tokens=True)
 
-            # TODO: process the response and save it to results
-            expected_output = entry['expected'];
-            matches = re.findall(r"\[Output\](.*?)\[/Output\]", response)
-            if matches:
-            # Use the last match, assuming the last [Output]...[/Output] is the correct prediction
-                predicted_output = matches[-1].strip()  # Get the last occurrence and strip any extra spaces
-            else:
-                predicted_output = "MISSMATCHMISSMATCH"  # If no match found
-            expected_output = entry['expected'].strip()
-            verdict = predicted_output == expected_output
-            
-            print(f"Task_ID {entry['task_id']}:\nprompt:\n{prompt}\nresponse:\n{response}\nis_correct:\n{verdict}")
-            results.append({
-            "task_id": entry["task_id"],
-            "prompt": prompt,
-            "response": response,
-            "is_correct": verdict
-            })
+        # TODO: process the response and save it to results
+        expected_output = entry['expected'];
+        matches = re.findall(r"\[Output\](.*?)\[/Output\]", response)
+        if matches:
+        # Use the last match, assuming the last [Output]...[/Output] is the correct prediction
+            predicted_output = matches[-1].strip()  # Get the last occurrence and strip any extra spaces
+        else:
+            predicted_output = "MISSMATCHMISSMATCH"  # If no match found
+        expected_output = entry['expected'].strip()
+        verdict = predicted_output == expected_output
+    
+        print(f"Task_ID {entry['task_id']}:\nprompt:\n{prompt}\nresponse:\n{response}\nis_correct:\n{verdict}")
+        results.append({
+        "task_id": entry["task_id"],
+        "prompt": prompt,
+        "response": response,
+        "is_correct": verdict
+        })
         return results
 
 def read_jsonl(file_path):
