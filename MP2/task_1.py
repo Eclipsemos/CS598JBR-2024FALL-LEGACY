@@ -68,7 +68,7 @@ def prompt_model(dataset, model_name = "deepseek-ai/deepseek-coder-6.7b-instruct
         "response": response,
         "is_correct": verdict
         })
-        return results
+    return results
 
 def read_jsonl(file_path):
     dataset = []
