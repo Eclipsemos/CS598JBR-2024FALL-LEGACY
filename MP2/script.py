@@ -62,6 +62,7 @@ if __name__ == "__main__":
     args = sys.argv[1:]
     input_file = args[0]
     output_file = args[1]
-
+    print("INPUT: " + input_file)
+    print("OUTPUT: " + output_file)
     # Run the script to reformat the JSONL file
     reformat_jsonl(input_file, output_file)
