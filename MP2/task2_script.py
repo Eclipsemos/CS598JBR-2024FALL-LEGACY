@@ -10,7 +10,7 @@ def van_generate_prompt(problem, solution):
 ### Instruction:
 
 Generate a pytest test suite for the following code.
-
+Each test should be a single function.
 Only write unit tests in the output and nothing else.
 {problem}
 {solution}
@@ -24,6 +24,7 @@ def craft_generate_prompt(problem, solution):
 ### Instruction:
 
 Generate a pytest test suite for the following code.
+Each test should be a single function.
 Use Chain of Thoughts
 Only write unit tests in the output and nothing else.
 {problem}
