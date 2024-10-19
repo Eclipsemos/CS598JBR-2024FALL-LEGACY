@@ -48,7 +48,16 @@ def prompt_model(dataset, model_name = "deepseek-ai/deepseek-coder-6.7b-instruct
             response = tokenizer.decode(outputs[0], skip_special_tokens=True)
 
             # TODO: process the response and save it to results
-            verdict = False
+            expected_output = entry['expected'];
+            matches = re.findall(r"\[Output\](.*?)\[/Output\]", response)
+            if matches:
+            # Use the last match, assuming the last [Output]...[/Output] is the correct prediction
+                predicted_output = matches[-1].strip()  # Get the last occurrence and strip any extra spaces
+            else:
+                predicted_output = "MISSMATCHMISSMATCH"  # If no match found
+            expected_output = entry['expected'].strip()
+            verdict = predicted_output == expected_output
+            
             print(f"Task_ID {entry['task_id']}:\nprompt:\n{prompt}\nresponse:\n{response}\nis_correct:\n{verdict}")
             results.append({
             "task_id": entry["task_id"],
