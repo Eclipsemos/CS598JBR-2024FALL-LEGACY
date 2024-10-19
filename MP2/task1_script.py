@@ -83,21 +83,20 @@ def reformat_jsonl(input_file, output_file):
             test_code = data["test"]
             inputs, expected_output = extract_inputs_and_expected(test_code)
 
-            if inputs:
-                # Generate the prompt
-                van_prompt = van_generate_prompt(inputs, data["prompt"], data["canonical_solution"])
-                crafted_prompt = craft_generate_prompt(inputs, data["prompt"], data["canonical_solution"])
-                # Create the new formatted JSON object
-                new_data = {
-                    "task_id": data["task_id"],
-                    "vanilla_prompt": van_prompt,
-                    "crafted_prompt": crafted_prompt,
-                    "expected": expected_output,
-                }
-                # print(data["task_id"] + " " + expected_output)
-                # Write the new JSONL object to the output file
-                json.dump(new_data, f_out)
-                f_out.write("\n")
+            # Generate the prompt
+            van_prompt = van_generate_prompt(inputs, data["prompt"], data["canonical_solution"])
+            crafted_prompt = craft_generate_prompt(inputs, data["prompt"], data["canonical_solution"])
+            # Create the new formatted JSON object
+            new_data = {
+                "task_id": data["task_id"],
+                "vanilla_prompt": van_prompt,
+                "crafted_prompt": crafted_prompt,
+                "expected": expected_output,
+            }
+            # print(data["task_id"] + " " + expected_output)
+            # Write the new JSONL object to the output file
+            json.dump(new_data, f_out)
+            f_out.write("\n")
 
 if __name__ == "__main__":
     args = sys.argv[1:]
