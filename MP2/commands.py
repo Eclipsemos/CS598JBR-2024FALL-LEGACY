@@ -13,7 +13,7 @@
 
     # Set up requirements for model prompting
     ! bash -x MP2/setup_models.sh
-
+    %cd MP2/
     # TODO: add your seed generated in MP1
     seed = "171768020378419351865442221048553552766"
     task_1_vanilla_json = "task_1_" + seed + "_vanilla.jsonl"
@@ -24,7 +24,7 @@
     #task_2_vanilla_json = "task_2_" + seed + "_vanilla.jsonl"
     #task_2_crafted_json = "task_2_" + seed + "_crafted.jsonl"
     
-    %cd MP2/
+    
     # Prompt the models, you can create your `MP2/task_1.py, MP2/task_2.py, MP2/task_3.py` by modifying `MP2/task_[ID].py`
     # The {input_dataset} is the JSON file consisting of 20 unique programs for your group that you generated in MP1 (selected_humaneval_[seed].jsonl)
     ! python3 task_1.py {task_1_vanilla_prompt_json} "deepseek-ai/deepseek-coder-6.7b-instruct" {task_1_vanilla_json} "True" |& tee task_1_vanilla.log

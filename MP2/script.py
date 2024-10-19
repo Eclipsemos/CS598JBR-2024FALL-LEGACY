@@ -59,12 +59,9 @@ def reformat_jsonl(input_file, output_file):
                 f_out.write("\n")
 
 if __name__ == "__main__":
-    if len(sys.argv) != 3:
-        print("Usage: python script.py <input_dataset> <output_dataset>")
-        sys.exit(1)
-
-    input_file = sys.argv[1]
-    output_file = sys.argv[2]
+    args = sys.argv[1:]
+    input_file = args[0]
+    output_file = args[1]
 
     # Run the script to reformat the JSONL file
     reformat_jsonl(input_file, output_file)
