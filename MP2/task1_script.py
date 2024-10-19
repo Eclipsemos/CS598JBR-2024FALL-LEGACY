@@ -14,7 +14,7 @@ def extract_inputs_and_expected(test_code):
                 input_str = match.group(1)
                 expected_output = match.group(2)
                 return input_str, expected_output
-    return None, None
+    return None, True
 
 def van_generate_prompt(inputs, problem, solution):
     """Generate a new prompt based on inputs and program."""
@@ -79,7 +79,7 @@ def reformat_jsonl(input_file, output_file):
             test_code = data["test"]
             inputs, expected_output = extract_inputs_and_expected(test_code)
 
-            if inputs and expected_output:
+            if inputs:
                 # Generate the prompt
                 van_prompt = van_generate_prompt(inputs, data["prompt"], data["canonical_solution"])
                 crafted_prompt = craft_generate_prompt(inputs, data["prompt"], data["canonical_solution"])
