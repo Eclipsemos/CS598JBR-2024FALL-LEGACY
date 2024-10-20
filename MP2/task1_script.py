@@ -46,26 +46,26 @@ program:
     return prompt
 
 def craft_generate_prompt(inputs, problem, solution):
-    prompt = f"""You are tasked with solving a programming problem by predicting the output of a given canonical solution based on specified inputs.
+    prompt = f"""You are an AI programming assistant.
 
-- Carefully read the program
-- Simulate the code execution with the given inputs.
-- **Only** provide the final output of the program, enclosed within `[Output]` and `[/Output]` tags.
-- Do not include any additional text or reasoning in your response.
+**Task**:
+- Simulate the following program with the given input.
+- **Only** provide the final output value returned by the program.
+- The output must be enclosed within `[Output]` and `[/Output]` tags.
+- Do **not** include any additional text, explanations, or reasoning.
 
-For example:
-- If the output is `42`, you should respond with: `[Output]42[/Output]`
+**Example**:
+If the program returns `42`, and the 42 is the reasoning result,  you should respond with:
+[Output]42[/Output]
 
-Now, here is the program:
+**Program**:
 {problem}
 {solution}
 
-programming input:
+**Input**:
 {inputs}
 
-
-
-Response:
+Response:  
 """
     return prompt
 
