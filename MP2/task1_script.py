@@ -53,6 +53,7 @@ IMPORTANT:
 - You MUST ONLY provide the final output of the program.
 - The output must be enclosed between [Output] and [/Output] tags.
 - Do NOT include any additional text, explanations, or reasoning.
+- But the results should based on the code reasoning and the code execution, and try to think about the probelm step by step.
 
 For example, if the output is `42`, you should respond with:
 
