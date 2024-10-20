@@ -45,7 +45,7 @@ program:
 """
     return prompt
 
-def craft_generate_prompt(inputs, problem, solution):
+def craft_generate_prompt(inputs, problem, solution, expected_output):
     prompt = f"""You are an AI programming assistant. Your task is to predict the output of the given program when executed with the specified inputs.
 
 IMPORTANT:
@@ -55,7 +55,7 @@ IMPORTANT:
 - Do NOT include any additional text, explanations, or reasoning.
 - But the results should based on the code reasoning and the code execution, and try to think about the probelm step by step.
 
-For example, if the output is `42`, you should respond with:
+For example, if the output is `42`, which is the reasoned result, you should respond with:
 
 [Output]42[/Output]
 
@@ -65,7 +65,6 @@ Here is the program:
 {solution}
 
 Input:
-
 {inputs}
 
 Response:
@@ -85,7 +84,7 @@ def reformat_jsonl(input_file, output_file):
 
             # Generate the prompt
             van_prompt = van_generate_prompt(inputs, data["prompt"], data["canonical_solution"])
-            crafted_prompt = craft_generate_prompt(inputs, data["prompt"], data["canonical_solution"])
+            crafted_prompt = craft_generate_prompt(inputs, data["prompt"], data["canonical_solution"], expected_output)
             # Create the new formatted JSON object
             new_data = {
                 "task_id": data["task_id"],
