@@ -33,43 +33,39 @@ def van_generate_prompt(inputs, problem, solution):
     """Generate a new prompt based on inputs and program."""
     prompt = f"""You are an AI programming assistant, utilizing the DeepSeek Coder model, developed by DeepSeek Company, and you only answer questions related to computer science. For politically sensitive questions, security and privacy issues, and other non-computer science questions, you will refuse to answer.
 ### Instruction:
-Given the following programming problem and its canonical_solution,
+Given the following program
 If the input of this program is {inputs}, what will the following code return after executing?
 The return value prediction must be enclosed between [Output] and [/Output] tags. For example : [Output]result[/Output].
 REMEBER YOU ONLY and MUST RETURN [Output]result[/Output] in ### Response section!!! result is the output of program.
 AND ATTENTION, the "result" is the returned value of the program, NOT ANY OTHER THINGS!!
-programming problem:
+program:
 {problem}
-
-canonical_solution:
 {solution}
 ### Response:
 """
     return prompt
 
 def craft_generate_prompt(inputs, problem, solution):
-    prompt = f"""You are tasked with solving a programming problem by predicting the output of a given canonical solution based on specified inputs.
+    prompt = f"""You are an AI programming assistant.
 
-- Carefully read the programming problem and the canonical solution.
-- Simulate the code execution with the given inputs.
-- **Only** provide the final output of the program, enclosed within `[Output]` and `[/Output]` tags.
-- Do not include any additional text or reasoning in your response.
+**Task**:
+- Simulate the following program with the given input.
+- **Only** provide the final output value returned by the program.
+- The output must be enclosed within `[Output]` and `[/Output]` tags.
+- Do **not** include any additional text, explanations, or reasoning.
 
-For example:
-- If the output is `42`, you should respond with: `[Output]42[/Output]`
+**Example**:
+If the program returns `42`, and the 42 is the reasoning result,  you should respond with:
+[Output]42[/Output]
 
-Now, here is the programming problem:
-
-programming problem:
+**Program**:
 {problem}
-
-programming input:
-{inputs}
-
-canonical_solution:
 {solution}
 
-Response:
+**Input**:
+{inputs}
+
+Response:  
 """
     return prompt
 
@@ -83,21 +79,20 @@ def reformat_jsonl(input_file, output_file):
             test_code = data["test"]
             inputs, expected_output = extract_inputs_and_expected(test_code)
 
-            if inputs:
-                # Generate the prompt
-                van_prompt = van_generate_prompt(inputs, data["prompt"], data["canonical_solution"])
-                crafted_prompt = craft_generate_prompt(inputs, data["prompt"], data["canonical_solution"])
-                # Create the new formatted JSON object
-                new_data = {
-                    "task_id": data["task_id"],
-                    "vanilla_prompt": van_prompt,
-                    "crafted_prompt": crafted_prompt,
-                    "expected": expected_output,
-                }
-                # print(data["task_id"] + " " + expected_output)
-                # Write the new JSONL object to the output file
-                json.dump(new_data, f_out)
-                f_out.write("\n")
+            # Generate the prompt
+            van_prompt = van_generate_prompt(inputs, data["prompt"], data["canonical_solution"])
+            crafted_prompt = craft_generate_prompt(inputs, data["prompt"], data["canonical_solution"])
+            # Create the new formatted JSON object
+            new_data = {
+                "task_id": data["task_id"],
+                "vanilla_prompt": van_prompt,
+                "crafted_prompt": crafted_prompt,
+                "expected": expected_output,
+            }
+            # print(data["task_id"] + " " + expected_output)
+            # Write the new JSONL object to the output file
+            json.dump(new_data, f_out)
+            f_out.write("\n")
 
 if __name__ == "__main__":
     args = sys.argv[1:]

@@ -44,7 +44,7 @@ def prompt_model(dataset, model_name = "deepseek-ai/deepseek-coder-6.7b-instruct
             prompt = entry['crafted_prompt']
         
         # TODO: prompt the model and get the response
-        rinputs = tokenizer(prompt, return_tensors="pt").to(model.device)
+        inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
         outputs = model.generate(**inputs,
                                 max_length=1024,
                                 temperature = 0,
