@@ -1,6 +1,7 @@
 import jsonlines
 import sys
 import torch
+from task2_cov import *
 from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 
 #####################################################
@@ -52,6 +53,7 @@ def prompt_model(dataset, model_name = "deepseek-ai/deepseek-coder-6.7b-instruct
 
         # TODO: process the response, generate coverage and save it to results
         coverage = ""
+        # coverage = cal_cov(entry["task_id"], entry["program"], response)
 
         print(f"Task_ID {entry['task_id']}:\nprompt:\n{prompt}\nresponse:\n{response}\ncoverage:\n{coverage}")
         results.append({
