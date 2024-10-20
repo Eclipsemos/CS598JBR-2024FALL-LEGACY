@@ -48,35 +48,35 @@ def cal_cov(ID, program, response):
     with open(test_filename, 'w') as f:
         f.write(response_with_import)
 
-    # Run the pytest command
-    try:
-        run_pytest_with_coverage(ID)
-    except subprocess.CalledProcessError as e:
-        print(f"Error running pytest: {e}")
-        return None
+    # # Run the pytest command
+    # try:
+    #     run_pytest_with_coverage(ID)
+    # except subprocess.CalledProcessError as e:
+    #     print(f"Error running pytest: {e}")
+    #     return None
 
-    # Read the generated JSON report
-    try:
-        print(report_filename)
-        with open(report_filename, 'r') as report_file:
-            coverage_data = json.load(report_file)
-            # Extract the total coverage percentage
-            total_coverage = coverage_data['totals']['percent_covered']
-            print(f"Code coverage: {total_coverage}%")
-    except FileNotFoundError:
-        print("Coverage report not found.")
-        return None
-    except KeyError:
-        print("Error reading coverage data.")
-        return None
+    # # Read the generated JSON report
+    # try:
+    #     print(report_filename)
+    #     with open(report_filename, 'r') as report_file:
+    #         coverage_data = json.load(report_file)
+    #         # Extract the total coverage percentage
+    #         total_coverage = coverage_data['totals']['percent_covered']
+    #         print(f"Code coverage: {total_coverage}%")
+    # except FileNotFoundError:
+    #     print("Coverage report not found.")
+    #     return None
+    # except KeyError:
+    #     print("Error reading coverage data.")
+    #     return None
 
-    # Clean up: Remove the generated .py files after running pytest
-    try:
-        os.remove(module_filename)
-        os.remove(test_filename)
-        print(f"Removed {module_filename} and {test_filename}")
-    except OSError as e:
-        print(f"Error removing files: {e}")
+    # # Clean up: Remove the generated .py files after running pytest
+    # try:
+    #     os.remove(module_filename)
+    #     os.remove(test_filename)
+    #     print(f"Removed {module_filename} and {test_filename}")
+    # except OSError as e:
+    #     print(f"Error removing files: {e}")
     
 
     
