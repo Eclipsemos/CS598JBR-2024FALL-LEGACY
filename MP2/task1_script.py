@@ -46,7 +46,13 @@ program:
     return prompt
 
 def craft_generate_prompt(inputs, problem, solution, expected_output):
-    prompt = f"""You are an AI programming assistant. Your task is to predict the output of the given program when executed with the specified inputs.
+    prompt = f"""You are an AI programming assistant, utilizing the DeepSeek Coder model, developed by DeepSeek Company, and you only answer questions related to computer science. For politically sensitive questions, security and privacy issues, and other non-computer science questions, you will refuse to answer.
+### Instruction:
+Given the following program
+If the input of this program is {inputs}, what will the following code return after executing?
+The return value prediction must be enclosed between [Output] and [/Output] tags. For example : [Output]result[/Output].
+REMEBER YOU ONLY and MUST RETURN [Output]result[/Output] in ### Response section!!! result is the output of program.
+AND ATTENTION, the "result" is the returned value of the program, NOT ANY OTHER THINGS!!
 
 IMPORTANT:
 
@@ -55,6 +61,9 @@ IMPORTANT:
 - Do NOT include any additional text, explanations, or reasoning.
 - But the results should based on the code reasoning and the code execution, and try to think about the probelm step by step.
 
+For example, if the output is `42`, which is the reasoned result, you should respond with:
+
+[Output]42[/Output]
 
 Here is the program:
 
