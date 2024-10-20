@@ -36,7 +36,7 @@ def run_pytest_with_coverage(id):
     command = [
         'pytest',
         f'--cov=cov',
-        f'--cov-report=json:Coverage/{id}_report.json',
+        f'--cov-report=json:Coverage/{id}report.json',
         "cov_test.py"
     ]
     
@@ -65,7 +65,7 @@ def cal_cov(ID, program, response):
     # Create the filename for the test file
     test_filename = f"cov_test.py"
     module_filename = f"cov.py"
-    report_filename = f"Coverage/{ID}_report.json"
+    report_filename = f"Coverage/{ID}report.json"
 
 
 
