@@ -9,8 +9,26 @@ def extract_python_code(text: str) -> str:
     
     # Join the extracted code blocks into a single string
     python_code = "\n".join(code_blocks).strip()
-    
-    return python_code
+
+    # Filter out lines that do not belong to function definitions or their bodies
+    lines = python_code.splitlines()
+    def_functions = []
+    inside_function = False
+
+    for line in lines:
+        # If line starts with 'def', begin capturing
+        if line.strip().startswith("def"):
+            inside_function = True
+            def_functions.append(line)
+        elif inside_function:
+            # Continue capturing lines until an empty line or non-indented line
+            if line.strip() == "" or not line.startswith((' ', '\t')):
+                inside_function = False
+            else:
+                def_functions.append(line)
+
+    # Join the filtered lines back into a single string
+    return "\n".join(def_functions).strip()
 
 
 def run_pytest_with_coverage(id):
@@ -63,7 +81,7 @@ def cal_cov(ID, program, response):
     # print(response)
 
 
-    response_with_import = f"from cov import *\n\n" + response
+    response_with_import = f"from cov import *\nimport pytest\n" + response
     
     with open(test_filename, 'w') as f:
         f.write(response_with_import)
