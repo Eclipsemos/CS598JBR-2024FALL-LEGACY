@@ -55,9 +55,6 @@ IMPORTANT:
 - Do NOT include any additional text, explanations, or reasoning.
 - But the results should based on the code reasoning and the code execution, and try to think about the probelm step by step.
 
-For example, if the output is `42`, which is the reasoned result, you should respond with:
-
-[Output]42[/Output]
 
 Here is the program:
 
