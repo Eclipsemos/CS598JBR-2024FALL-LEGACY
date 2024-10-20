@@ -40,8 +40,10 @@ def prompt_model(dataset, model_name = "deepseek-ai/deepseek-coder-6.7b-instruct
         #       the prompt including prompt, canonical_solution, test, etc.
         if vanilla == True:
             prompt = entry['vanilla_prompt']
+            task_id = entry["task_id"]+"_vanilla_"
         else:
             prompt = entry['crafted_prompt']
+            task_id = entry["task_id"]+"_crafted_"
         
         # TODO: prompt the model and get the response
         inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
@@ -53,7 +55,7 @@ def prompt_model(dataset, model_name = "deepseek-ai/deepseek-coder-6.7b-instruct
 
         # TODO: process the response, generate coverage and save it to results
         # coverage = ""
-        coverage = cal_cov(entry["task_id"], entry["program"], response)
+        coverage = cal_cov(task_id, entry["program"], response)
 
         print(f"Task_ID {entry['task_id']}:\nprompt:\n{prompt}\nresponse:\n{response}\ncoverage:\n{coverage}")
         results.append({
