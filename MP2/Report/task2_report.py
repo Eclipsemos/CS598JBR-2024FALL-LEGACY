@@ -1,15 +1,16 @@
 import os
 import json
 import re
+import pandas as pd
 
 def analyze_pytest_output(file_path):
     # Dictionary to store the analysis of each task
     analysis_results = {}
 
     # Regex to capture the number of passed or failed tests
-    test_result_pattern = re.compile(r"(\d+ failed, \d+ passed|\d+ passed)")
+    test_result_pattern = re.compile(r"(\d+ failed, \d+ passed|\d+ passed|\d+ failed)")
     # Regex to capture the Task_ID like HumanEval/10
-    task_id_pattern = re.compile(r"Task_ID (\w+/\d+):")
+    task_id_pattern = re.compile(r"Task ID: (\w+_\d+_\w+_)")
 
     task_id = None
     test_result = None
@@ -18,13 +19,13 @@ def analyze_pytest_output(file_path):
     with open(file_path, 'r') as file:
         lines = file.readlines()
 
-    case_counter = 0
 
     # Process each line
     for line in lines:
         # Search for Task_ID
         task_id_match = task_id_pattern.search(line)
         if task_id_match:
+            print(task_id_match)
             task_id = task_id_match.group(1)
 
         # Search for the test result (e.g., 2 passed or 1 failed, 4 passed)
@@ -34,18 +35,68 @@ def analyze_pytest_output(file_path):
 
         # If both task_id and test_result are found, save them and reset for the next case
         if task_id and test_result:
-            case_counter += 1
-            # Naming first 20 cases as "{Task_ID}_vanilla" and last 20 cases as "{Task_ID}_crafted"
-            if case_counter <= 20:
-                modified_task_id = f"{task_id}_vanilla"
-            else:
-                modified_task_id = f"{task_id}_crafted"
-                
-            analysis_results[modified_task_id] = test_result
+            analysis_results[task_id] = test_result
             task_id = None
             test_result = None
 
     return analysis_results
+
+
+def generate_table(results):
+    data = []
+    
+    # Process the results and create entries for vanilla and crafted
+    processed_tasks = set()
+
+    for task_id, result in results.items():
+        base_task_id = task_id.rsplit('_', 2)[0]  # Extract the task ID without "vanilla" or "crafted"
+        if base_task_id in processed_tasks:
+            continue
+        
+        vanilla_key = f"{base_task_id}_vanilla_"
+        crafted_key = f"{base_task_id}_crafted_"
+
+        # Extract results for vanilla and crafted cases
+        vanilla_result = results.get(vanilla_key, "N/A")
+        crafted_result = results.get(crafted_key, "N/A")
+        
+        # Calculate pass rates for both vanilla and crafted cases
+        vanilla_passes, vanilla_total = extract_pass_fail(vanilla_result)
+        crafted_passes, crafted_total = extract_pass_fail(crafted_result)
+
+        # Add data row with task ID, results and pass percentages
+        data.append({
+            "test case": base_task_id,
+            "vanilla (passed/total)": f"{vanilla_passes}/{vanilla_total}",
+            "vanilla pass%": f"{(vanilla_passes/vanilla_total)*100:.2f}%" if vanilla_total > 0 else "N/A",
+            "crafted (passed/total)": f"{crafted_passes}/{crafted_total}",
+            "crafted pass%": f"{(crafted_passes/crafted_total)*100:.2f}%" if crafted_total > 0 else "N/A"
+        })
+        
+        processed_tasks.add(base_task_id)
+
+    # Convert to pandas DataFrame
+    df = pd.DataFrame(data)
+    return df
+
+def extract_pass_fail(result_str):
+    # This function extracts number of passed and total tests from result string
+    match = re.match(r"(\d+) failed, (\d+) passed", result_str)
+    if match:
+        failed = int(match.group(1))
+        passed = int(match.group(2))
+        return passed, passed + failed
+    else:
+        match_passed = re.match(r"(\d+) passed", result_str)
+        if match_passed:
+            passed = int(match_passed.group(1))
+            return passed, passed
+        else:
+            match_failed = re.match(r"(\d+) failed", result_str)
+            if match_failed:
+                failed = int(match_failed.group(1))
+                return 0, failed
+    return 0, 0
 
 
 def parse_json(file_path):
@@ -127,7 +178,11 @@ if __name__ == "__main__":
 
     # Analyze the file
     results = analyze_pytest_output('cases.txt')
-
+    # print(len(results.items()))
     # Print the results
-    for task_id, result in results.items():
-        print(f"Task_ID: {task_id}, Result: {result}")
+    # for task_id, result in results.items():
+    #     print(f"Task_ID: {task_id}, Result: {result}")
+    
+    df = generate_table(results)
+
+    print(df)
