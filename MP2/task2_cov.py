@@ -48,9 +48,10 @@ def run_pytest_with_coverage(id, output_filename):
         print("Output:", result.stdout)
         print("Errors:", result.stderr)
 
-        with open(output_filename, 'w') as output_file:
+        with open(output_filename, 'a') as output_file:
                 output_file.write(f"Task ID: {id}\n")
                 output_file.write("\nPytest Output:\n")
+                output_file.write("\n" + "="*80 + "\n")  # Add a separator between logs
                 output_file.write(result.stdout)  # Write the standard output from pytest
 
         # Check if the command was successful
