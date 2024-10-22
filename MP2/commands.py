@@ -14,8 +14,8 @@ input_dataset = "selected_humaneval_171768020378419351865442221048553552766.json
 # Set up requirements for model prompting
 ! bash -x MP2/setup_models.sh
 %cd MP2/
-# Input & Output files generated
 seed = "171768020378419351865442221048553552766"
+# Input & Output files generated
 task_1_vanilla_json = "task_1_" + seed + "_vanilla.jsonl"
 task_1_vanilla_prompt_json = "task_1_" + seed + "_vanilla_prompt.jsonl"
 task_1_crafted_json = "task_1_" + seed + "_crafted.jsonl"
@@ -38,7 +38,6 @@ task_2_prompt_json = "task_2_" + seed + "_prompt.jsonl"
 ! python3 task2_script.py {input_dataset} {task_2_prompt_json}
 ! python3 task_2.py {task_2_prompt_json} "deepseek-ai/deepseek-coder-6.7b-instruct" {task_2_vanilla_json} "True" |& tee task_2_vanilla.log
 ! python3 task_2.py {task_2_prompt_json} "deepseek-ai/deepseek-coder-6.7b-instruct" {task_2_crafted_json} "False" |& tee task_2_crafted.log
-`
 #%cd ..
 
 # git push all nessacery files (e.g., *jsonl, *log) to your GitHub repository
