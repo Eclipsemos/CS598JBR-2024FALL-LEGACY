@@ -28,3 +28,1100 @@ Coverage JSON written to file Coverage/HumanEval_79_crafted_report.json
 ===================================== short test summary info ======================================
 FAILED cov_test.py::test_decimal_to_binary_negative - AssertionError: assert 'dbb1111db' == 'db-1...
 =================================== 1 failed, 2 passed in 0.03s ====================================
+Task ID: HumanEval_10_vanilla_
+
+Pytest Output:
+
+================================================================================
+======================================= test session starts ========================================
+platform linux -- Python 3.10.12, pytest-7.4.4, pluggy-1.5.0
+rootdir: /content/CS598JBR-Team-9/MP2
+plugins: cov-5.0.0, typeguard-4.3.0, anyio-3.7.1
+collected 2 items
+
+cov_test.py ..                                                                               [100%]
+
+---------- coverage: platform linux, python 3.10.12-final-0 ----------
+Coverage JSON written to file Coverage/HumanEval_10_vanilla_report.json
+
+
+======================================== 2 passed in 0.03s =========================================
+Task ID: HumanEval_114_vanilla_
+
+Pytest Output:
+
+================================================================================
+======================================= test session starts ========================================
+platform linux -- Python 3.10.12, pytest-7.4.4, pluggy-1.5.0
+rootdir: /content/CS598JBR-Team-9/MP2
+plugins: cov-5.0.0, typeguard-4.3.0, anyio-3.7.1
+collected 5 items
+
+cov_test.py ...F.                                                                            [100%]
+
+============================================= FAILURES =============================================
+______________________________________ test_minSubArraySum_4 _______________________________________
+
+    def test_minSubArraySum_4():
+>       assert minSubArraySum([-1, -2, -3, -4, -5]) == -1
+E       assert -15 == -1
+E        +  where -15 = minSubArraySum([-1, -2, -3, -4, -5])
+
+cov_test.py:10: AssertionError
+
+---------- coverage: platform linux, python 3.10.12-final-0 ----------
+Coverage JSON written to file Coverage/HumanEval_114_vanilla_report.json
+
+===================================== short test summary info ======================================
+FAILED cov_test.py::test_minSubArraySum_4 - assert -15 == -1
+=================================== 1 failed, 4 passed in 0.06s ====================================
+Task ID: HumanEval_23_vanilla_
+
+Pytest Output:
+
+================================================================================
+======================================= test session starts ========================================
+platform linux -- Python 3.10.12, pytest-7.4.4, pluggy-1.5.0
+rootdir: /content/CS598JBR-Team-9/MP2
+plugins: cov-5.0.0, typeguard-4.3.0, anyio-3.7.1
+collected 2 items
+
+cov_test.py ..                                                                               [100%]
+
+---------- coverage: platform linux, python 3.10.12-final-0 ----------
+Coverage JSON written to file Coverage/HumanEval_23_vanilla_report.json
+
+
+======================================== 2 passed in 0.04s =========================================
+Task ID: HumanEval_28_vanilla_
+
+Pytest Output:
+
+================================================================================
+======================================= test session starts ========================================
+platform linux -- Python 3.10.12, pytest-7.4.4, pluggy-1.5.0
+rootdir: /content/CS598JBR-Team-9/MP2
+plugins: cov-5.0.0, typeguard-4.3.0, anyio-3.7.1
+collected 3 items
+
+cov_test.py FFF                                                                              [100%]
+
+============================================= FAILURES =============================================
+______________________________________ test_concatenate_empty ______________________________________
+
+    def test_concatenate_empty():
+>       assert concatenate([]) == ''
+E       AssertionError: assert None == ''
+E        +  where None = concatenate([])
+
+cov_test.py:11: AssertionError
+__________________________________ test_concatenate_single_string __________________________________
+
+    def test_concatenate_single_string():
+>       assert concatenate(['a']) == 'a'
+E       AssertionError: assert None == 'a'
+E        +  where None = concatenate(['a'])
+
+cov_test.py:13: AssertionError
+________________________________ test_concatenate_multiple_strings _________________________________
+
+    def test_concatenate_multiple_strings():
+>       assert concatenate(['a', 'b', 'c']) == 'abc'
+E       AssertionError: assert None == 'abc'
+E        +  where None = concatenate(['a', 'b', 'c'])
+
+cov_test.py:15: AssertionError
+
+---------- coverage: platform linux, python 3.10.12-final-0 ----------
+Coverage JSON written to file Coverage/HumanEval_28_vanilla_report.json
+
+===================================== short test summary info ======================================
+FAILED cov_test.py::test_concatenate_empty - AssertionError: assert None == ''
+FAILED cov_test.py::test_concatenate_single_string - AssertionError: assert None == 'a'
+FAILED cov_test.py::test_concatenate_multiple_strings - AssertionError: assert None == 'abc'
+======================================== 3 failed in 0.04s =========================================
+Task ID: HumanEval_131_vanilla_
+
+Pytest Output:
+
+================================================================================
+======================================= test session starts ========================================
+platform linux -- Python 3.10.12, pytest-7.4.4, pluggy-1.5.0
+rootdir: /content/CS598JBR-Team-9/MP2
+plugins: cov-5.0.0, typeguard-4.3.0, anyio-3.7.1
+collected 5 items
+
+cov_test.py ....F                                                                            [100%]
+
+============================================= FAILURES =============================================
+_______________________________________ test_digits_negative _______________________________________
+
+    def test_digits_negative():
+>       assert digits(-123) == 1
+
+cov_test.py:12: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+n = -123
+
+    def digits(n):
+        """Given a positive integer n, return the product of the odd digits.
+        Return 0 if all digits are even.
+        For example:
+        digits(1)  == 1
+        digits(4)  == 0
+        digits(235) == 15
+        """
+    
+        product = 1
+        odd_count = 0
+        for digit in str(n):
+>           int_digit = int(digit)
+E           ValueError: invalid literal for int() with base 10: '-'
+
+cov.py:14: ValueError
+
+---------- coverage: platform linux, python 3.10.12-final-0 ----------
+Coverage JSON written to file Coverage/HumanEval_131_vanilla_report.json
+
+===================================== short test summary info ======================================
+FAILED cov_test.py::test_digits_negative - ValueError: invalid literal for int() with base 10: '-'
+=================================== 1 failed, 4 passed in 0.06s ====================================
+Task ID: HumanEval_88_vanilla_
+
+Pytest Output:
+
+================================================================================
+======================================= test session starts ========================================
+platform linux -- Python 3.10.12, pytest-7.4.4, pluggy-1.5.0
+rootdir: /content/CS598JBR-Team-9/MP2
+plugins: cov-5.0.0, typeguard-4.3.0, anyio-3.7.1
+collected 4 items
+
+cov_test.py ....                                                                             [100%]
+
+---------- coverage: platform linux, python 3.10.12-final-0 ----------
+Coverage JSON written to file Coverage/HumanEval_88_vanilla_report.json
+
+
+======================================== 4 passed in 0.04s =========================================
+Task ID: HumanEval_110_vanilla_
+
+Pytest Output:
+
+================================================================================
+======================================= test session starts ========================================
+platform linux -- Python 3.10.12, pytest-7.4.4, pluggy-1.5.0
+rootdir: /content/CS598JBR-Team-9/MP2
+plugins: cov-5.0.0, typeguard-4.3.0, anyio-3.7.1
+collected 6 items
+
+cov_test.py ......                                                                           [100%]
+
+---------- coverage: platform linux, python 3.10.12-final-0 ----------
+Coverage JSON written to file Coverage/HumanEval_110_vanilla_report.json
+
+
+======================================== 6 passed in 0.04s =========================================
+Task ID: HumanEval_34_vanilla_
+
+Pytest Output:
+
+================================================================================
+======================================= test session starts ========================================
+platform linux -- Python 3.10.12, pytest-7.4.4, pluggy-1.5.0
+rootdir: /content/CS598JBR-Team-9/MP2
+plugins: cov-5.0.0, typeguard-4.3.0, anyio-3.7.1
+collected 5 items
+
+cov_test.py .....                                                                            [100%]
+
+---------- coverage: platform linux, python 3.10.12-final-0 ----------
+Coverage JSON written to file Coverage/HumanEval_34_vanilla_report.json
+
+
+======================================== 5 passed in 0.04s =========================================
+Task ID: HumanEval_62_vanilla_
+
+Pytest Output:
+
+================================================================================
+======================================= test session starts ========================================
+platform linux -- Python 3.10.12, pytest-7.4.4, pluggy-1.5.0
+rootdir: /content/CS598JBR-Team-9/MP2
+plugins: cov-5.0.0, typeguard-4.3.0, anyio-3.7.1
+collected 5 items
+
+cov_test.py ..FF.                                                                            [100%]
+
+============================================= FAILURES =============================================
+________________________________________ test_derivative_3 _________________________________________
+
+    def test_derivative_3():
+>       assert derivative([0, 1, 2, 3]) == [1, 4]
+E       assert [1, 4, 9] == [1, 4]
+E         Left contains one more item: 9
+E         Use -v to get more diff
+
+cov_test.py:8: AssertionError
+________________________________________ test_derivative_4 _________________________________________
+
+    def test_derivative_4():
+>       assert derivative([1, 0, 1, 2, 3]) == [0, 2, 6]
+E       assert [0, 2, 6, 12] == [0, 2, 6]
+E         Left contains one more item: 12
+E         Use -v to get more diff
+
+cov_test.py:10: AssertionError
+
+---------- coverage: platform linux, python 3.10.12-final-0 ----------
+Coverage JSON written to file Coverage/HumanEval_62_vanilla_report.json
+
+===================================== short test summary info ======================================
+FAILED cov_test.py::test_derivative_3 - assert [1, 4, 9] == [1, 4]
+FAILED cov_test.py::test_derivative_4 - assert [0, 2, 6, 12] == [0, 2, 6]
+=================================== 2 failed, 3 passed in 0.04s ====================================
+Task ID: HumanEval_70_vanilla_
+
+Pytest Output:
+
+================================================================================
+======================================= test session starts ========================================
+platform linux -- Python 3.10.12, pytest-7.4.4, pluggy-1.5.0
+rootdir: /content/CS598JBR-Team-9/MP2
+plugins: cov-5.0.0, typeguard-4.3.0, anyio-3.7.1
+collected 1 item
+
+cov_test.py F                                                                                [100%]
+
+============================================= FAILURES =============================================
+______________________________________ test_strange_sort_list ______________________________________
+
+    def test_strange_sort_list():
+        assert strange_sort_list([1, 2, 3, 4]) == [1, 4, 2, 3]
+        assert strange_sort_list([5, 5, 5, 5]) == [5, 5, 5, 5]
+        assert strange_sort_list([]) == []
+        assert strange_sort_list([1]) == [1]
+        assert strange_sort_list([1, 2]) == [1, 2]
+>       assert strange_sort_list([2, 1]) == [2, 1]
+E       assert [1, 2] == [2, 1]
+E         At index 0 diff: 1 != 2
+E         Use -v to get more diff
+
+cov_test.py:9: AssertionError
+
+---------- coverage: platform linux, python 3.10.12-final-0 ----------
+Coverage JSON written to file Coverage/HumanEval_70_vanilla_report.json
+
+===================================== short test summary info ======================================
+FAILED cov_test.py::test_strange_sort_list - assert [1, 2] == [2, 1]
+======================================== 1 failed in 0.04s =========================================
+Task ID: HumanEval_115_vanilla_
+
+Pytest Output:
+
+================================================================================
+======================================= test session starts ========================================
+platform linux -- Python 3.10.12, pytest-7.4.4, pluggy-1.5.0
+rootdir: /content/CS598JBR-Team-9/MP2
+plugins: cov-5.0.0, typeguard-4.3.0, anyio-3.7.1
+collected 4 items
+
+cov_test.py ...F                                                                             [100%]
+
+============================================= FAILURES =============================================
+____________________________________ test_max_fill_constraints _____________________________________
+
+    def test_max_fill_constraints():
+        grid = [[0]*1000 for _ in range(1000)]
+        capacity = 10
+>       assert max_fill(grid, capacity) == 1000000
+E       assert 0 == 1000000
+E        +  where 0 = max_fill([[0, 0, 0, 0, 0, 0, ...], [0, 0, 0, 0, 0, 0, ...], [0, 0, 0, 0, 0, 0, ...], [0, 0, 0, 0, 0, 0, ...], [0, 0, 0, 0, 0, 0, ...], [0, 0, 0, 0, 0, 0, ...], ...], 10)
+
+cov_test.py:18: AssertionError
+
+---------- coverage: platform linux, python 3.10.12-final-0 ----------
+Coverage JSON written to file Coverage/HumanEval_115_vanilla_report.json
+
+===================================== short test summary info ======================================
+FAILED cov_test.py::test_max_fill_constraints - assert 0 == 1000000
+=================================== 1 failed, 3 passed in 0.05s ====================================
+Task ID: HumanEval_0_vanilla_
+
+Pytest Output:
+
+================================================================================
+======================================= test session starts ========================================
+platform linux -- Python 3.10.12, pytest-7.4.4, pluggy-1.5.0
+rootdir: /content/CS598JBR-Team-9/MP2
+plugins: cov-5.0.0, typeguard-4.3.0, anyio-3.7.1
+collected 5 items
+
+cov_test.py .....                                                                            [100%]
+
+---------- coverage: platform linux, python 3.10.12-final-0 ----------
+Coverage JSON written to file Coverage/HumanEval_0_vanilla_report.json
+
+
+======================================== 5 passed in 0.03s =========================================
+Task ID: HumanEval_56_vanilla_
+
+Pytest Output:
+
+================================================================================
+======================================= test session starts ========================================
+platform linux -- Python 3.10.12, pytest-7.4.4, pluggy-1.5.0
+rootdir: /content/CS598JBR-Team-9/MP2
+plugins: cov-5.0.0, typeguard-4.3.0, anyio-3.7.1
+collected 5 items
+
+cov_test.py .....                                                                            [100%]
+
+---------- coverage: platform linux, python 3.10.12-final-0 ----------
+Coverage JSON written to file Coverage/HumanEval_56_vanilla_report.json
+
+
+======================================== 5 passed in 0.03s =========================================
+Task ID: HumanEval_118_vanilla_
+
+Pytest Output:
+
+================================================================================
+======================================= test session starts ========================================
+platform linux -- Python 3.10.12, pytest-7.4.4, pluggy-1.5.0
+rootdir: /content/CS598JBR-Team-9/MP2
+plugins: cov-5.0.0, typeguard-4.3.0, anyio-3.7.1
+collected 1 item
+
+cov_test.py F                                                                                [100%]
+
+============================================= FAILURES =============================================
+______________________________________ test_get_closest_vowel ______________________________________
+
+    def test_get_closest_vowel():
+        assert get_closest_vowel("yogurt") == "u"
+        assert get_closest_vowel("FULL") == "U"
+        assert get_closest_vowel("quick") == ""
+        assert get_closest_vowel("ab") == ""
+        assert get_closest_vowel("") == ""
+        assert get_closest_vowel("a") == ""
+        assert get_closest_vowel("e") == ""
+        assert get_closest_vowel("i") == ""
+        assert get_closest_vowel("o") == ""
+        assert get_closest_vowel("u") == ""
+        assert get_closest_vowel("AEIOU") == ""
+        assert get_closest_vowel("aeiou") == ""
+>       assert get_closest_vowel("QWERTY") == ""
+E       AssertionError: assert 'E' == ''
+E         + E
+
+cov_test.py:16: AssertionError
+
+---------- coverage: platform linux, python 3.10.12-final-0 ----------
+Coverage JSON written to file Coverage/HumanEval_118_vanilla_report.json
+
+===================================== short test summary info ======================================
+FAILED cov_test.py::test_get_closest_vowel - AssertionError: assert 'E' == ''
+======================================== 1 failed in 0.05s =========================================
+Task ID: HumanEval_87_vanilla_
+
+Pytest Output:
+
+================================================================================
+======================================= test session starts ========================================
+platform linux -- Python 3.10.12, pytest-7.4.4, pluggy-1.5.0
+rootdir: /content/CS598JBR-Team-9/MP2
+plugins: cov-5.0.0, typeguard-4.3.0, anyio-3.7.1
+collected 3 items
+
+cov_test.py ...                                                                              [100%]
+
+---------- coverage: platform linux, python 3.10.12-final-0 ----------
+Coverage JSON written to file Coverage/HumanEval_87_vanilla_report.json
+
+
+======================================== 3 passed in 0.03s =========================================
+Task ID: HumanEval_75_vanilla_
+
+Pytest Output:
+
+================================================================================
+======================================= test session starts ========================================
+platform linux -- Python 3.10.12, pytest-7.4.4, pluggy-1.5.0
+rootdir: /content/CS598JBR-Team-9/MP2
+plugins: cov-5.0.0, typeguard-4.3.0, anyio-3.7.1
+collected 1 item
+
+cov_test.py .                                                                                [100%]
+
+---------- coverage: platform linux, python 3.10.12-final-0 ----------
+Coverage JSON written to file Coverage/HumanEval_75_vanilla_report.json
+
+
+======================================== 1 passed in 1.33s =========================================
+Task ID: HumanEval_55_vanilla_
+
+Pytest Output:
+
+================================================================================
+======================================= test session starts ========================================
+platform linux -- Python 3.10.12, pytest-7.4.4, pluggy-1.5.0
+rootdir: /content/CS598JBR-Team-9/MP2
+plugins: cov-5.0.0, typeguard-4.3.0, anyio-3.7.1
+collected 6 items
+
+cov_test.py ......                                                                           [100%]
+
+---------- coverage: platform linux, python 3.10.12-final-0 ----------
+Coverage JSON written to file Coverage/HumanEval_55_vanilla_report.json
+
+
+======================================== 6 passed in 0.04s =========================================
+Task ID: HumanEval_52_vanilla_
+
+Pytest Output:
+
+================================================================================
+======================================= test session starts ========================================
+platform linux -- Python 3.10.12, pytest-7.4.4, pluggy-1.5.0
+rootdir: /content/CS598JBR-Team-9/MP2
+plugins: cov-5.0.0, typeguard-4.3.0, anyio-3.7.1
+collected 4 items
+
+cov_test.py ....                                                                             [100%]
+
+---------- coverage: platform linux, python 3.10.12-final-0 ----------
+Coverage JSON written to file Coverage/HumanEval_52_vanilla_report.json
+
+
+======================================== 4 passed in 0.03s =========================================
+Task ID: HumanEval_157_vanilla_
+
+Pytest Output:
+
+================================================================================
+======================================= test session starts ========================================
+platform linux -- Python 3.10.12, pytest-7.4.4, pluggy-1.5.0
+rootdir: /content/CS598JBR-Team-9/MP2
+plugins: cov-5.0.0, typeguard-4.3.0, anyio-3.7.1
+collected 8 items
+
+cov_test.py ........                                                                         [100%]
+
+---------- coverage: platform linux, python 3.10.12-final-0 ----------
+Coverage JSON written to file Coverage/HumanEval_157_vanilla_report.json
+
+
+======================================== 8 passed in 0.04s =========================================
+Task ID: HumanEval_79_vanilla_
+
+Pytest Output:
+
+================================================================================
+======================================= test session starts ========================================
+platform linux -- Python 3.10.12, pytest-7.4.4, pluggy-1.5.0
+rootdir: /content/CS598JBR-Team-9/MP2
+plugins: cov-5.0.0, typeguard-4.3.0, anyio-3.7.1
+collected 5 items
+
+cov_test.py .F..F                                                                            [100%]
+
+============================================= FAILURES =============================================
+____________________________________ test_decimal_to_binary_32 _____________________________________
+
+    def test_decimal_to_binary_32():
+>       assert decimalbinary(32) == "db100000db"
+E       NameError: name 'decimalbinary' is not defined
+
+cov_test.py:6: NameError
+_________________________________ test_decimal_to_binary_negative __________________________________
+
+    def test_decimal_to_binary_negative():
+>       assert decimal_to_binary(-1) == "db11111db"  # binary representation of negative number
+E       AssertionError: assert 'dbb1db' == 'db11111db'
+E         - db11111db
+E         + dbb1db
+
+cov_test.py:12: AssertionError
+
+---------- coverage: platform linux, python 3.10.12-final-0 ----------
+Coverage JSON written to file Coverage/HumanEval_79_vanilla_report.json
+
+===================================== short test summary info ======================================
+FAILED cov_test.py::test_decimal_to_binary_32 - NameError: name 'decimalbinary' is not defined
+FAILED cov_test.py::test_decimal_to_binary_negative - AssertionError: assert 'dbb1db' == 'db11111db'
+=================================== 2 failed, 3 passed in 0.04s ====================================
+Task ID: HumanEval_10_crafted_
+
+Pytest Output:
+
+================================================================================
+======================================= test session starts ========================================
+platform linux -- Python 3.10.12, pytest-7.4.4, pluggy-1.5.0
+rootdir: /content/CS598JBR-Team-9/MP2
+plugins: cov-5.0.0, typeguard-4.3.0, anyio-3.7.1
+collected 2 items
+
+cov_test.py ..                                                                               [100%]
+
+---------- coverage: platform linux, python 3.10.12-final-0 ----------
+Coverage JSON written to file Coverage/HumanEval_10_crafted_report.json
+
+
+======================================== 2 passed in 0.03s =========================================
+Task ID: HumanEval_114_crafted_
+
+Pytest Output:
+
+================================================================================
+======================================= test session starts ========================================
+platform linux -- Python 3.10.12, pytest-7.4.4, pluggy-1.5.0
+rootdir: /content/CS598JBR-Team-9/MP2
+plugins: cov-5.0.0, typeguard-4.3.0, anyio-3.7.1
+collected 5 items
+
+cov_test.py ..F.F                                                                            [100%]
+
+============================================= FAILURES =============================================
+________________________________ test_minSubArraySum_mixed_numbers _________________________________
+
+    def test_minSubArraySum_mixed_numbers():
+>       assert minSubArraySum([2, -3, 4, -1, 2, 4]) == 1
+E       assert -3 == 1
+E        +  where -3 = minSubArraySum([2, -3, 4, -1, 2, 4])
+
+cov_test.py:8: AssertionError
+_________________________________ test_minSubArraySum_empty_array __________________________________
+
+    def test_minSubArraySum_empty_array():
+>       assert minSubArraySum([]) == 0  # assuming the function should return 0 for an empty array
+
+cov_test.py:12: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+nums = []
+
+    def minSubArraySum(nums):
+        """
+        Given an array of integers nums, find the minimum sum of any non-empty sub-array
+        of nums.
+        Example
+        minSubArraySum([2, 3, 4, 1, 2, 4]) == 1
+        minSubArraySum([-1, -2, -3]) == -6
+        """
+    
+        max_sum = 0
+        s = 0
+        for num in nums:
+            s += -num
+            if (s < 0):
+                s = 0
+            max_sum = max(s, max_sum)
+        if max_sum == 0:
+>           max_sum = max(-i for i in nums)
+E           ValueError: max() arg is an empty sequence
+
+cov.py:19: ValueError
+
+---------- coverage: platform linux, python 3.10.12-final-0 ----------
+Coverage JSON written to file Coverage/HumanEval_114_crafted_report.json
+
+===================================== short test summary info ======================================
+FAILED cov_test.py::test_minSubArraySum_mixed_numbers - assert -3 == 1
+FAILED cov_test.py::test_minSubArraySum_empty_array - ValueError: max() arg is an empty sequence
+=================================== 2 failed, 3 passed in 0.04s ====================================
+Task ID: HumanEval_23_crafted_
+
+Pytest Output:
+
+================================================================================
+======================================= test session starts ========================================
+platform linux -- Python 3.10.12, pytest-7.4.4, pluggy-1.5.0
+rootdir: /content/CS598JBR-Team-9/MP2
+plugins: cov-5.0.0, typeguard-4.3.0, anyio-3.7.1
+collected 3 items
+
+cov_test.py ...                                                                              [100%]
+
+---------- coverage: platform linux, python 3.10.12-final-0 ----------
+Coverage JSON written to file Coverage/HumanEval_23_crafted_report.json
+
+
+======================================== 3 passed in 0.03s =========================================
+Task ID: HumanEval_28_crafted_
+
+Pytest Output:
+
+================================================================================
+======================================= test session starts ========================================
+platform linux -- Python 3.10.12, pytest-7.4.4, pluggy-1.5.0
+rootdir: /content/CS598JBR-Team-9/MP2
+plugins: cov-5.0.0, typeguard-4.3.0, anyio-3.7.1
+collected 3 items
+
+cov_test.py ...                                                                              [100%]
+
+---------- coverage: platform linux, python 3.10.12-final-0 ----------
+Coverage JSON written to file Coverage/HumanEval_28_crafted_report.json
+
+
+======================================== 3 passed in 0.03s =========================================
+Task ID: HumanEval_131_crafted_
+
+Pytest Output:
+
+================================================================================
+======================================= test session starts ========================================
+platform linux -- Python 3.10.12, pytest-7.4.4, pluggy-1.5.0
+rootdir: /content/CS598JBR-Team-9/MP2
+plugins: cov-5.0.0, typeguard-4.3.0, anyio-3.7.1
+collected 5 items
+
+cov_test.py ....F                                                                            [100%]
+
+============================================= FAILURES =============================================
+_______________________________________ test_digits_negative _______________________________________
+
+    def test_digits_negative():
+>       assert digits(-123) == 1
+
+cov_test.py:12: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+n = -123
+
+    def digits(n):
+        """Given a positive integer n, return the product of the odd digits.
+        Return 0 if all digits are even.
+        For example:
+        digits(1)  == 1
+        digits(4)  == 0
+        digits(235) == 15
+        """
+    
+        product = 1
+        odd_count = 0
+        for digit in str(n):
+>           int_digit = int(digit)
+E           ValueError: invalid literal for int() with base 10: '-'
+
+cov.py:14: ValueError
+
+---------- coverage: platform linux, python 3.10.12-final-0 ----------
+Coverage JSON written to file Coverage/HumanEval_131_crafted_report.json
+
+===================================== short test summary info ======================================
+FAILED cov_test.py::test_digits_negative - ValueError: invalid literal for int() with base 10: '-'
+=================================== 1 failed, 4 passed in 0.04s ====================================
+Task ID: HumanEval_88_crafted_
+
+Pytest Output:
+
+================================================================================
+======================================= test session starts ========================================
+platform linux -- Python 3.10.12, pytest-7.4.4, pluggy-1.5.0
+rootdir: /content/CS598JBR-Team-9/MP2
+plugins: cov-5.0.0, typeguard-4.3.0, anyio-3.7.1
+collected 4 items
+
+cov_test.py ....                                                                             [100%]
+
+---------- coverage: platform linux, python 3.10.12-final-0 ----------
+Coverage JSON written to file Coverage/HumanEval_88_crafted_report.json
+
+
+======================================== 4 passed in 0.05s =========================================
+Task ID: HumanEval_110_crafted_
+
+Pytest Output:
+
+================================================================================
+======================================= test session starts ========================================
+platform linux -- Python 3.10.12, pytest-7.4.4, pluggy-1.5.0
+rootdir: /content/CS598JBR-Team-9/MP2
+plugins: cov-5.0.0, typeguard-4.3.0, anyio-3.7.1
+collected 4 items
+
+cov_test.py ....                                                                             [100%]
+
+---------- coverage: platform linux, python 3.10.12-final-0 ----------
+Coverage JSON written to file Coverage/HumanEval_110_crafted_report.json
+
+
+======================================== 4 passed in 0.03s =========================================
+Task ID: HumanEval_34_crafted_
+
+Pytest Output:
+
+================================================================================
+======================================= test session starts ========================================
+platform linux -- Python 3.10.12, pytest-7.4.4, pluggy-1.5.0
+rootdir: /content/CS598JBR-Team-9/MP2
+plugins: cov-5.0.0, typeguard-4.3.0, anyio-3.7.1
+collected 6 items
+
+cov_test.py ....FF                                                                           [100%]
+
+============================================= FAILURES =============================================
+______________________________ test_unique_list_with_negative_numbers ______________________________
+
+    def test_unique_list_with_negative_numbers():
+>       assert unique([-1, -1, -2, -2, -3, -3]) == [-1, -2, -3]
+E       assert [-3, -2, -1] == [-1, -2, -3]
+E         At index 0 diff: -3 != -1
+E         Use -v to get more diff
+
+cov_test.py:12: AssertionError
+____________________ test_unique_list_with_mixed_positive_and_negative_numbers _____________________
+
+    def test_unique_list_with_mixed_positive_and_negative_numbers():
+>       assert unique([-1, -1, 2, 2, -3, -3]) == [-1, 2, -3]
+E       assert [-3, -1, 2] == [-1, 2, -3]
+E         At index 0 diff: -3 != -1
+E         Use -v to get more diff
+
+cov_test.py:14: AssertionError
+
+---------- coverage: platform linux, python 3.10.12-final-0 ----------
+Coverage JSON written to file Coverage/HumanEval_34_crafted_report.json
+
+===================================== short test summary info ======================================
+FAILED cov_test.py::test_unique_list_with_negative_numbers - assert [-3, -2, -1] == [-1, -2, -3]
+FAILED cov_test.py::test_unique_list_with_mixed_positive_and_negative_numbers - assert [-3, -1, 2...
+=================================== 2 failed, 4 passed in 0.07s ====================================
+Task ID: HumanEval_62_crafted_
+
+Pytest Output:
+
+================================================================================
+======================================= test session starts ========================================
+platform linux -- Python 3.10.12, pytest-7.4.4, pluggy-1.5.0
+rootdir: /content/CS598JBR-Team-9/MP2
+plugins: cov-5.0.0, typeguard-4.3.0, anyio-3.7.1
+collected 10 items
+
+cov_test.py ..FF.FFFFF                                                                       [100%]
+
+============================================= FAILURES =============================================
+________________________________________ test_derivative_3 _________________________________________
+
+    def test_derivative_3():
+>       assert derivative([0, 1, 2, 3]) == [2, 6]
+E       assert [1, 4, 9] == [2, 6]
+E         At index 0 diff: 1 != 2
+E         Left contains one more item: 9
+E         Use -v to get more diff
+
+cov_test.py:8: AssertionError
+________________________________________ test_derivative_4 _________________________________________
+
+    def test_derivative_4():
+>       assert derivative([1, 0, 1, 2, 3]) == [0, 2, 6]
+E       assert [0, 2, 6, 12] == [0, 2, 6]
+E         Left contains one more item: 12
+E         Use -v to get more diff
+
+cov_test.py:10: AssertionError
+________________________________________ test_derivative_6 _________________________________________
+
+    def test_derivative_6():
+>       assert derivative([1, 1]) == [2]
+E       assert [1] == [2]
+E         At index 0 diff: 1 != 2
+E         Use -v to get more diff
+
+cov_test.py:14: AssertionError
+________________________________________ test_derivative_7 _________________________________________
+
+    def test_derivative_7():
+>       assert derivative([1, 1, 1]) == [2, 3]
+E       assert [1, 2] == [2, 3]
+E         At index 0 diff: 1 != 2
+E         Use -v to get more diff
+
+cov_test.py:16: AssertionError
+________________________________________ test_derivative_8 _________________________________________
+
+    def test_derivative_8():
+>       assert derivative([1, 1, 1, 1]) == [2, 3, 4]
+E       assert [1, 2, 3] == [2, 3, 4]
+E         At index 0 diff: 1 != 2
+E         Use -v to get more diff
+
+cov_test.py:18: AssertionError
+________________________________________ test_derivative_9 _________________________________________
+
+    def test_derivative_9():
+>       assert derivative([0, 0, 0]) == []
+E       assert [0, 0] == []
+E         Left contains 2 more items, first extra item: 0
+E         Use -v to get more diff
+
+cov_test.py:20: AssertionError
+________________________________________ test_derivative_10 ________________________________________
+
+    def test_derivative_10():
+>       assert derivative([0, 0, 1, 2, 3]) == [0, 2, 6]
+E       assert [0, 2, 6, 12] == [0, 2, 6]
+E         Left contains one more item: 12
+E         Use -v to get more diff
+
+cov_test.py:22: AssertionError
+
+---------- coverage: platform linux, python 3.10.12-final-0 ----------
+Coverage JSON written to file Coverage/HumanEval_62_crafted_report.json
+
+===================================== short test summary info ======================================
+FAILED cov_test.py::test_derivative_3 - assert [1, 4, 9] == [2, 6]
+FAILED cov_test.py::test_derivative_4 - assert [0, 2, 6, 12] == [0, 2, 6]
+FAILED cov_test.py::test_derivative_6 - assert [1] == [2]
+FAILED cov_test.py::test_derivative_7 - assert [1, 2] == [2, 3]
+FAILED cov_test.py::test_derivative_8 - assert [1, 2, 3] == [2, 3, 4]
+FAILED cov_test.py::test_derivative_9 - assert [0, 0] == []
+FAILED cov_test.py::test_derivative_10 - assert [0, 2, 6, 12] == [0, 2, 6]
+=================================== 7 failed, 3 passed in 0.07s ====================================
+Task ID: HumanEval_70_crafted_
+
+Pytest Output:
+
+================================================================================
+======================================= test session starts ========================================
+platform linux -- Python 3.10.12, pytest-7.4.4, pluggy-1.5.0
+rootdir: /content/CS598JBR-Team-9/MP2
+plugins: cov-5.0.0, typeguard-4.3.0, anyio-3.7.1
+collected 3 items
+
+cov_test.py .F.                                                                              [100%]
+
+============================================= FAILURES =============================================
+_____________________________________ test_strange_sort_list_2 _____________________________________
+
+    def test_strange_sort_list_2():
+>       assert strangelist([5, 5, 5, 5]) == [5, 5, 5, 5]
+E       NameError: name 'strangelist' is not defined
+
+cov_test.py:6: NameError
+
+---------- coverage: platform linux, python 3.10.12-final-0 ----------
+Coverage JSON written to file Coverage/HumanEval_70_crafted_report.json
+
+===================================== short test summary info ======================================
+FAILED cov_test.py::test_strange_sort_list_2 - NameError: name 'strangelist' is not defined
+=================================== 1 failed, 2 passed in 0.03s ====================================
+Task ID: HumanEval_115_crafted_
+
+Pytest Output:
+
+================================================================================
+======================================= test session starts ========================================
+platform linux -- Python 3.10.12, pytest-7.4.4, pluggy-1.5.0
+rootdir: /content/CS598JBR-Team-9/MP2
+plugins: cov-5.0.0, typeguard-4.3.0, anyio-3.7.1
+collected 4 items
+
+cov_test.py ....                                                                             [100%]
+
+---------- coverage: platform linux, python 3.10.12-final-0 ----------
+Coverage JSON written to file Coverage/HumanEval_115_crafted_report.json
+
+
+======================================== 4 passed in 0.05s =========================================
+Task ID: HumanEval_0_crafted_
+
+Pytest Output:
+
+================================================================================
+======================================= test session starts ========================================
+platform linux -- Python 3.10.12, pytest-7.4.4, pluggy-1.5.0
+rootdir: /content/CS598JBR-Team-9/MP2
+plugins: cov-5.0.0, typeguard-4.3.0, anyio-3.7.1
+collected 5 items
+
+cov_test.py .....                                                                            [100%]
+
+---------- coverage: platform linux, python 3.10.12-final-0 ----------
+Coverage JSON written to file Coverage/HumanEval_0_crafted_report.json
+
+
+======================================== 5 passed in 0.06s =========================================
+Task ID: HumanEval_56_crafted_
+
+Pytest Output:
+
+================================================================================
+======================================= test session starts ========================================
+platform linux -- Python 3.10.12, pytest-7.4.4, pluggy-1.5.0
+rootdir: /content/CS598JBR-Team-9/MP2
+plugins: cov-5.0.0, typeguard-4.3.0, anyio-3.7.1
+collected 5 items
+
+cov_test.py .....                                                                            [100%]
+
+---------- coverage: platform linux, python 3.10.12-final-0 ----------
+Coverage JSON written to file Coverage/HumanEval_56_crafted_report.json
+
+
+======================================== 5 passed in 0.04s =========================================
+Task ID: HumanEval_118_crafted_
+
+Pytest Output:
+
+================================================================================
+======================================= test session starts ========================================
+platform linux -- Python 3.10.12, pytest-7.4.4, pluggy-1.5.0
+rootdir: /content/CS598JBR-Team-9/MP2
+plugins: cov-5.0.0, typeguard-4.3.0, anyio-3.7.1
+collected 1 item
+
+cov_test.py .                                                                                [100%]
+
+---------- coverage: platform linux, python 3.10.12-final-0 ----------
+Coverage JSON written to file Coverage/HumanEval_118_crafted_report.json
+
+
+======================================== 1 passed in 0.04s =========================================
+Task ID: HumanEval_87_crafted_
+
+Pytest Output:
+
+================================================================================
+======================================= test session starts ========================================
+platform linux -- Python 3.10.12, pytest-7.4.4, pluggy-1.5.0
+rootdir: /content/CS598JBR-Team-9/MP2
+plugins: cov-5.0.0, typeguard-4.3.0, anyio-3.7.1
+collected 3 items
+
+cov_test.py ...                                                                              [100%]
+
+---------- coverage: platform linux, python 3.10.12-final-0 ----------
+Coverage JSON written to file Coverage/HumanEval_87_crafted_report.json
+
+
+======================================== 3 passed in 0.03s =========================================
+Task ID: HumanEval_75_crafted_
+
+Pytest Output:
+
+================================================================================
+======================================= test session starts ========================================
+platform linux -- Python 3.10.12, pytest-7.4.4, pluggy-1.5.0
+rootdir: /content/CS598JBR-Team-9/MP2
+plugins: cov-5.0.0, typeguard-4.3.0, anyio-3.7.1
+collected 6 items
+
+cov_test.py ..F...                                                                           [100%]
+
+============================================= FAILURES =============================================
+_____________________________________ test_is_multiply_prime_3 _____________________________________
+
+    def test_is_multiply_prime_3():
+>       assert is_multiply_prime(90) == True
+E       assert False == True
+E        +  where False = is_multiply_prime(90)
+
+cov_test.py:8: AssertionError
+
+---------- coverage: platform linux, python 3.10.12-final-0 ----------
+Coverage JSON written to file Coverage/HumanEval_75_crafted_report.json
+
+===================================== short test summary info ======================================
+FAILED cov_test.py::test_is_multiply_prime_3 - assert False == True
+=================================== 1 failed, 5 passed in 1.55s ====================================
+Task ID: HumanEval_55_crafted_
+
+Pytest Output:
+
+================================================================================
+======================================= test session starts ========================================
+platform linux -- Python 3.10.12, pytest-7.4.4, pluggy-1.5.0
+rootdir: /content/CS598JBR-Team-9/MP2
+plugins: cov-5.0.0, typeguard-4.3.0, anyio-3.7.1
+collected 4 items
+
+cov_test.py ....                                                                             [100%]
+
+---------- coverage: platform linux, python 3.10.12-final-0 ----------
+Coverage JSON written to file Coverage/HumanEval_55_crafted_report.json
+
+
+======================================== 4 passed in 0.03s =========================================
+Task ID: HumanEval_52_crafted_
+
+Pytest Output:
+
+================================================================================
+======================================= test session starts ========================================
+platform linux -- Python 3.10.12, pytest-7.4.4, pluggy-1.5.0
+rootdir: /content/CS598JBR-Team-9/MP2
+plugins: cov-5.0.0, typeguard-4.3.0, anyio-3.7.1
+collected 4 items
+
+cov_test.py ...F                                                                             [100%]
+
+============================================= FAILURES =============================================
+______________________________ test_below_threshold_threshold_is_min _______________________________
+
+    def test_below_threshold_threshold_is_min():
+>       assert below_threshold([1, 2, 3], 0)
+E       assert False
+E        +  where False = below_threshold([1, 2, 3], 0)
+
+cov_test.py:10: AssertionError
+
+---------- coverage: platform linux, python 3.10.12-final-0 ----------
+Coverage JSON written to file Coverage/HumanEval_52_crafted_report.json
+
+===================================== short test summary info ======================================
+FAILED cov_test.py::test_below_threshold_threshold_is_min - assert False
+=================================== 1 failed, 3 passed in 0.04s ====================================
+Task ID: HumanEval_157_crafted_
+
+Pytest Output:
+
+================================================================================
+======================================= test session starts ========================================
+platform linux -- Python 3.10.12, pytest-7.4.4, pluggy-1.5.0
+rootdir: /content/CS598JBR-Team-9/MP2
+plugins: cov-5.0.0, typeguard-4.3.0, anyio-3.7.1
+collected 8 items
+
+cov_test.py ........                                                                         [100%]
+
+---------- coverage: platform linux, python 3.10.12-final-0 ----------
+Coverage JSON written to file Coverage/HumanEval_157_crafted_report.json
+
+
+======================================== 8 passed in 0.04s =========================================
+Task ID: HumanEval_79_crafted_
+
+Pytest Output:
+
+================================================================================
+======================================= test session starts ========================================
+platform linux -- Python 3.10.12, pytest-7.4.4, pluggy-1.5.0
+rootdir: /content/CS598JBR-Team-9/MP2
+plugins: cov-5.0.0, typeguard-4.3.0, anyio-3.7.1
+collected 3 items
+
+cov_test.py ..F                                                                              [100%]
+
+============================================= FAILURES =============================================
+_________________________________ test_decimal_to_binary_negative __________________________________
+
+    def test_decimal_to_binary_negative():
+>       assert decimal_to_binary(-15) == "db-1111db"
+E       AssertionError: assert 'dbb1111db' == 'db-1111db'
+E         - db-1111db
+E         ?   ^
+E         + dbb1111db
+E         ?   ^
+
+cov_test.py:9: AssertionError
+
+---------- coverage: platform linux, python 3.10.12-final-0 ----------
+Coverage JSON written to file Coverage/HumanEval_79_crafted_report.json
+
+===================================== short test summary info ======================================
+FAILED cov_test.py::test_decimal_to_binary_negative - AssertionError: assert 'dbb1111db' == 'db-1...
+=================================== 1 failed, 2 passed in 0.04s ====================================
