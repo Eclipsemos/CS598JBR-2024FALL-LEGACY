@@ -1,5 +1,52 @@
 import os
 import json
+import re
+
+def analyze_pytest_output(file_path):
+    # Dictionary to store the analysis of each task
+    analysis_results = {}
+
+    # Regex to capture the number of passed or failed tests
+    test_result_pattern = re.compile(r"(\d+ failed, \d+ passed|\d+ passed)")
+    # Regex to capture the Task_ID like HumanEval/10
+    task_id_pattern = re.compile(r"Task_ID (\w+/\d+):")
+
+    task_id = None
+    test_result = None
+
+    # Open the file and process each line
+    with open(file_path, 'r') as file:
+        lines = file.readlines()
+
+    case_counter = 0
+
+    # Process each line
+    for line in lines:
+        # Search for Task_ID
+        task_id_match = task_id_pattern.search(line)
+        if task_id_match:
+            task_id = task_id_match.group(1)
+
+        # Search for the test result (e.g., 2 passed or 1 failed, 4 passed)
+        test_result_match = test_result_pattern.search(line)
+        if test_result_match:
+            test_result = test_result_match.group(0)
+
+        # If both task_id and test_result are found, save them and reset for the next case
+        if task_id and test_result:
+            case_counter += 1
+            # Naming first 20 cases as "{Task_ID}_vanilla" and last 20 cases as "{Task_ID}_crafted"
+            if case_counter <= 20:
+                modified_task_id = f"{task_id}_vanilla"
+            else:
+                modified_task_id = f"{task_id}_crafted"
+                
+            analysis_results[modified_task_id] = test_result
+            task_id = None
+            test_result = None
+
+    return analysis_results
+
 
 def parse_json(file_path):
     """Parse a JSON file and return the percent_covered."""
@@ -72,7 +119,15 @@ def generate_report(directory):
 
 if __name__ == "__main__":
     # Specify the directory where the JSON files are located
-    coverage_directory = "Coverage"
+    coverage_directory = "../Coverage"
     
     # Generate the report
     generate_report(coverage_directory)
+
+
+    # Analyze the file
+    results = analyze_pytest_output('cases.txt')
+
+    # Print the results
+    for task_id, result in results.items():
+        print(f"Task_ID: {task_id}, Result: {result}")
