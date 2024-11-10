@@ -3,6 +3,7 @@ import sys
 import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 from script2 import *
+import re
 
 #####################################################
 # Please finish all TODOs in this file for MP3/task_2;
@@ -51,8 +52,14 @@ def prompt_model(dataset, model_name = "deepseek-ai/deepseek-coder-6.7b-instruct
                                 do_sample=False,)
         response = tokenizer.decode(outputs[0], skip_special_tokens=True)
 
+
         # TODO: process the response and save it to results
-        verdict = False
+        # fetch <start>Buggy<end>, 
+        # if it is Buggy, it is correct
+        # if it is correct, it is incorrect
+        
+        match = re.findall(r"\<start\>(.*?)\<end\>", response)
+        verdict = match == "Buggy"
 
         print(f"Task_ID {entry['task_id']}:\nprompt:\n{prompt}\nresponse:\n{response}\nis_expected:\n{verdict}")
         results.append({
