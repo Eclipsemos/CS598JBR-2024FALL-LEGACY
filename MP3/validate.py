@@ -83,20 +83,21 @@ def validate_repo(repo_name):
         f"selected_humanevalpack_{seed_value}.jsonl",
         f"task_2_{seed_value}_vanilla.jsonl",
         f"task_2_{seed_value}_crafted.jsonl",
-        f"selected_codenet_{seed_value}.jsonl",
-        f"task_1_response_{seed_value}.jsonl",
-        f"task_1_evaluation_{seed_value}.jsonl",
+        f"selected_humanevalx_python_{seed_value}.jsonl",
+        f"selected_humanevalx_java_{seed_value}.jsonl",
+        f"task_1_{seed_value}_vanilla.jsonl",
+        f"task_1_{seed_value}_crafted.jsonl",
     ]
 
     required_files = [
         "task_1.py",
-        "evaluation_translation.py",
         "task_2.py",
-        "codenet_dataset_generation.log",
-        "task_1.log",
-        "evaluation_translation.log",
+        "humanevalx_dataset_generation.log",
+        "task_1_vanilla.log",
+        "task_1_crafted.log",
         "task_2_vanilla.log",
         "task_2_crafted.log",
+        "humanevalpack_dataset_generation.log",
     ]
 
     all_required_files = required_files + jsonl_files_with_seed
@@ -147,9 +148,10 @@ def validate_jsonl_files(repo_name):
         f"selected_humanevalpack_{seed_value}.jsonl",
         f"task_2_{seed_value}_vanilla.jsonl",
         f"task_2_{seed_value}_crafted.jsonl",
-        f"selected_codenet_{seed_value}.jsonl",
-        f"task_1_response_{seed_value}.jsonl",
-        f"task_1_evaluation_{seed_value}.jsonl",
+        f"selected_humanevalx_python_{seed_value}.jsonl",
+        f"selected_humanevalx_java_{seed_value}.jsonl",
+        f"task_1_{seed_value}_vanilla.jsonl",
+        f"task_1_{seed_value}_crafted.jsonl",
     ]
 
     for file in jsonl_files_with_seed:

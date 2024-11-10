@@ -31,6 +31,7 @@ def convert_to_humanevalpack(input_file, output_file):
             print(f"Task_ID {task_id} not found in humanevalpack_data")
             continue
 
+        new_entry["task_id"] = entry["task_id"]
         converted_dataset.append(new_entry)
 
     write_jsonl(output_file, converted_dataset)
