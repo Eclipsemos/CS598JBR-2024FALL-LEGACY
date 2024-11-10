@@ -2,6 +2,7 @@ import jsonlines
 import sys
 import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
+from script2 import *
 
 #####################################################
 # Please finish all TODOs in this file for MP3/task_2;
@@ -16,16 +17,39 @@ def prompt_model(dataset, model_name = "deepseek-ai/deepseek-coder-6.7b-instruct
     
     # TODO: download the model
     # TODO: load the model with quantization
-    
+    tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code=True)
+    # model = AutoModelForCausalLM.from_pretrained("deepseek-ai/deepseek-coder-6.7b-base", trust_remote_code=True, torch_dtype=torch.bfloat16).cuda()
+    model = AutoModelForCausalLM.from_pretrained(
+            pretrained_model_name_or_path= model_name,
+            device_map='auto',
+            torch_dtype=torch.bfloat16,
+            # temperature = 0,
+            # do_sample=False,
+            quantization_config=BitsAndBytesConfig(
+                load_in_4bit=True,
+            bnb_4bit_compute_dtype=torch.bfloat16,
+                bnb_4bit_use_double_quant=True,
+                bnb_4bit_quant_type='nf4'
+            ),
+        )
+        
     results = []
     for entry in dataset:
         # TODO: create prompt for the model
         # Tip : Use can use any data from the dataset to create 
         #       the prompt including prompt, canonical_solution, test, etc.
-        prompt = ""
+        if vanilla:
+            prompt = van_generate_prompt(entry)
+        else:
+            prompt = craft_generate_prompt(entry)
         
         # TODO: prompt the model and get the response
-        response = ""
+        inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
+        outputs = model.generate(**inputs,
+                                max_length=1024,
+                                temperature = 0,
+                                do_sample=False,)
+        response = tokenizer.decode(outputs[0], skip_special_tokens=True)
 
         # TODO: process the response and save it to results
         verdict = False
