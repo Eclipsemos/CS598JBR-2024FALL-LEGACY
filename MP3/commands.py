@@ -34,10 +34,10 @@ task_1_crafted_jsonl = "task_1_" + seed + "_crafted.jsonl"
 #! python3 task_1.py {input_python_dataset} "deepseek-ai/deepseek-coder-6.7b-instruct" {task_1_crafted_jsonl} "False" |& tee task_1_crafted.log
 
 # Task 2
-#humaneval_input_dataset = "selected_humaneval_" + seed + ".jsonl"
+humaneval_input_dataset = "selected_humaneval_" + seed + ".jsonl"
 
 # The {humaneval_input_dataset} is the JSON file consisting of 20 unique programs for your group that you generated in MP1 (selected_humaneval_[seed].jsonl)
-#! python3 humanevalpack_dataset_generation.py {humaneval_input_dataset} |& tee humanevalpack_dataset_generation.log
+! python3 humanevalpack_dataset_generation.py {humaneval_input_dataset} |& tee humanevalpack_dataset_generation.log
 
 #task_2_vanilla_json = "task_2_" + seed + "_vanilla.jsonl"
 #task_2_crafted_json = "task_2_" + seed + "_crafted.jsonl"
