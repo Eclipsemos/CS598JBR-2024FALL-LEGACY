@@ -15,11 +15,13 @@ def save_file(content, file_path):
         file.write(content)
 
 def extract_java_code(response):
-    """Extract Java code between [Java Start] and [Java End]"""
-    match = re.search(r'\[Java Start\](.*?)\[Java End\]', response, re.DOTALL)
-    if match:
-        return match.group(1).strip()
+    """Extract Java code between the last [Java Start] and [Java End]"""
+    matches = re.findall(r'\[Java Start\](.*?)\[Java End\]', response, re.DOTALL)
+    if matches:
+        # Get the last match, which should be the actual Java code
+        return matches[-1].strip()
     return None
+
 
 def run_java_code(java_code, test_code):
     """Save Java code to a file, compile it, and run it with provided tests.
