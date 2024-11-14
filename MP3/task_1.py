@@ -35,6 +35,8 @@ def run_java_code(java_code, test_code):
 
     with open("TempTest.java", "w") as f:
         f.write(combined_code)
+        print("Combine Java Code:\n", combined_code)
+
 
     try:
         # Compile the Java code
