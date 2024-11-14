@@ -23,25 +23,28 @@ def extract_java_code(response):
 
 def run_java_code(java_code, test_code):
     """Save Java code to a file, compile it, and run it with provided tests"""
+    # Create the Solution class wrapping the extracted Java code
+    solution_code = "public class Solution {\n" + java_code + "\n}\n"
+    
+    # Combine Solution and Main classes into a single file
+    combined_code = solution_code + "\n" + test_code.replace("public class Main", "import java.util.*;\npublic class Main")
+
     with open("TempTest.java", "w") as f:
-        f.write("public class TempTest {\n")
-        f.write(java_code + "\n")
-        f.write("public static void main(String[] args) {\n")
-        f.write(test_code + "\n")
-        f.write("}\n}")
+        f.write(combined_code)
 
     try:
         # Compile the Java code
         subprocess.check_output(["javac", "TempTest.java"], stderr=subprocess.STDOUT)
         
         # Run the compiled Java code
-        result = subprocess.run(["java", "TempTest"], capture_output=True, text=True)
+        result = subprocess.run(["java", "Main"], capture_output=True, text=True)
         
-        # Check if the test output contains "success" or any specific pass criteria
-        return "success" in result.stdout.lower()
+        # Check if the test output contains "All tests passed" to confirm success
+        return "All tests passed" in result.stdout
     except subprocess.CalledProcessError as e:
         print(f"Error running Java code: {e.output}")
         return False
+
 
 def read_jsonl(file_path):
     """Read .jsonl file and return the dataset"""
