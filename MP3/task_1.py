@@ -67,17 +67,18 @@ def write_jsonl(results, file_path):
         for item in results:
             f.write(item)
 
-def load_datasets(python_dataset_path, java_dataset_path):
-    """Load both Python and Java datasets, mapping task_id to Java test cases"""
-    python_dataset = read_jsonl(python_dataset_path)
-    java_dataset = read_jsonl(java_dataset_path)
+def load_datasets(python_file, java_file):
+    # Load Python dataset
+    with jsonlines.open(python_file) as reader:
+        python_dataset = [entry for entry in reader]
     
-    # Map each task_id in the Java dataset to its test code
-    java_tests = {entry['task_id']: entry['test'] for entry in java_dataset}
+    # Load Java dataset
+    with jsonlines.open(java_file) as reader:
+        java_dataset = [entry for entry in reader]
     
-    return python_dataset, java_tests
+    return python_dataset, java_dataset
 
-def prompt_model(dataset, model_name="deepseek-ai/deepseek-coder-6.7b-instruct", vanilla=True):
+def prompt_model(python_dataset, java_dataset, model_name="deepseek-ai/deepseek-coder-6.7b-instruct", vanilla=True):
     print(f"Working with {model_name} prompt type {vanilla}...")
     
     # Initialize tokenizer and model with quantization
@@ -95,27 +96,27 @@ def prompt_model(dataset, model_name="deepseek-ai/deepseek-coder-6.7b-instruct",
     )
     
     results = []
-    for entry in dataset:
-        # Retrieve declaration, prompt, and test from dataset
-        declaration = entry.get("declaration", "")
-        prompt = van_generate_prompt(entry) if vanilla else craft_generate_prompt(entry)
+    for py_entry, java_entry in zip(python_dataset, java_dataset):
+        # Retrieve declaration and test code from Java dataset entry
+        declaration = java_entry.get("declaration", "")
+        test_code = java_entry.get("test", "")
+
+        # Generate prompt from Python dataset entry
+        prompt = van_generate_prompt(py_entry) if vanilla else craft_generate_prompt(py_entry)
 
         # Generate Java code from model
         inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
         outputs = model.generate(**inputs, max_length=1024, temperature=0, do_sample=False)
         java_code = tokenizer.decode(outputs[0], skip_special_tokens=True)
 
-        # Retrieve the test code from the input dataset (e.g., `input_java_test`)
-        test_code = entry.get("test", "")
-
-        # Run the combined Java code using the declaration and test code
+        # Run the Java code using the declaration and test code
         is_correct = run_java_code(declaration, java_code, test_code)
 
-        print(f"Task_ID {entry['task_id']}:\nPrompt:\n{prompt}\nGenerated Java Code:\n{java_code}\nIs Correct:\n{is_correct}")
+        print(f"Task_ID {py_entry['task_id']}:\nPrompt:\n{prompt}\nGenerated Java Code:\n{java_code}\nIs Correct:\n{is_correct}")
         
         # Save results for each task
         results.append({
-            "task_id": entry["task_id"],
+            "task_id": py_entry["task_id"],
             "prompt": prompt,
             "response": java_code,
             "is_correct": is_correct
@@ -124,39 +125,38 @@ def prompt_model(dataset, model_name="deepseek-ai/deepseek-coder-6.7b-instruct",
     return results
 
 
+
 if __name__ == "__main__":
     """
     This Python script is to run prompt LLMs for code translation.
     Usage:
-    `python3 task_1.py <input_python_dataset> <model> <output_file> <if_vanilla>`|& tee prompt.log
+    `python3 task_1.py <input_python_dataset> <model> <output_file> <if_vanilla>` |& tee prompt.log
 
     Inputs:
-    - <input_python_dataset>: A `.jsonl` file, which should be your team's dataset containing 20 HumanEval problems.
-    - <model>: Specify the model to use. Options are "deepseek-ai/deepseek-coder-6.7b-base" or "deepseek-ai/deepseek-coder-6.7b-instruct".
-    - <output_file>: A `.jsonl` file where the results will be saved.
-    - <if_vanilla>: Set to 'True' or 'False' to enable vanilla prompt
-    
-    Outputs:
-    - You can check <output_file> for detailed information.
+    - <input_python_dataset>: A `.jsonl` file with 20 HumanEval problems.
+    - <model>: Model to use, like "deepseek-ai/deepseek-coder-6.7b-instruct".
+    - <output_file>: Output `.jsonl` file for results.
+    - <if_vanilla>: Set to 'True' or 'False' for vanilla prompt type.
     """
+    
     args = sys.argv[1:]
     input_python_dataset = args[0]
     model = args[1]
     output_file = args[2]
-    if_vanilla = args[3]  # True or False
+    if_vanilla = args[3]  # "True" or "False"
 
     if not input_python_dataset.endswith(".jsonl"):
         raise ValueError(f"{input_python_dataset} should be a `.jsonl` file!")
-
+    
     if not output_file.endswith(".jsonl"):
         raise ValueError(f"{output_file} should be a `.jsonl` file!")
-
+    
     vanilla = True if if_vanilla == "True" else False
 
     # Load both Python and Java datasets
     input_java_dataset = input_python_dataset.replace("python", "java")
-    python_dataset, java_tests = load_datasets(input_python_dataset, input_java_dataset)
+    python_dataset, java_dataset = load_datasets(input_python_dataset, input_java_dataset)
 
     # Generate results using the Java test cases for verification
-    results = prompt_model(python_dataset, java_tests, model, vanilla)
+    results = prompt_model(python_dataset, java_dataset, model, vanilla)
     write_jsonl(results, output_file)
