@@ -24,35 +24,30 @@ def extract_java_code(response):
 
 
 def run_java_code(java_code, test_code):
-    """Save Java code to a file, compile it, and run it with provided tests.
-    Returns True if tests pass, False if compilation or execution fails."""
-    # Ensure imports are correctly placed at the top
+    """Save Java code to Main.java, compile it, and run it with provided tests.
+    Returns True if tests pass; False if compilation or execution fails."""
+    # Prepare combined Java code with Solution and Main classes
     imports = "import java.util.*;\n\n"
-    
-    # Create the Solution class wrapping the extracted Java code
     solution_code = "public class Solution {\n" + java_code + "\n}\n"
-    
-    # Combine imports, Solution, and Main classes into a single file
-    combined_code = imports + solution_code + "\n" + test_code.replace("public class Main", "public class Main")
+    combined_code = imports + solution_code + "\n" + test_code
 
-    with open("TempTest.java", "w") as f:
+    # Write to Main.java
+    with open("Main.java", "w") as f:
         f.write(combined_code)
-        print("Combine Java Code:\n", combined_code)
-
 
     try:
-        # Compile the Java code
-        subprocess.check_output(["javac", "TempTest.java"], stderr=subprocess.STDOUT)
+        # Compile Main.java
+        subprocess.check_output(["javac", "Main.java"], stderr=subprocess.STDOUT)
         
         # Run the compiled Java code
         result = subprocess.run(["java", "Main"], capture_output=True, text=True)
         
-        # Check if the test output contains "All tests passed" to confirm success
+        # Check if all tests passed
         return "All tests passed" in result.stdout
     except subprocess.CalledProcessError as e:
         print(f"Compilation or execution error: {e.output.decode()}")
-        # Return False to indicate the test did not pass due to an error
         return False
+
 
 
 
