@@ -7,10 +7,11 @@ from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 from script1 import van_generate_prompt, craft_generate_prompt  # assuming these functions are in script1
 
 def extract_java_code(response):
-    """Extract Java code between [Java Start] and [Java End] tags."""
-    match = re.search(r'\[Java Start\](.*?)\[Java End\]', response, re.DOTALL)
-    if match:
-        return match.group(1).strip()
+    """Extract Java code between the last [Java Start] and [Java End]"""
+    matches = re.findall(r'\[Java Start\](.*?)\[Java End\]', response, re.DOTALL)
+    if matches:
+        # Get the last match, which should be the actual Java code
+        return matches[-1].strip()
     return None
 
 def run_java_code(declaration, java_code, test_code):
@@ -23,6 +24,7 @@ def run_java_code(declaration, java_code, test_code):
     # Write to Main.java
     with open("Main.java", "w") as f:
         f.write(combined_code)
+        print(combined_code)
 
     try:
         # Compile Main.java
@@ -92,7 +94,7 @@ def prompt_model(python_dataset, java_dataset, model_name="deepseek-ai/deepseek-
             # Run the Java code using the declaration and test code
             is_correct = run_java_code(declaration, java_code, test_code)
 
-        print(f"Task_ID {py_entry['task_id']}:\nPrompt:\n{prompt}\nGenerated Java Code:\n{java_code}\nIs Correct:\n{is_correct}")
+        # print(f"Task_ID {py_entry['task_id']}:\nPrompt:\n{prompt}\nGenerated Java Code:\n{java_code}\nIs Correct:\n{is_correct}")
         
         # Save results for each task
         results.append({
