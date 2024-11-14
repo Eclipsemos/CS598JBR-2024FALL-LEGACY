@@ -6,36 +6,24 @@ import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 from script1 import van_generate_prompt, craft_generate_prompt  # assuming these functions are in script1
 
-#####################################################
-# Please finish all TODOs in this file for MP3/task_1
-#####################################################
-
-def save_file(content, file_path):
-    with open(file_path, 'w') as file:
-        file.write(content)
-
 def extract_java_code(response):
-    """Extract Java code between the last [Java Start] and [Java End]"""
-    matches = re.findall(r'\[Java Start\](.*?)\[Java End\]', response, re.DOTALL)
-    if matches:
-        # Get the last match, which should be the actual Java code
-        return matches[-1].strip()
+    """Extract Java code between [Java Start] and [Java End] tags."""
+    match = re.search(r'\[Java Start\](.*?)\[Java End\]', response, re.DOTALL)
+    if match:
+        return match.group(1).strip()
     return None
 
-
 def run_java_code(declaration, java_code, test_code):
-    """Combines the declaration, Java code, and test code, compiles them, and runs the tests.
+    """Combine declaration, Java code, and test code, compile, and run tests.
     Returns True if tests pass; False if compilation or execution fails."""
     
-    # Combine declaration, solution, and test code
+    # Combine declaration, Java solution, and test code
     combined_code = declaration + "\n\n" + java_code + "\n\n" + test_code
-    
-    # Write the complete code to Main.java
+
+    # Write to Main.java
     with open("Main.java", "w") as f:
         f.write(combined_code)
-        print("combine_code:")
-        print("")
-        print(combine_code)
+
     try:
         # Compile Main.java
         subprocess.check_output(["javac", "Main.java"], stderr=subprocess.STDOUT)
@@ -43,29 +31,11 @@ def run_java_code(declaration, java_code, test_code):
         # Run the compiled Java code
         result = subprocess.run(["java", "Main"], capture_output=True, text=True)
         
-        # Check if all tests passed
+        # Check if all tests passed by evaluating the output
         return "All tests passed" in result.stdout
     except subprocess.CalledProcessError as e:
         print(f"Compilation or execution error: {e.output.decode()}")
         return False
-
-
-
-
-
-def read_jsonl(file_path):
-    """Read .jsonl file and return the dataset"""
-    dataset = []
-    with jsonlines.open(file_path) as reader:
-        for line in reader: 
-            dataset.append(line)
-    return dataset
-
-def write_jsonl(results, file_path):
-    """Write results to a .jsonl file"""
-    with jsonlines.open(file_path, "w") as f:
-        for item in results:
-            f.write(item)
 
 def load_datasets(python_file, java_file):
     # Load Python dataset
@@ -77,6 +47,10 @@ def load_datasets(python_file, java_file):
         java_dataset = [entry for entry in reader]
     
     return python_dataset, java_dataset
+
+def write_jsonl(results, file_path):
+    with jsonlines.open(file_path, "w") as writer:
+        writer.write_all(results)
 
 def prompt_model(python_dataset, java_dataset, model_name="deepseek-ai/deepseek-coder-6.7b-instruct", vanilla=True):
     print(f"Working with {model_name} prompt type {vanilla}...")
@@ -107,10 +81,16 @@ def prompt_model(python_dataset, java_dataset, model_name="deepseek-ai/deepseek-
         # Generate Java code from model
         inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
         outputs = model.generate(**inputs, max_length=1024, temperature=0, do_sample=False)
-        java_code = tokenizer.decode(outputs[0], skip_special_tokens=True)
+        raw_response = tokenizer.decode(outputs[0], skip_special_tokens=True)
 
-        # Run the Java code using the declaration and test code
-        is_correct = run_java_code(declaration, java_code, test_code)
+        # Extract Java code between [Java Start] and [Java End] tags
+        java_code = extract_java_code(raw_response)
+        if java_code is None:
+            print(f"Failed to extract Java code for task {py_entry['task_id']}")
+            is_correct = False
+        else:
+            # Run the Java code using the declaration and test code
+            is_correct = run_java_code(declaration, java_code, test_code)
 
         print(f"Task_ID {py_entry['task_id']}:\nPrompt:\n{prompt}\nGenerated Java Code:\n{java_code}\nIs Correct:\n{is_correct}")
         
@@ -123,8 +103,6 @@ def prompt_model(python_dataset, java_dataset, model_name="deepseek-ai/deepseek-
         })
     
     return results
-
-
 
 if __name__ == "__main__":
     """
