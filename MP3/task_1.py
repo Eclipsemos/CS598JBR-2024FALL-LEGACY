@@ -22,12 +22,16 @@ def extract_java_code(response):
     return None
 
 def run_java_code(java_code, test_code):
-    """Save Java code to a file, compile it, and run it with provided tests"""
+    """Save Java code to a file, compile it, and run it with provided tests.
+    Returns True if tests pass, False if compilation or execution fails."""
+    # Ensure imports are correctly placed at the top
+    imports = "import java.util.*;\n\n"
+    
     # Create the Solution class wrapping the extracted Java code
     solution_code = "public class Solution {\n" + java_code + "\n}\n"
     
-    # Combine Solution and Main classes into a single file
-    combined_code = solution_code + "\n" + test_code.replace("public class Main", "import java.util.*;\npublic class Main")
+    # Combine imports, Solution, and Main classes into a single file
+    combined_code = imports + solution_code + "\n" + test_code.replace("public class Main", "public class Main")
 
     with open("TempTest.java", "w") as f:
         f.write(combined_code)
@@ -42,8 +46,10 @@ def run_java_code(java_code, test_code):
         # Check if the test output contains "All tests passed" to confirm success
         return "All tests passed" in result.stdout
     except subprocess.CalledProcessError as e:
-        print(f"Error running Java code: {e.output}")
+        print(f"Compilation or execution error: {e.output.decode()}")
+        # Return False to indicate the test did not pass due to an error
         return False
+
 
 
 def read_jsonl(file_path):
