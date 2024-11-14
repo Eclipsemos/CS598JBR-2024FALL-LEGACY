@@ -23,18 +23,19 @@ def extract_java_code(response):
     return None
 
 
-def run_java_code(java_code, test_code):
-    """Save Java code to Main.java, compile it, and run it with provided tests.
+def run_java_code(declaration, java_code, test_code):
+    """Combines the declaration, Java code, and test code, compiles them, and runs the tests.
     Returns True if tests pass; False if compilation or execution fails."""
-    # Prepare combined Java code with Solution and Main classes
-    imports = "import java.util.*;\n\n"
-    solution_code = "public class Solution {\n" + java_code + "\n}\n"
-    combined_code = imports + solution_code + "\n" + test_code
-
-    # Write to Main.java
+    
+    # Combine declaration, solution, and test code
+    combined_code = declaration + "\n\n" + java_code + "\n\n" + test_code
+    
+    # Write the complete code to Main.java
     with open("Main.java", "w") as f:
         f.write(combined_code)
-
+        print("combine_code:")
+        print("")
+        print(combine_code)
     try:
         # Compile Main.java
         subprocess.check_output(["javac", "Main.java"], stderr=subprocess.STDOUT)
@@ -47,6 +48,7 @@ def run_java_code(java_code, test_code):
     except subprocess.CalledProcessError as e:
         print(f"Compilation or execution error: {e.output.decode()}")
         return False
+
 
 
 
@@ -75,52 +77,52 @@ def load_datasets(python_dataset_path, java_dataset_path):
     
     return python_dataset, java_tests
 
-def prompt_model(python_dataset, java_tests, model_name="deepseek-ai/deepseek-coder-6.7b-instruct", vanilla=True):
-    """Prompt the model with Python dataset and evaluate responses with Java tests"""
+def prompt_model(dataset, model_name="deepseek-ai/deepseek-coder-6.7b-instruct", vanilla=True):
+    print(f"Working with {model_name} prompt type {vanilla}...")
+    
+    # Initialize tokenizer and model with quantization
     tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code=True)
     model = AutoModelForCausalLM.from_pretrained(
-            pretrained_model_name_or_path= model_name,
-            device_map='auto',
-            torch_dtype=torch.bfloat16,
-            quantization_config=BitsAndBytesConfig(
-                load_in_4bit=True,
-                bnb_4bit_compute_dtype=torch.bfloat16,
-                bnb_4bit_use_double_quant=True,
-                bnb_4bit_quant_type='nf4'
-            ),
-        )
+        pretrained_model_name_or_path=model_name,
+        device_map="auto",
+        torch_dtype=torch.bfloat16,
+        quantization_config=BitsAndBytesConfig(
+            load_in_4bit=True,
+            bnb_4bit_compute_dtype=torch.bfloat16,
+            bnb_4bit_use_double_quant=True,
+            bnb_4bit_quant_type="nf4"
+        ),
+    )
     
     results = []
-    for entry in python_dataset:
-        # Generate prompt and model response
+    for entry in dataset:
+        # Retrieve declaration, prompt, and test from dataset
+        declaration = entry.get("declaration", "")
         prompt = van_generate_prompt(entry) if vanilla else craft_generate_prompt(entry)
-        
+
+        # Generate Java code from model
         inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
         outputs = model.generate(**inputs, max_length=1024, temperature=0, do_sample=False)
-        response = tokenizer.decode(outputs[0], skip_special_tokens=True)
-        
-        # Extract Java code
-        java_code = extract_java_code(response)
-        
-        # Retrieve the corresponding Java test case
-        task_id = entry['task_id']
-        java_test_code = java_tests.get(task_id, "").replace("python", "java")
-        
-        # Run the Java code with the test cases and determine if it passed
-        if java_code and java_test_code:
-            is_correct = run_java_code(java_code, java_test_code)
-        else:
-            is_correct = False
+        java_code = tokenizer.decode(outputs[0], skip_special_tokens=True)
 
-        # Append results
+        # Retrieve the test code from the input dataset (e.g., `input_java_test`)
+        test_code = entry.get("test", "")
+
+        # Run the combined Java code using the declaration and test code
+        is_correct = run_java_code(declaration, java_code, test_code)
+
+        print(f"Task_ID {entry['task_id']}:\nPrompt:\n{prompt}\nGenerated Java Code:\n{java_code}\nIs Correct:\n{is_correct}")
+        
+        # Save results for each task
         results.append({
-            "task_id": task_id,
+            "task_id": entry["task_id"],
             "prompt": prompt,
-            "response": response,
+            "response": java_code,
             "is_correct": is_correct
         })
     
     return results
+
 
 if __name__ == "__main__":
     """
