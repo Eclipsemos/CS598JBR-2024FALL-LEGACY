@@ -1,8 +1,4 @@
-Downloading data:   0%|          | 0.00/105k [00:00<?, ?B/s]Downloading data: 100%|██████████| 105k/105k [00:00<00:00, 928kB/s]Downloading data: 100%|██████████| 105k/105k [00:00<00:00, 925kB/s]
-Generating test split:   0%|          | 0/164 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 164/164 [00:00<00:00, 4458.55 examples/s]
 Entire python dataset saved to humanevalx-python.jsonl
-Downloading data:   0%|          | 0.00/117k [00:00<?, ?B/s]Downloading data: 100%|██████████| 117k/117k [00:00<00:00, 1.19MB/s]
-Generating test split:   0%|          | 0/164 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 164/164 [00:00<00:00, 49572.34 examples/s]
 Entire java dataset saved to humanevalx-java.jsonl
 20 saved to selected_humanevalx_python_171768020378419351865442221048553552766.jsonl
 20 saved to selected_humanevalx_java_171768020378419351865442221048553552766.jsonl
