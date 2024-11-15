@@ -7,12 +7,18 @@ from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 from script1 import van_generate_prompt, craft_generate_prompt  # assuming these functions are in script1
 
 def extract_java_code(response):
-    """Extract Java code between the last [Java Start] and [Java End]"""
+    """Extract Java code between the last [Java Start] and [Java End], or between ```java and ``` if necessary."""
     matches = re.findall(r'\[Java Start\](.*?)\[Java End\]', response, re.DOTALL)
     if matches:
-        # Get the last match, which should be the actual Java code
+        # Check if the content is "and"; if it's not, return the last match
+        if matches[-1].strip() != "and":
+            return matches[-1].strip()
+    # If no match found or content is "and", try with ```java and ```
+    matches = re.findall(r'```java(.*?)```', response, re.DOTALL)
+    if matches:
         return matches[-1].strip()
     return None
+
 
 def run_java_code(java_code, test_code):
     """Combine declaration, Java code, and test code, compile, and run tests.
