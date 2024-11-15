@@ -13,7 +13,7 @@ def van_generate_prompt(entry):
 {declaration}
 {solution}
 
-Is the above code buggy or correct? Please explain your step by step reasoning. The prediction should be enclosed within <start> and <end> tags. For example: <start>Buggy<end> if the solution is not correct
+Is the above code buggy or correct? Please explain your step by step reasoning. The prediction should be enclosed within <start> and <end> tags. For example: <start>Buggy<end> if the above code buggy
 #### NOTICE: The prediction should be enclosed within <start> and <end> tags ONLY, and the predciont should be either "Correct" or "Buggy" ####
 ### Response:
 
@@ -30,7 +30,7 @@ def craft_generate_prompt(entry):
 {declaration}
 {solution}
 
-Is the above code buggy or correct? Please explain your step by step reasoning. The prediction should be enclosed within <start> and <end> tags. For example: <start>Buggy<end>
+Is the above code buggy or correct? Please explain your step by step reasoning. The prediction should be enclosed within <start> and <end> tags. For example: <start>Buggy<end> if the above code buggy
 #### NOTICE: The prediction should be enclosed within <start> and <end> tags ONLY, and the predciont should be either "Correct" or "Buggy" ####
 Think through the translation process step-by-step, try to execute the code and fine the possible error.
 And provide a detailed, step-by-step explanation of your reasoning process to justify your determination.
