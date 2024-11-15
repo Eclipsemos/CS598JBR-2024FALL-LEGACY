@@ -14,17 +14,17 @@ def extract_java_code(response):
         return matches[-1].strip()
     return None
 
-def run_java_code(declaration, java_code, test_code):
+def run_java_code(java_code, test_code):
     """Combine declaration, Java code, and test code, compile, and run tests.
     Returns True if tests pass; False if compilation or execution fails."""
     
     # Combine declaration, Java solution, and test code
-    combined_code = declaration + "\n\n" + java_code + "\n\n" + test_code
+    combined_code = java_code + "\n\n" + test_code
 
     # Write to Main.java
     with open("Main.java", "w") as f:
         f.write(combined_code)
-        print("declaration:"+ declaration)
+        #print("declaration:"+ declaration)
         print("java_code:"+ java_code)
         print("test_code:"+ test_code)
 
@@ -80,7 +80,7 @@ def prompt_model(python_dataset, java_dataset, model_name="deepseek-ai/deepseek-
         test_code = java_entry.get("test", "")
 
         # Generate prompt from Python dataset entry
-        prompt = van_generate_prompt(py_entry) if vanilla else craft_generate_prompt(py_entry)
+        prompt = van_generate_prompt(py_entry, declaration) if vanilla else craft_generate_prompt(py_entry, declaration)
 
         # Generate Java code from model
         inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
@@ -94,7 +94,7 @@ def prompt_model(python_dataset, java_dataset, model_name="deepseek-ai/deepseek-
             is_correct = False
         else:
             # Run the Java code using the declaration and test code
-            is_correct = run_java_code(declaration, java_code, test_code)
+            is_correct = run_java_code(java_code, test_code)
 
         # print(f"Task_ID {py_entry['task_id']}:\nPrompt:\n{prompt}\nGenerated Java Code:\n{java_code}\nIs Correct:\n{is_correct}")
         

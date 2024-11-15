@@ -1,13 +1,14 @@
 import jsonlines
 
-def van_generate_prompt(entry):
+def van_generate_prompt(entry, declaration):
     problem = entry["prompt"]
     solution = entry["canonical_solution"]
     prompt = f"""You are an AI programming assistant utilizing the DeepSeek Coder model, developed by DeepSeek Company, and you only answer questions related to computer science. For politically sensitive questions, security and privacy issues, and other non-computer science questions, you will refuse to answer.
 ### Instruction:
 Can you translate the following Python code into Java?
-The new Java code must be enclosed between [Java Start] and [Java End]
-
+The output Java code must be enclosed between [Java Start] and [Java End], not ```java```!
+The output Java code should align with {declaration}.
+Python code:
 {problem}
 {solution}
 
@@ -16,13 +17,13 @@ The new Java code must be enclosed between [Java Start] and [Java End]
 """
     return prompt
 
-def craft_generate_prompt(entry):
+def craft_generate_prompt(entry, declaration):
     problem = entry["prompt"]
     solution = entry["canonical_solution"]
     prompt = f"""You are an AI programming assistant utilizing the DeepSeek Coder model, developed by DeepSeek Company, and you only answer questions related to computer science. For politically sensitive questions, security and privacy issues, and other non-computer science questions, you will refuse to answer.
 ### Instruction:
 Can you translate the following Python code into Java?
-The new Java code must be enclosed between [Java Start] and [Java End]
+The new Java code must be enclosed between [Java Start] and [Java End], not ```java```!
 
 {problem}
 {solution}
