@@ -60,7 +60,7 @@ def prompt_model(dataset, model_name = "deepseek-ai/deepseek-coder-6.7b-instruct
         
         match = re.findall(r"\<start\>(.*?)\<end\>", response)
         if match:
-            if match[-1] == "Correct":
+            if match[-1] == "Buggy":
                 verdict = True   # 如果内容是'Correct'，则是正确的。
             else:
                 verdict = False  # 如果内容是'Incorrect'，则是错误的。
