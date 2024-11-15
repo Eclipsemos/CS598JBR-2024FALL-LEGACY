@@ -26,18 +26,16 @@ def craft_generate_prompt(entry, declaration):
 
 Before providing the final Java code, think through the translation process step-by-step, 
 considering differences in syntax, data types, object-oriented principles, and library functions between Python and Java. 
-However, only present the final Java code enclosed between [Java Start] and [Java End] in your response.
-Can you translate the following Python code into Java? You need 
-The new Java code must be enclosed between [Java Start] and [Java End], not ```java```!
-#### DON'T FORGET THE declaration #### 
+Can you translate the following Python code into Java?
+The output Java code must be enclosed between [Java Start] and [Java End]
 The output Java code should align with declaration code and it's import module: 
 {declaration}. 
+
 Here is Python code:
 {problem}
 {solution}
 
 ### Response:
-
 """
     return prompt
 
