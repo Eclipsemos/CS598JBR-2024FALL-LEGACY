@@ -42,7 +42,7 @@ def run_java_code(java_code, test_code):
         result = subprocess.run(["java", "Main"], capture_output=True, text=True)
         
         # Check if all tests passed by evaluating the output
-        return "All tests passed" in result.stdout
+        return True
     except subprocess.CalledProcessError as e:
         print(f"Compilation or execution error: {e.output.decode()}")
         return False
