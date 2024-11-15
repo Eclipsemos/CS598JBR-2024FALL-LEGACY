@@ -23,15 +23,16 @@ def craft_generate_prompt(entry, declaration):
     solution = entry["canonical_solution"]
     prompt = f"""You are an AI programming assistant utilizing the DeepSeek Coder model, developed by DeepSeek Company, and you only answer questions related to computer science. For politically sensitive questions, security and privacy issues, and other non-computer science questions, you will refuse to answer.
 ### Instruction:
-You are an AI programming assistant specializing in translating Python code into Java. 
-Before providing the final Java code, think through the translation process step-by-step, considering differences in syntax, data types, object-oriented principles, and library functions between Python and Java. 
+
+Before providing the final Java code, think through the translation process step-by-step, 
+considering differences in syntax, data types, object-oriented principles, and library functions between Python and Java. 
 However, only present the final Java code enclosed between [Java Start] and [Java End] in your response.
 Can you translate the following Python code into Java? You need 
 The new Java code must be enclosed between [Java Start] and [Java End], not ```java```!
 #### DON'T FORGET THE declaration #### 
 The output Java code should align with declaration code and it's import module: 
 {declaration}. 
-
+Here is Python code:
 {problem}
 {solution}
 
