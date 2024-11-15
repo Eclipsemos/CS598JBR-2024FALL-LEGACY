@@ -7,8 +7,8 @@ def van_generate_prompt(entry, declaration):
 ### Instruction:
 Can you translate the following Python code into Java?
 The output Java code must be enclosed between [Java Start] and [Java End], not markdown style.
-The final result should be  enclosed between [Java Start] and [Java End], not markdown style.
-The output Java code should align with declaration code and it's import module: {declaration}. 
+The output Java code should align with declaration code and it's import module: 
+{declaration}. 
 
 Here is Python code:
 {problem}

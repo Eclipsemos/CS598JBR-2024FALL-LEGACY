@@ -31,8 +31,8 @@ def run_java_code(java_code, test_code):
     with open("Main.java", "w") as f:
         f.write(combined_code)
         #print("declaration:"+ declaration)
-        print("java_code:"+ java_code)
-        print("test_code:"+ test_code)
+        print("combined_code:")
+        print(combined_code)
 
     try:
         # Compile Main.java
