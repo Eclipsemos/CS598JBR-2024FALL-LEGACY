@@ -97,7 +97,7 @@ def prompt_model(python_dataset, java_dataset, model_name="deepseek-ai/deepseek-
             is_correct = run_java_code(java_code, test_code)
 
         # print(f"Task_ID {py_entry['task_id']}:\nPrompt:\n{prompt}\nGenerated Java Code:\n{java_code}\nIs Correct:\n{is_correct}")
-        
+        print(raw_response)
         # Save results for each task
         results.append({
             "task_id": py_entry["task_id"],

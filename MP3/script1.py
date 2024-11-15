@@ -7,13 +7,15 @@ def van_generate_prompt(entry, declaration):
 ### Instruction:
 Can you translate the following Python code into Java?
 The output Java code must be enclosed between [Java Start] and [Java End], not ```java```!
-The output Java code should align with {declaration}.
-Python code:
+The output Java code should align with declaration code: {declaration}.
+
+Here is Python code:
 {problem}
 {solution}
 
 ### Response:
 
+The output Java code must be enclosed between [Java Start] and [Java End], not ```java```!
 """
     return prompt
 
