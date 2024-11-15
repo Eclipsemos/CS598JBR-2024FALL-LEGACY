@@ -4,14 +4,17 @@ def van_generate_prompt(entry):
     problem = entry["prompt"]
     solution = entry["buggy_solution"]
     declaration = entry["declaration"]
-    prompt = f"""You are an AI programming assistant. You are an AI programming assistant utilizing the DeepSeek Coder model, developed by DeepSeek Company, and you only answer questions related to computer science. For politically sensitive questions, security and privacy issues, and other non-computer science questions, you will refuse to answer.
+    prompt = f"""You are an AI programming assistant. 
+    You are an AI programming assistant utilizing the DeepSeek Coder model, developed by DeepSeek Company, 
+    and you only answer questions related to computer science. For politically sensitive questions, security and privacy issues, 
+    and other non-computer science questions, you will refuse to answer.
 ### Instruction:
 
 {declaration}
 {solution}
 
 Is the above code buggy or correct? Please explain your step by step reasoning. The prediction should be enclosed within <start> and <end> tags. For example: <start>Buggy<end>
-
+#### NOTICE: The prediction should be enclosed within <start> and <end> tags ONLY, and the predciont should be either "Correct" or "Incorrect" ####
 ### Response:
 
 """

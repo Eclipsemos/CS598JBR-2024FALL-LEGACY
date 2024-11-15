@@ -59,7 +59,10 @@ def prompt_model(dataset, model_name = "deepseek-ai/deepseek-coder-6.7b-instruct
         # if it is correct, it is incorrect
         
         match = re.findall(r"\<start\>(.*?)\<end\>", response)
-        verdict = match == "Buggy"
+        if match and match[0] == "Buggy":
+            verdict = True
+        else:
+            verdict = False
 
         print(f"Task_ID {entry['task_id']}:\nprompt:\n{prompt}\nresponse:\n{response}\nis_expected:\n{verdict}")
         results.append({
